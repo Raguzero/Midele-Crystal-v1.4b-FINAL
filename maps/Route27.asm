@@ -296,6 +296,46 @@ TrainerCooltrainerfMegan:
 	closetext
 	end
 
+FisherKaisser:
+	trainer FISHER, KAISSER, EVENT_13, KaisserSeenText, KaisserBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext KaisserAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+KaisserSeenText:
+    text "Acabo de meterme"
+	line "en el google eart"
+	cont "para ver si habia"
+	cont "alguien pescando"
+	cont "en el pantano," 
+	cont "pues hoy hace" 
+	cont "mucho viento y no"
+	cont "me apetecia ir a"
+	para "lo tonto."
+    
+	para "Hasta que has"
+	line "venido a tocar" 
+	cont "los huevos,"
+	cont "asi que vamos"
+	cont "a luchar pirata"
+    done
+
+KaisserBeatenText:
+    text "Huehuehuehue"
+    done
+
+KaisserAfterBattleText:
+    text "Vendo Opel Corsa"
+    line "Siempre en garje,"
+	cont "usado por persona"
+	cont "mayor."
+    done	
+
 TohjoFallsSign:
 	jumptext TohjoFallsSignText
 
@@ -480,7 +520,7 @@ Route27_MapEvents:
 	db 1 ; bg events
 	bg_event 25,  7, BGEVENT_READ, TohjoFallsSign
 
-	db 9 ; object events
+	db 10 ; object events
 	object_event 48,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	object_event 58,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermBrian, -1
 	object_event 72, 10, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
@@ -490,3 +530,4 @@ Route27_MapEvents:
 	object_event 60, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27TMSolarbeam, EVENT_ROUTE_27_TM_SOLARBEAM
 	object_event 53, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27RareCandy, EVENT_ROUTE_27_RARE_CANDY
 	object_event 21, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 3, Route27FisherScript, -1
+	object_event 56, 7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, FisherKaisser, -1

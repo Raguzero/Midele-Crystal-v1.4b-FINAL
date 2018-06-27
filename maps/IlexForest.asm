@@ -447,7 +447,7 @@ IlexForestShrineScript:
 	end
 
 .CelebiEvent:
-	takeitem GS_BALL
+	;takeitem GS_BALL
 	clearevent EVENT_FOREST_IS_RESTLESS
 	setevent EVENT_AZALEA_TOWN_KURT
 	disappear ILEXFOREST_LASS
@@ -464,6 +464,7 @@ IlexForestShrineScript:
 	pause 20
 	clearflag ENGINE_FOREST_IS_RESTLESS
 	special CelebiShrineEvent
+	writecode VAR_BATTLETYPE, BATTLETYPE_CELEBI
 	loadwildmon CELEBI, 30
 	startbattle
 	reloadmapafterbattle

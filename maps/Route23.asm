@@ -20,6 +20,9 @@ IndigoPlateauSignText:
 	para "#MON LEAGUE HQ"
 	done
 
+Luckyegg:
+	itemball LUCKY_EGG
+
 Route23_MapEvents:
 	db 0, 0 ; filler
 
@@ -34,4 +37,5 @@ Route23_MapEvents:
 	db 1 ; bg events
 	bg_event 11,  7, BGEVENT_READ, IndigoPlateauSign
 
-	db 0 ; object events
+	db 1 ; object events
+	object_event 9,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Luckyegg, EVENT_17

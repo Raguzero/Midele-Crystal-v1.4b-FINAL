@@ -9,6 +9,60 @@ SoulHouse_MapScripts:
 
 	db 0 ; callbacks
 
+TrainerManiacLavender:
+	trainer POKEMANIAC, LAVNDER, EVENT_BEAT_LAVENDER, ManiacLavenderSeenText, ManiacLavenderBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext ManiacLavenderAfterBattleText
+	waitbutton
+	closetext
+	end
+
+ManiacLavenderSeenText:
+
+    text "That A.VADER guy."
+    line "His MIDELE power"
+    cont "is too strong."
+
+    para "What do yo say?"
+    line "ULTRAMAGIC? Me?"
+    cont "Ah! I remember."
+
+    para "You beat me in"
+    line "TOHJO FALLS."
+
+    para "This time it will"
+    line "be different."
+
+    para "I will defeat"
+    line "you and the"
+    cont "JOHTO police."
+
+    para "The MAFIA will be"
+    line "revived!"
+
+    para "You cannot win,"
+    line "prepare yourself."
+    cont "DOOD!"
+    done
+
+ManiacLavenderBeatenText:
+    text "Not again, DOOD!"
+    done
+
+ManiacLavenderAfterBattleText:
+    text "Please, don't tell"
+    line "this to JOHTO"
+    cont "POLICE chief,"
+    cont "MELKOR."
+
+    para "I was just"
+    line "kidding, I'm"
+    cont "not ULTRAMAGIC."
+    done
+
 MrFuji:
 	jumptextfaceplayer MrFujiText
 
@@ -81,8 +135,9 @@ SoulHouse_MapEvents:
 
 	db 0 ; bg events
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event  4,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MrFuji, -1
 	object_event  7,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseTeacherScript, -1
 	object_event  2,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseLassScript, -1
 	object_event  1,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseGrannyScript, -1
+	object_event  2, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerManiacLavender, -1

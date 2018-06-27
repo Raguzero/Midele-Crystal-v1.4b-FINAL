@@ -110,3 +110,18 @@ Music: ; e906e
 	dba Music_BattleTowerLobby ; 0x17948b
 	dba Music_MobileCenter ; 0x17961d
 ; e91a3
+
+; New added songs
+	dba Music_FinalBattle
+	dba Music_MotherBeastBattle
+	dba Music_UnovaEliteFourBattle
+	dba Music_WallyBattle
+	dba Music_LookZinnia
+	dba Music_ChampionBattleDPPt
+	dba Music_CipherPeonBattle
+	dba Music_RivalBattle_XY
+	dba Music_ChampionBattle_B2W2
+	dba Music_LastPokemon
+	dba Music_SantaluneForest
+	dba Music_MaxieArchieBattle
+	dba Music_AlolaEliteFourBattle

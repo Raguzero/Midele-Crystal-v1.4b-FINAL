@@ -35,6 +35,31 @@ PewterGymBrockScript:
 .FightDone:
 	writetext UnknownText_0x1a2ada
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_BROCK_REMATCH
+	iftrue .BrockRematch
+    closetext
+    end
+
+.BrockRematch:
+	opentext
+	writetext Brock_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Brock_RematchDefeat, 0
+    loadtrainer BROCK, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Brock_Reward
+	waitbutton
+	verbosegiveitem GOLD_LEAF, 1
+	closetext
+	clearevent EVENT_BROCK_REMATCH
+    end
+	
+.Refused:
 	closetext
 	end
 
@@ -205,6 +230,28 @@ PewterGymGuyWinText:
 	para "inspiring. I mean"
 	line "that seriously."
 	done
+
+Brock_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Brock_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Brock_Reward:
+    text "Take your reward!"
+    done
 
 PewterGym_MapEvents:
 	db 0, 0 ; filler

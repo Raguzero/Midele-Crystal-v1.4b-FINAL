@@ -6,11 +6,27 @@
 	const ROUTE38_SAILOR
 	const ROUTE38_FRUIT_TREE
 	const ROUTE38_BUENA2
+	const ROUTE38_OFFICER_ALLIARE_DAY
+	const ROUTE38_OFFICER_ALLIARE_NIGHT
 
 Route38_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .AlliareCallback
+
+.AlliareCallback
+	checktime NITE
+	iftrue .AppearNightAlliare
+	jump .AppearDayAlliare
+.AppearNightAlliare:
+	appear ROUTE38_OFFICER_ALLIARE_NIGHT
+	disappear ROUTE38_OFFICER_ALLIARE_DAY
+	return
+.AppearDayAlliare:
+	appear ROUTE38_OFFICER_ALLIARE_DAY
+	disappear ROUTE38_OFFICER_ALLIARE_NIGHT
+   return
 
 TrainerBirdKeeperToby:
 	trainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, BirdKeeperTobySeenText, BirdKeeperTobyBeatenText, 0, .Script
@@ -320,6 +336,80 @@ Route38TrainerTips:
 Route38FruitTree:
 	fruittree FRUITTREE_ROUTE_38
 
+OfficerAlliareTrainer:
+	trainer OFFICER, ALLIARE, EVENT_BEAT_OFFICER_ALLIARE, OfficerAlliareSeenText, OfficerAlliareWinText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext OfficerAlliareAfterText
+	waitbutton
+	closetext
+	end
+
+OfficerAlliareScript:
+	faceplayer
+	opentext
+	writetext OfficerAlliareDaytimeText
+	waitbutton
+	closetext
+	end
+
+OfficerAlliareSeenText:
+	text "Donde crees que"
+	line "vas?"
+
+	para "Un nadador muy"
+	line "pesado ha estado"
+	cont "pidiendome que"
+	cont "desbanee"
+	cont "a LAVENDER."
+
+	para "Y para colmo,"
+	line "ULTRAMAGIC se ha"
+	cont "escapado de la"
+	cont "carcel de"
+	cont "JOHTO."
+
+	para "Pareces peligroso,"
+	line "seguro que eres"
+	cont "de la MAFIA."
+
+	para "Tendre que darte"
+	line "un buen baneo."
+	done
+
+OfficerAlliareWinText:
+	text "MELKOR me vengara!"
+	done
+
+OfficerAlliareAfterText:
+	text "Me ha llegado un"
+	line "mensaje de SION."
+
+	para "Al parecer,"
+	line "ULTRAMAGIC se"
+	cont "esconde en la"
+	cont "frontera de JOHTO."
+
+	para "Tendremos que"
+	line "tomar medidas,"
+	cont "ten cuidado si"
+	cont "ves algun MOD."
+	done
+
+OfficerAlliareDaytimeText:
+	text "Eh, joven."
+	line "Mejor que no"
+	cont "andes por aqui"
+	cont "por la noche."
+
+	para "Ah, y si ves a"
+	line "un tipo que usa un"
+	cont "LARVITAR, contacta"
+	cont "con la POLICIA."
+	done
+
 BirdKeeperTobySeenText:
 	text "Fly high into the"
 	line "sky, my beloved"
@@ -483,7 +573,7 @@ Route38_MapEvents:
 	bg_event 33,  7, BGEVENT_READ, Route38Sign
 	bg_event  5, 13, BGEVENT_READ, Route38TrainerTips
 
-	db 7 ; object events
+	db 9 ; object events
 	object_event  4,  1, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
 	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
 	object_event 12, 15, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBirdKeeperToby, -1
@@ -491,3 +581,5 @@ Route38_MapEvents:
 	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSailorHarry, -1
 	object_event 12, 10, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route38FruitTree, -1
 	object_event  5,  8, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
+	object_event  32, 6,  SPRITE_BUENA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 2, OfficerAlliareScript, EVENT_OFFICER_ALLIARE_DAY
+	object_event  32, 6,  SPRITE_BUENA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, OfficerAlliareTrainer, EVENT_OFFICER_ALLIARE_NIGHT

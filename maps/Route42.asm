@@ -8,13 +8,29 @@
 	const ROUTE42_POKE_BALL1
 	const ROUTE42_POKE_BALL2
 	const ROUTE42_SUICUNE
+	const ROUTE42_OFFICER_MELKOR_DAY
+	const ROUTE42_OFFICER_MELKOR_NIGHT
 
 Route42_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_ROUTE42_NOTHING
 	scene_script .DummyScene1 ; SCENE_ROUTE42_SUICUNE
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .MelkorCallback
+
+.MelkorCallback
+	checktime NITE
+	iftrue .AppearNightMelkor
+	jump .AppearDayMelkor
+.AppearNightMelkor:
+	appear ROUTE42_OFFICER_MELKOR_NIGHT
+	disappear ROUTE42_OFFICER_MELKOR_DAY
+	return
+.AppearDayMelkor:
+	appear ROUTE42_OFFICER_MELKOR_DAY
+	disappear ROUTE42_OFFICER_MELKOR_NIGHT
+	return
 
 .DummyScene0:
 	end
@@ -223,6 +239,92 @@ Route42SuicuneMovement:
 	remove_sliding
 	step_end
 
+OfficerMelkorTrainer:
+	trainer OFFICER, MELKOR, EVENT_BEAT_OFFICER_MELKOR, OfficerMelkorSeenText, OfficerMelkorWinText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext OfficerMelkorAfterText
+	waitbutton
+	closetext
+	end
+
+OfficerMelkorScript:
+	faceplayer
+	opentext
+	writetext OfficerMelkorDaytimeText
+	waitbutton
+	closetext
+	end
+
+OfficerMelkorSeenText:
+	text "Alto ahi..."
+	line "Permiteme que"
+	cont "me presente."
+
+	para "Soy MELKOR, jefe"
+	line "de la POLICIA"
+	cont "de JOHTO."
+
+	para "Estoy en una"
+	line "mision de"
+	cont "maximo secreto"
+	cont "cuyo objetivo es"
+	cont "encontrar y"
+	cont "encarcelar a"
+	cont "ULTRAMAGIC."
+
+	para "Que por que te"
+	line "estoy contando"
+	cont "esto? Simple."
+
+	para "Se que eres"
+	line "ULTRAMAGIC"
+	cont "disfrazado,"
+	cont "no soy idiota."
+
+	para "Tu IP te delata."
+	line "Preparate para"
+	cont "ser baneado."
+	done
+
+OfficerMelkorWinText:
+	text "Tal vez me"
+	line "equivoque?"
+	done
+
+OfficerMelkorAfterText:
+	text "Vaya, parece que"
+	line "me confundi."
+
+	para "No eres"
+	line "ULTRAMAGIC."
+	cont "Si lo encuentras,"
+	cont "avisanos."
+
+	para "Es una multicuenta"
+	line "que ha hecho mucho"
+	cont "mal a la region."
+
+	para "Debe pagar por sus"
+	line "crimenes."
+	done
+
+OfficerMelkorDaytimeText:
+	text "Lo que me faltaba."
+
+	para "ULTRAMAGIC se"
+	line "escapa y"
+	cont "encima, FURRY"
+	cont "se enfada y"
+	cont "se va por su"
+	cont "cuenta..."
+
+	para "Eh! Me has"
+	line "escuchado?"
+	done
+
 FisherTullySeenText:
 	text "Let me demonstrate"
 	line "the power of the"
@@ -336,7 +438,7 @@ Route42_MapEvents:
 	bg_event 54,  8, BGEVENT_READ, Route42Sign2
 	bg_event 16, 11, BGEVENT_ITEM, Route42HiddenMaxPotion
 
-	db 9 ; object events
+	db 11 ; object event
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherTully, -1
 	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	object_event 47,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
@@ -346,3 +448,5 @@ Route42_MapEvents:
 	object_event  6,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
 	object_event 33,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
 	object_event 26, 16, SPRITE_SUICUNE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	object_event  3, 11,  SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 2, OfficerMelkorScript, EVENT_OFFICER_MELKOR_DAY
+	object_event  3, 11,  SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, OfficerMelkorTrainer, EVENT_OFFICER_MELKOR_NIGHT

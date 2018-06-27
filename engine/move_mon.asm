@@ -1224,6 +1224,23 @@ GiveEgg:: ; df8c
 	xor a
 	ld [hli], a
 	ld [hl], a
+	; NUEVO MEWTWO SHINY HUEVO
+	push af
+	ld a, [wCurPartySpecies]
+	cp MEWTWO
+	jr nz, .normal_egg
+	ld a, [wPartyCount]
+	dec a
+	ld hl, wPartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld a, $FF
+	ld [hli], a
+	ld [hl], a
+.normal_egg
+	pop af
+
+; NUEVO MEWTWO SHINY HUEVO
 	and a
 	ret
 ; e035

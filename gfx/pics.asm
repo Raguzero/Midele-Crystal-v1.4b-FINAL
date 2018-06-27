@@ -727,6 +727,10 @@ UnownYBackpic:       INCBIN "gfx/pokemon/unown_y/back.2bpp.lz"
 UnownPBackpic:       INCBIN "gfx/pokemon/unown_p/back.2bpp.lz"
 UnownIBackpic:       INCBIN "gfx/pokemon/unown_i/back.2bpp.lz"
 UnownRBackpic:       INCBIN "gfx/pokemon/unown_r/back.2bpp.lz"
+MicomonFrontpic:     INCBIN "gfx/pokemon/micomon/front.animated.2bpp.lz"
+MicomonBackpic:      INCBIN "gfx/pokemon/micomon/back.2bpp.lz"
+BombseekerFrontpic:     INCBIN "gfx/pokemon/bombseeker/front.animated.2bpp.lz"
+BombseekerBackpic:      INCBIN "gfx/pokemon/bombseeker/back.2bpp.lz"
 ; 1669d3
 
 

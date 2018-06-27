@@ -17,6 +17,7 @@ AlphabeticalPokedexOrder: ; 0x40c65
 	db BELLSPROUT
 	db BLASTOISE
 	db BLISSEY
+	db BOMBSEEKER
 	db BULBASAUR
 	db BUTTERFREE
 	db CATERPIE
@@ -133,6 +134,7 @@ AlphabeticalPokedexOrder: ; 0x40c65
 	db METAPOD
 	db MEW
 	db MEWTWO
+	db MICOMON
 	db MILTANK
 	db MISDREAVUS
 	db MOLTRES

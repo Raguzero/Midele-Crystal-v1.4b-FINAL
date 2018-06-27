@@ -8,14 +8,16 @@
 	const GOLDENRODUNDERGROUND_SUPER_NERD5
 	const GOLDENRODUNDERGROUND_SUPER_NERD6
 	const GOLDENRODUNDERGROUND_GRANNY
+	const GOLDENRODUNDERGROUND_POKEFAN_M1 ; NUEVO
 
 GoldenrodUnderground_MapScripts:
 	db 0 ; scene scripts
 
-	db 3 ; callbacks
+	db 4 ; callbacks
 	callback MAPCALLBACK_NEWMAP, .ResetSwitches
 	callback MAPCALLBACK_TILES, .CheckBasementKey
 	callback MAPCALLBACK_OBJECTS, .CheckDayOfWeek
+	callback MAPCALLBACK_OBJECTS, .MoveTutor ; NUEVO
 
 .ResetSwitches:
 	clearevent EVENT_SWITCH_1
@@ -107,7 +109,119 @@ GoldenrodUnderground_MapScripts:
 	disappear GOLDENRODUNDERGROUND_SUPER_NERD6
 	appear GOLDENRODUNDERGROUND_GRANNY
 	return
+; NUEVO DESDE AQUI HASTA...
+.MoveTutor:
+	checkcode VAR_WEEKDAY
+	ifequal WEDNESDAY, .MoveTutorAppear
+	ifequal SATURDAY, .MoveTutorAppear
+	ifequal MONDAY, .MoveTutorAppear
+	ifequal TUESDAY, .MoveTutorAppear
+	ifequal THURSDAY, .MoveTutorAppear
+	ifequal FRIDAY, .MoveTutorAppear
+	ifequal SUNDAY, .MoveTutorAppear
 
+.MoveTutorDisappear:
+	return
+
+.MoveTutorAppear:
+	appear GOLDENRODUNDERGROUND_POKEFAN_M1
+
+.MoveTutorDone:
+	return
+
+MoveTutorScriptt:
+	faceplayer
+	opentext
+	writetext tutor3
+	yesorno
+	iffalse .Refused
+	checkitem GOLD_LEAF
+	iffalse .NoGoldLeaf
+	writetext tutor5
+	loadmenu .MoveMenuHeader
+	verticalmenu
+	closewindow
+	ifequal MOVETUTOR_MOVE1, .Lovelykiss
+	ifequal MOVETUTOR_MOVE2, .Moonlight
+	ifequal MOVETUTOR_MOVE3, .Morningsun
+	jump .Incompatible
+
+.Lovelykiss:
+	writebyte MOVETUTOR_MOVE_LOVELY_KISS
+	writetext tutor8
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	jump .Incompatible
+
+.Moonlight:
+	writebyte MOVETUTOR_MOVE_MOONLIGHT
+	writetext tutor8
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	jump .Incompatible
+
+.Morningsun:
+	writebyte MOVETUTOR_MOVE_MORNING_SUN
+	writetext tutor8
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	jump .Incompatible
+
+.MoveMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 0, 2, 15, TEXTBOX_Y - 1
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db STATICMENU_CURSOR ; flags
+	db 4 ; items
+	db "LOVELY KISS@"
+	db "MOONLIGHT@"
+	db "MORNING SUN@"
+	db "CANCEL@"
+
+.Refused:
+	writetext tutor4
+	waitbutton
+	closetext
+	end
+
+.Refused2:
+	writetext tutor6
+	waitbutton
+	closetext
+	end
+
+.TeachMove:
+	writetext tutor1
+	buttonsound
+    takeitem GOLD_LEAF
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext tutor2
+	waitbutton
+	closetext
+	end
+
+.Incompatible:
+	writetext tutor7
+	waitbutton
+	closetext
+	end
+
+.NotEnoughMoney:
+	writetext tutor9
+	waitbutton
+	closetext
+	end
+
+.NoGoldLeaf:
+	writetext tutor11
+	waitbutton
+	closetext
+	end
+; NUEVO HASTA AQUI
 TrainerSupernerdEric:
 	trainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText, 0, .Script
 
@@ -643,7 +757,79 @@ GoldenrodUndergroundNoEntryText:
 	text "NO ENTRY BEYOND"
 	line "THIS POINT"
 	done
+; NUEVO DESDE AQUI HASTA...
+tutor3:
+	text "I can teach your"
+	line "#MON amazing"
 
+	para "moves if you'd"
+	line "like."
+
+	para "Should I teach a"
+	line "new move?"
+	done
+
+tutor10:
+	text "It will cost you"
+	line "4000 coins. Okay?"
+	done
+
+tutor4:
+	text "Aww… But they're"
+	line "amazing…"
+	done
+
+tutor5:
+	text "Wahahah! You won't"
+	line "regret it!"
+
+	para "Which move should"
+	line "I teach?"
+	done
+
+tutor6:
+	text "Hm, too bad. I'll"
+	line "have to get some"
+	cont "cash from home…"
+	done
+
+tutor1:
+	text "If you understand"
+	line "what's so amazing"
+
+	para "about this move,"
+	line "you've made it as"
+	cont "a trainer."
+	done
+
+tutor2:
+	text "Wahahah!"
+	line "Farewell, kid!"
+	done
+
+tutor7:
+	text "B-but…"
+	done
+
+tutor9:
+	text "…You don't have"
+	line "enough coins here…"
+	done
+
+tutor8:
+	text_start
+	done
+
+tutor11:
+	text "You don't have a"
+	line "GOLD LEAF."
+	para "If you want to"
+	line "learn a move you"
+	cont "will have to give"
+	cont "me a GOLD LEAF."
+	done
+
+; NUEVO HASTA AQUI
 GoldenrodUnderground_MapEvents:
 	db 0, 0 ; filler
 
@@ -664,7 +850,7 @@ GoldenrodUnderground_MapEvents:
 	bg_event  4, 18, BGEVENT_ITEM, GoldenrodUndergroundHiddenSuperPotion
 	bg_event 17,  8, BGEVENT_ITEM, GoldenrodUndergroundHiddenAntidote
 
-	db 9 ; object events
+	db 10 ; object events
 	object_event  5, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdEric, -1
 	object_event  6,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
 	object_event  3, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
@@ -674,3 +860,5 @@ GoldenrodUnderground_MapEvents:
 	object_event  7, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BROTHER
 	object_event  7, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BROTHER
 	object_event  7, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_GOLDENROD_UNDERGROUND_GRANNY
+	; NUEVO DESDE AQUI 
+	object_event 7, 24, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoveTutorScriptt, -1

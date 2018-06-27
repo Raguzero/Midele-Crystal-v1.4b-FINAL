@@ -96,7 +96,7 @@ ItemEffects: ; e73c
 	dw StatusHealingEffect ; BURNT_BERRY
 	dw StatusHealingEffect ; ICE_BERRY
 	dw NoEffect            ; POISON_BARB
-	dw NoEffect            ; KINGS_ROCK
+	dw EvoStoneEffect      ; KINGS_ROCK
 	dw BitterBerryEffect   ; BITTER_BERRY
 	dw StatusHealingEffect ; MINT_BERRY
 	dw NoEffect            ; RED_APRICORN
@@ -157,7 +157,7 @@ ItemEffects: ; e73c
 	dw NoEffect            ; SCOPE_LENS
 	dw NoEffect            ; ITEM_8D
 	dw NoEffect            ; ITEM_8E
-	dw NoEffect            ; METAL_COAT
+	dw EvoStoneEffect      ; METAL_COAT
 	dw NoEffect            ; DRAGON_FANG
 	dw NoEffect            ; ITEM_91
 	dw NoEffect            ; LEFTOVERS
@@ -165,7 +165,7 @@ ItemEffects: ; e73c
 	dw NoEffect            ; ITEM_94
 	dw NoEffect            ; ITEM_95
 	dw RestorePPEffect     ; MYSTERYBERRY
-	dw NoEffect            ; DRAGON_SCALE
+	dw EvoStoneEffect      ; DRAGON_SCALE
 	dw NoEffect            ; BERSERK_GENE
 	dw NoEffect            ; ITEM_99
 	dw NoEffect            ; ITEM_9A
@@ -186,7 +186,7 @@ ItemEffects: ; e73c
 	dw EvoStoneEffect      ; SUN_STONE
 	dw NoEffect            ; POLKADOT_BOW
 	dw NoEffect            ; ITEM_AB
-	dw NoEffect            ; UP_GRADE
+	dw EvoStoneEffect      ; UP_GRADE
 	dw RestoreHPEffect     ; BERRY
 	dw RestoreHPEffect     ; GOLD_BERRY
 	dw SquirtbottleEffect  ; SQUIRTBOTTLE
@@ -332,7 +332,7 @@ PokeBallEffect: ; e8a2
 	and 1 << FRZ | SLP
 	ld c, 10
 	jr nz, .addstatus
-	; ld a, [wEnemyMonStatus]
+	ld a, [wEnemyMonStatus]
 	and a
 	ld c, 5
 	jr nz, .addstatus
@@ -923,7 +923,7 @@ MoonBallMultiplier:
 	push bc
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	cp MOON_STONE_RED ; BURN_HEAL
+	cp MOON_STONE ; BURN_HEAL
 	pop bc
 	ret nz
 
@@ -982,7 +982,7 @@ LoveBallMultiplier:
 	pop de
 	cp d
 	pop bc
-	ret nz ; for the intended effect, this should be "ret z"
+	ret z ; for the intended effect, this should be "ret z"
 
 	sla b
 	jr c, .max
@@ -1020,7 +1020,7 @@ FastBallMultiplier:
 	cp -1
 	jr z, .next
 	cp c
-	jr nz, .next ; for the intended effect, this should be "jr nz, .loop"
+	jr nz, .loop ; for the intended effect, this should be "jr nz, .loop"
 	sla b
 	jr c, .max
 
@@ -1193,26 +1193,56 @@ EvoStoneEffect: ; ee0f
 
 
 VitaminEffect: ; ee3d
-	ld b, PARTYMENUACTION_HEALING_ITEM
-	call UseItem_SelectMon
+    ld b, PARTYMENUACTION_HEALING_ITEM
+    call UseItem_SelectMon
 
-	jp c, RareCandy_StatBooster_ExitMenu
+    jp c, RareCandy_StatBooster_ExitMenu
 
-	call RareCandy_StatBooster_GetParameters
+    call RareCandy_StatBooster_GetParameters
 
-	call GetStatExpRelativePointer
+    call GetStatExpRelativePointer
 
-	ld a, MON_STAT_EXP
-	call GetPartyParamLocation
+    ld a, MON_STAT_EXP
+    call GetPartyParamLocation
 
-	add hl, bc
-	ld a, [hl]
-	cp 100
-	jr nc, NoEffectMessage
+    add hl, bc
 
-	add 10
-	ld [hl], a
-	call UpdateStatsAfterItem
+	ld a, [hli]
+	ld b, a
+    ld a, [hl]
+	ld c, a
+	ld a, b
+	
+	; If the most significant byte is maxed out, check least significant byte
+    cp $ff
+	jr z, .check_lsb
+	; If the stat is greater than 62720, set most significant
+	; byte and least significant byte to maximum.
+    cp $f5
+	jr nc, .max_out_msb
+	; If not, add 2560
+    add 10
+	ld b, a
+    jr .done
+.check_lsb
+	; If the least significant byte is maxed out, do nothing
+	; else, max out least significant byte
+	ld a, c
+	cp $ff
+	jr z, NoEffectMessage
+	jr .max_out_lsb
+.max_out_msb
+	ld b, $ff
+.max_out_lsb
+	ld c, $ff
+.done
+	dec hl
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hld], a ; is it necessary to preserve hl's value?
+
+    call UpdateStatsAfterItem
 
 	call GetStatExpRelativePointer
 
@@ -1335,8 +1365,20 @@ RareCandyEffect: ; ef14
 
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
-
+	
+; NUEVO LEVEL CAP BADGE
+	push bc
+	call GetBadgeLevel
+; NUEVO LEVEL CAP BADGE
+	
 	ld a, [hl]
+	
+; NUEVO LEVEL CAP BADGE
+	cp b
+	pop bc
+	jp nc, NoEffectMessage
+; NUEVO LEVEL CAP BADGE
+
 	cp MAX_LEVEL
 	jp nc, NoEffectMessage
 

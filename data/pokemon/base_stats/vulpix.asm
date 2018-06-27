@@ -9,7 +9,7 @@
 	db BURNT_BERRY, BURNT_BERRY ; items
 	db GENDER_F75 ; gender ratio
 	db 100 ; unknown 1
-	db 20 ; step cycles to hatch
+	db 6 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/vulpix/front.dimensions"
 	db 0, 0, 0, 0 ; padding

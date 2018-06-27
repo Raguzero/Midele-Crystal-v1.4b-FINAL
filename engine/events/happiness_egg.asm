@@ -150,7 +150,12 @@ DayCareStep:: ; 7282
 	jr z, .day_care_lady
 
 	ld a, [wBreedMon1Level] ; level
-	cp MAX_LEVEL
+	;cp MAX_LEVEL  ; NUEVO LEVEL CAP BADGE
+	push bc
+	call GetBadgeLevel
+	cp b
+	pop bc
+	; NUEVO LEVEL CAP BADGE
 	jr nc, .day_care_lady
 	ld hl, wBreedMon1Exp + 2 ; exp
 	inc [hl]
@@ -172,7 +177,12 @@ DayCareStep:: ; 7282
 	jr z, .check_egg
 
 	ld a, [wBreedMon2Level] ; level
-	cp MAX_LEVEL
+	;cp MAX_LEVEL ; NUEVO LEVEL CAP BADGE
+	push bc
+	call GetBadgeLevel
+	cp b
+	pop bc
+	; NUEVO LEVEL CAP BADGE
 	jr nc, .check_egg
 	ld hl, wBreedMon2Exp + 2 ; exp
 	inc [hl]

@@ -251,14 +251,15 @@ MoveDescriptions:: ; 2cb52
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
-	dw MoveFCDescription
+	;dw MoveFCDescription
+	dw MidelePowerDescription
 	dw MoveFDDescription
 	dw MoveFEDescription
 	dw MoveFFDescription
 	dw Move00Description
 ; 2cd52
 
-MoveFCDescription:
+;MoveFCDescription:
 MoveFDDescription:
 MoveFEDescription:
 MoveFFDescription:
@@ -1268,3 +1269,7 @@ BeatUpDescription:
 	db   "Party #MON join"
 	next "in the attack.@"
 ; 2ed44
+
+MidelePowerDescription:
+	db	  "Releases Midele's"
+	next  "true power.@"

@@ -42,9 +42,11 @@ KarensRoom_MapScripts:
 
 KarenScript_Battle:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, KarenRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue KarenScript_AfterBattle
+	opentext
 	writetext KarenScript_KarenBeforeText
 	waitbutton
 	closetext
@@ -53,24 +55,46 @@ KarenScript_Battle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KAREN
-	opentext
-	writetext KarenScript_KarenDefeatText
-	waitbutton
-	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock 4, 2, $16 ; open door
-	reloadmappart
-	closetext
-	setevent EVENT_KARENS_ROOM_EXIT_OPEN
-	waitsfx
-	end
+	scall KarenScript_AfterBattle
+	jump KarenEndBattleScript
 
 KarenScript_AfterBattle:
+    opentext
 	writetext KarenScript_KarenDefeatText
 	waitbutton
 	closetext
 	end
 
+KarenRematchScript:
+	checkevent EVENT_BEAT_ELITE_4_KAREN
+	iftrue .AfterBattle
+	opentext
+	writetext KarenScript_KarenBeforeText
+	waitbutton
+	closetext
+	winlosstext KarenScript_KarenBeatenText, 0
+ 	loadtrainer KAREN, 2
+ 	startbattle
+	reloadmapafterbattle
+    scall .AfterBattle
+ 	jump KarenEndBattleScript	
+	
+.AfterBattle:
+	opentext
+	writetext KarenScript_KarenDefeatText
+ 	waitbutton
+ 	closetext
+ 	end	
+	
+KarenEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_KARENS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_KAREN
+	waitsfx
+	end	
+	
 KarensRoom_EnterMovement:
 	step UP
 	step UP

@@ -75,10 +75,38 @@ GoldenrodGymWhitneyScript:
 .GotAttract:
 	writetext WhitneyGoodCryText
 	waitbutton
-.NoRoomForAttract:
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_WHITNEY_REMATCH
+	iftrue .WhitneyRematch
+    closetext
+    end
+
+.WhitneyRematch:
+	opentext
+	writetext Whitney_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Whitney_RematchDefeat, 0
+    loadtrainer WHITNEY, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Whitney_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_WHITNEY_REMATCH
+    end
+
+.Refused:
 	closetext
 	end
 
+.NoRoomForAttract:
+	closetext
+	end
+	
 GoldenrodGymActivateRockets:
 	ifequal 7, .RadioTowerRockets
 	ifequal 6, .GoldenrodRockets
@@ -268,6 +296,14 @@ WhitneyGoodCryText:
 	line "again! Bye-bye!"
 	done
 
+WhitneyGoodCryText2:
+	text "NOOOOO"
+	line "NOOOOOOO!"
+
+	para "Come for a visit"
+	line "again! Bye-bye!"
+	done	
+
 LassCarrieSeenText:
 	text "Don't let my"
 	line "#MON's cute"
@@ -376,6 +412,28 @@ GoldenrodGymGuyWinText:
 	line "was busy admiring"
 	cont "the ladies here."
 	done
+
+Whitney_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Whitney_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Whitney_Reward:
+    text "Take your reward!"
+    done
 
 GoldenrodGym_MapEvents:
 	db 0, 0 ; filler

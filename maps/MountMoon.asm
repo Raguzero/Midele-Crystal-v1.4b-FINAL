@@ -1,19 +1,21 @@
 	const_def 2 ; object constants
 	const MOUNTMOON_SILVER
+	const MOUNTMOON_MEW
 
 MountMoon_MapScripts:
 	db 2 ; scene scripts
 	scene_script .RivalEncounter ; SCENE_DEFAULT
 	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .Mew
 
 .RivalEncounter:
 	priorityjump .RivalBattle
 	end
 
 .DummyScene:
-	end
+	end	
 
 .RivalBattle:
 	turnobject PLAYER, RIGHT
@@ -68,6 +70,86 @@ MountMoon_MapScripts:
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end
+
+.Mew:
+    checkevent EVENT_FOUGHT_MEW
+    iftrue .NoAppear
+    checkcode VAR_BADGES
+    if_not_equal 16, .NoAppear
+    jump .Appear
+
+.Appear:
+	appear MOUNTMOON_MEW
+	return
+
+.NoAppear:
+	disappear MOUNTMOON_MEW
+	return
+
+Mew:
+	faceplayer
+	opentext
+	writetext MewText
+	cry MEW
+	pause 15
+	closetext
+	setevent EVENT_FOUGHT_MEW
+	writecode VAR_BATTLETYPE, BATTLETYPE_SUICUNE
+	loadwildmon MEW, 30
+	startbattle
+	disappear MOUNTMOON_MEW
+	reloadmapafterbattle
+	end
+
+MewText:
+	text "Mew!"
+	done
+
+TrainerPsychicHypeantonio:
+	trainer PSYCHIC_T, HYPEANTO, EVENT_BEAT_TRAINER5, Psychic_THypeantoSeenText, Psychic_THypeantoBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext Psychic_THypeantoAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+Psychic_THypeantoSeenText:
+    text "I'm trying to find"
+	line "the origins of the" 
+	cont "legendary Pokemon"
+	para "Zygarde."
+	
+	para "Maybe this region"
+	line "could have some"
+	para "clues..."
+	
+	para "Right now my HYPE"
+	line "is rising ABOVE"
+	cont "9000!!!"
+	cont "Can you feel it?.." 
+	cont "Can you feel the" 
+	cont "maximum power of"
+	cont "HYPE?"
+	done
+
+Psychic_THypeantoBeatenText:
+    text "Maybe I should  "
+	line "make a [Theory]"
+	cont "about this"
+	cont "battle..."
+    done
+
+Psychic_THypeantoAfterBattleText
+    text "I think this place"
+	line "might be linked"
+	cont "with Terminus"
+	cont "Cave..."
+	cont "They're both caves"
+    cont "after all!"
+	done
 
 MountMoonSilverMovementBefore:
 	step LEFT
@@ -175,5 +257,7 @@ MountMoon_MapEvents:
 
 	db 0 ; bg events
 
-	db 1 ; object events
+	db 3 ; object events
 	object_event  7,  3, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	object_event 12, 12, SPRITE_MONSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_OW_SILVER,PERSONTYPE_SCRIPT, 0, Mew, EVENT_MEW
+	object_event  4, 9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPsychicHypeantonio, -1

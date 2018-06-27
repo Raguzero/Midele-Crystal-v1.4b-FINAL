@@ -53,6 +53,34 @@ MahoganyGymPryceScript:
 PryceScript_Defeat:
 	writetext PryceText_CherishYourPokemon
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_PRYCE_REMATCH
+	iftrue .PryceRematch
+    closetext
+    end
+
+.PryceRematch:
+	opentext
+	writetext Pryce_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Pryce_RematchDefeat, 0
+    loadtrainer PRYCE, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Pryce_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_PRYCE_REMATCH
+    end
+
+.Refused:
+	closetext
+	end
+
 MahoganyGym_NoRoomForIcyWind:
 	closetext
 	end
@@ -369,6 +397,28 @@ MahoganyGymGuyWinText:
 	para "bridged the gen-"
 	line "eration gap!"
 	done
+
+Pryce_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Pryce_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Pryce_Reward:
+    text "Take your reward!"
+    done
 
 MahoganyGym_MapEvents:
 	db 0, 0 ; filler

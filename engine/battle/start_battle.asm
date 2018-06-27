@@ -23,10 +23,10 @@ FindFirstAliveMonAndStartBattle: ; 2ee2f
 .loop
 	ld a, [hli]
 	or [hl]
-	jr nz, .okay
+	jp nz, .okay
 	add hl, de
 	dec b
-	jr nz, .loop
+	jp nz, .loop
 
 .okay
 	ld de, MON_LEVEL - MON_HP
@@ -64,78 +64,322 @@ PlayBattleMusic: ; 2ee6c
 	jp z, .done
 	cp BATTLETYPE_ROAMING
 	jp z, .done
+	; NUEVO MUSICA LEGENDARRIO PARA CELEBI
+	cp BATTLETYPE_CELEBI
+    jp z, .done
+	; NUEVO MUSICA LEGENDARRIO PARA CELEBI
 
 	; Are we fighting a trainer?
 	ld a, [wOtherTrainerClass]
 	and a
-	jr nz, .trainermusic
+	jp nz, .trainermusic
 
 	farcall RegionCheck
 	ld a, e
 	and a
-	jr nz, .kantowild
+	jp nz, .kantowild
 
 	ld de, MUSIC_JOHTO_WILD_BATTLE
 	ld a, [wTimeOfDay]
 	cp NITE_F
-	jr nz, .done
+	jp nz, .done
 	ld de, MUSIC_JOHTO_WILD_BATTLE_NIGHT
-	jr .done
+	jp .done
 
 .kantowild
 	ld de, MUSIC_KANTO_WILD_BATTLE
-	jr .done
+	jp .done
 
 .trainermusic
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
-	jr z, .done
+	jp z, .done
+	ld de, MUSIC_FINALBATTLE
 	cp RED
-	jr z, .done
+	jp z, .done
+	; NUEVO MUSICAS
+	ld de, MUSIC_ELITEFOURUNOVA
+	cp WILL
+	jp z, .done
+	ld de, MUSIC_ELITEFOURUNOVA
+	cp KOGA
+	jp z, .done
+	ld de, MUSIC_ELITEFOURUNOVA
+	cp BRUNO
+	jp z, .done
+	ld de, MUSIC_ELITEFOURUNOVA
+	cp KAREN
+	jp z, .done
+
+	ld a, [wOtherTrainerClass]
+	ld de, MUSIC_LOOKZINNIA
+	cp SCIENTIST
+	jr nz, .not_avader
+	ld a, [wOtherTrainerID]
+	cp AVADER
+	jp z, .done
+	ld a, [wOtherTrainerClass]
+.not_avader
+	; NUEVO MUSICAS
 
 	; They should have included EXECUTIVEM, EXECUTIVEF, and SCIENTIST too...
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
-	jr z, .done
+	jp z, .done
 	cp GRUNTF
-	jr z, .done
+	jp z, .done
+	cp EXECUTIVEM
+	jp z, .done
+	cp EXECUTIVEF
+	jp z, .done
+	cp SCIENTIST
+	jp z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
-	jr c, .done
+	jp c, .done
 
 	; IsGymLeader also counts CHAMPION, RED, and the Kanto gym leaders
 	; but they have been taken care of before this
 	ld de, MUSIC_JOHTO_GYM_LEADER_BATTLE
 	farcall IsGymLeader
-	jr c, .done
+	jp c, .done
 
 	ld de, MUSIC_RIVAL_BATTLE
 	ld a, [wOtherTrainerClass]
 	cp RIVAL1
-	jr z, .done
+	jp z, .done
 	cp RIVAL2
-	jr nz, .othertrainer
+	jp nz, .othertrainer
 
 	ld a, [wOtherTrainerID]
 	cp RIVAL2_2_CHIKORITA ; Rival in Indigo Plateau
-	jr c, .done
-	ld de, MUSIC_CHAMPION_BATTLE
-	jr .done
+	jp c, .done
+	;ld de, MUSIC_CHAMPION_BATTLE
+	ld de, MUSIC_RIVAL_BATTLE
+	jp .done
 
 .othertrainer
+	; Custom trainer music  ;NUEVO
+	; Save bc, store wOtherTrainerID at b
+	; and wOtherTrainerClass at c
+	push bc
+	ld a, [wOtherTrainerID]
+	ld b, a
+	ld a, [wOtherTrainerClass]
+	ld c, a
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp SUPER_NERD
+	jr nz, .not_goldy
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_CHAMPIONBATTLE_B2W2
+	; If the trainer id matches, done
+	cp GOLDY
+	jr z, .done_custom_music
+.not_goldy
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp COOLTRAINERM
+	jr nz, .not_ragu
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_CIPHERPEONBATTLE
+	; If the trainer id matches, done
+	cp RAGU
+	jr z, .done_custom_music
+.not_ragu
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp COOLTRAINERM
+	jr nz, .not_shelea
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_CHAMPIONBATTLEDPPT
+	; If the trainer id matches, done
+	cp SHELEA
+	jr z, .done_custom_music
+.not_shelea
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp COOLTRAINERF
+	jr nz, .not_sapph
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_RIVALBATTLE_XY
+	; If the trainer id matches, done
+	cp SAPPH
+	jr z, .done_custom_music
+.not_sapph
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp POKEMANIAC
+	jr nz, .not_lavnder
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_WALLYBATTLE
+	; If the trainer id matches, done
+	cp LAVNDER
+	jr z, .done_custom_music
+.not_lavnder
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp POKEMANIAC
+	jr nz, .not_micolo
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_MOTHERBEASTBATTLE
+	; If the trainer id matches, done
+	cp MICOLO
+	jr z, .done_custom_music
+.not_micolo
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp COOLTRAINERM
+	jr nz, .not_denys
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_MAXIEARCHIEBATTLE
+	; If the trainer id matches, done
+	cp DENYS
+	jr z, .done_custom_music
+.not_denys
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp PSYCHIC_T
+	jr nz, .not_santyago
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_SANTALUNE
+	; If the trainer id matches, done
+	cp SANTYAGO
+	jr z, .done_custom_music
+.not_santyago
+	;;;;;;;
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp JUGGLER
+	jr nz, .not_merum
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_ALOLAELITEFOURBATTLE
+	; If the trainer id matches, done
+	cp MERUM
+	jr z, .done_custom_music
+.not_merum
+	;;;;;;;	
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp SWIMMERM
+	jr nz, .not_pacobeer
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_LASTPOKEMON
+	; If the trainer id matches, done
+	cp PACOBEER
+	jr z, .done_custom_music
+.not_pacobeer
+	;;;;;;;
+	jr .done_custom_trainer
+
+.done_custom_music
+	; restore bc and done
+	pop bc
+	jp .done
+
+.done_custom_trainer
+	pop bc
+	; NUEVO
 	ld a, [wLinkMode]
 	and a
-	jr nz, .johtotrainer
+	jp nz, .johtotrainer
 
 	farcall RegionCheck
 	ld a, e
 	and a
-	jr nz, .kantotrainer
+	jp nz, .kantotrainer
 
 .johtotrainer
 	ld de, MUSIC_JOHTO_TRAINER_BATTLE
-	jr .done
+	jp .done
 
 .kantotrainer
 	ld de, MUSIC_KANTO_TRAINER_BATTLE

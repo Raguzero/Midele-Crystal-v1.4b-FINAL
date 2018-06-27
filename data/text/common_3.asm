@@ -1506,3 +1506,71 @@ UnknownText_0x1c60d1::
 	para "Come back again in"
 	line "a while."
 	prompt
+
+AlreadyHaveTMText::
+	text "You already have"
+	line "that TM."
+	done
+
+MoveReminderIntroText::
+	text "Hi! I'm the"
+	line "MOVE RELEARNER."
+
+	para "I'll make your"
+	line "#MON relearn"
+
+	para "a move if you'll"
+	line "trade me a"
+	cont "SILVER LEAF."
+	done
+
+MoveReminderPromptText::
+	text "Do you want me to"
+	line "teach one of your"
+	cont "#MON a move?"
+	done
+
+MoveReminderWhichMonText::
+	text "Which #MON"
+	line "needs tutoring?"
+	done
+
+MoveReminderWhichMoveText::
+	text "Which move should"
+	line "it remember?"
+	done
+
+MoveReminderNoHeartScaleText::
+	text "Huh? You don't"
+	line "have any"
+	cont "SILVER LEAF."
+
+	para "Sometimes you can"
+	line "find them outside."
+	done
+
+MoveReminderEggText::
+	text "Huh? That's just"
+	line "an EGG."
+	done
+
+MoveReminderNoMonText::
+	text "Huh? That's not"
+	line "a #MON."
+	done
+
+MoveReminderNoMovesText::
+	text "Sorry, There isn't"
+	line "any move I can"
+
+	para "make that #MON"
+	line "remember."
+	done
+
+MoveReminderCancelText::
+	text "If your #MON"
+	line "needs to learn a"
+
+	para "move, return with"
+	line "a SILVER LEAF."
+	done

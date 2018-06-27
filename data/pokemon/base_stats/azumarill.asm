@@ -1,6 +1,6 @@
 	db AZUMARILL ; 184
 
-	db 100,  50,  80,  50,  50,  80
+	db 100,  50,  80,  50,  60,  80
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, WATER ; type
@@ -9,7 +9,7 @@
 	db NO_ITEM, NO_ITEM ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
-	db 20 ; step cycles to hatch
+	db 6 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/azumarill/front.dimensions"
 	db 0, 0, 0, 0 ; padding

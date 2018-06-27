@@ -152,7 +152,7 @@ Moves: ; 41afb
 	move DREAM_EATER,  EFFECT_DREAM_EATER,       100, PSYCHIC,  100, 15,   0
 	move POISON_GAS,   EFFECT_POISON,              0, POISON,    55, 40,   0
 	move BARRAGE,      EFFECT_MULTI_HIT,          15, NORMAL,    85, 20,   0
-	move LEECH_LIFE,   EFFECT_LEECH_HIT,          20, BUG,      100, 15,   0
+	move LEECH_LIFE,   EFFECT_LEECH_HIT,          80, BUG,      100, 10,   0
 	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,    75, 10,   0
 	move SKY_ATTACK,   EFFECT_SKY_ATTACK,        140, FLYING,    90,  5,   0
 	move TRANSFORM,    EFFECT_TRANSFORM,           0, NORMAL,   100, 10,   0
@@ -213,7 +213,7 @@ Moves: ; 41afb
 	move LOCK_ON,      EFFECT_LOCK_ON,             0, NORMAL,   100,  5,   0
 	move OUTRAGE,      EFFECT_RAMPAGE,            90, DRAGON,   100, 15,   0
 	move SANDSTORM,    EFFECT_SANDSTORM,           0, ROCK,     100, 10,   0
-	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          60, GRASS,    100,  5,   0
+	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          75, GRASS,    100,  10,   0
 	move ENDURE,       EFFECT_ENDURE,              0, NORMAL,   100, 10,   0
 	move CHARM,        EFFECT_ATTACK_DOWN_2,       0, NORMAL,   100, 20,   0
 	move ROLLOUT,      EFFECT_ROLLOUT,            30, ROCK,      90, 20,   0
@@ -263,3 +263,4 @@ Moves: ; 41afb
 	move ROCK_SMASH,   EFFECT_DEFENSE_DOWN_HIT,   20, FIGHTING, 100, 15,  50
 	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        15, WATER,     70, 15,   0
 	move BEAT_UP,      EFFECT_BEAT_UP,            10, DARK,     100, 10,   0
+	move MIDELE_POWER, EFFECT_MIDELE_POWER, 	  70, CURSE_T,  100, 10, 100

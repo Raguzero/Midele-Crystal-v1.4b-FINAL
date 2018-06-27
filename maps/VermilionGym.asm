@@ -39,6 +39,31 @@ VermilionGymSurgeScript:
 .FightDone:
 	writetext UnknownText_0x192303
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_LTSURGE_REMATCH
+	iftrue .LtsurgeRematch
+    closetext
+    end
+
+.LtsurgeRematch:
+	opentext
+	writetext Ltsurge_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Ltsurge_RematchDefeat, 0
+    loadtrainer LT_SURGE, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Ltsurge_Reward
+	waitbutton
+	verbosegiveitem SILVER_LEAF, 1
+	closetext
+	clearevent EVENT_LTSURGE_REMATCH
+    end
+	
+.Refused:
 	closetext
 	end
 
@@ -257,6 +282,28 @@ VermilionGymTrashCanText:
 	text "Nope! Nothing here"
 	line "but trash."
 	done
+
+Ltsurge_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Ltsurge_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Ltsurge_Reward:
+    text "Take your reward!"
+    done
 
 VermilionGym_MapEvents:
 	db 0, 0 ; filler

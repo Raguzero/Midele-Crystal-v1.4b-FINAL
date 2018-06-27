@@ -3,6 +3,7 @@
 	const FUCHSIACITY_POKEFAN_M
 	const FUCHSIACITY_TEACHER
 	const FUCHSIACITY_FRUIT_TREE
+	const FUCHSIACITY_ZZZ
 
 FuchsiaCity_MapScripts:
 	db 0 ; scene scripts
@@ -13,6 +14,106 @@ FuchsiaCity_MapScripts:
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_FUCHSIA
 	return
+
+Zzz2Battle:
+	playmusic MUSIC_YOUNGSTER_ENCOUNTER
+	opentext
+	writetext ScholarZzz2SeenText
+	waitbutton
+	closetext
+	winlosstext ScholarZzz2BeatenText, ScholarZzz2LossText
+	setlasttalked FUCHSIACITY_ZZZ
+	loadtrainer SCHOOLBOY, Zzz2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .FinishZzzBattle2
+
+.FinishZzzBattle2:
+	opentext
+	writetext ScholarZzz2AfterBattleText
+	waitbutton
+	closetext
+	applymovement FUCHSIACITY_ZZZ, Zzz2MovementAfter
+	disappear FUCHSIACITY_ZZZ
+	setscene SCENE_FINISHED
+	setevent EVENT_BEAT_ZZZ2
+	playmapmusic
+	end
+
+ScholarZzz2SeenText:
+	text "Ah si! Tu eres"
+	line "<PLAYER> no?"
+	cont "Me has pillado"
+	cont "pensando una"
+	cont "estrategia para"
+	para "vencer a JANINE."
+	
+	para "Que pasa? No te"
+	line "acuerdas de mi?"
+	cont "Soy Zzz, el mejor"
+	cont "entrenador que"
+	para "habra jamas."
+	
+	para "Sigo buscando a"
+	line "mi sensei Red Crow"
+	cont "Lo has visto?"
+	cont "No? Vaya..."
+	cont "Donde estara?"
+	cont "Donde estas"
+	para "sensei!"
+	
+	para "Pero ya que estas"
+	line "frente a mi..."
+	cont "Por que no"
+	para "vengarme de ti?"
+	
+	para "Siiii! Es la hora"
+	line "de vengarme por"
+	para "derrotarme antes"
+	
+	para "Vamos! Lucha"
+	line "cobarde!"
+	cont "Quiero luchar!!"
+	cont "Pero es que"
+	para "nadie lucha?"
+	
+	para "Sois todos unos"
+	line "cobardes!"
+	cont "eh eh eh eh!!"
+	cont "Pelea! Pelea!"
+	cont "Pelea!"
+	done
+
+ScholarZzz2BeatenText:
+	text "Otra vez?"
+	line "Pero por que?"
+	cont "Por que no puedo"
+	cont "vencerte?"
+	done
+
+ScholarZzz2LossText:
+	text "jajajaja!"
+	line "valiente pringao"
+	done
+
+ScholarZzz2AfterBattleText:
+    text "Donde estas sensei"
+	line "(a)Red Crow"
+	cont "(a)Red Crow"
+	cont "Te estoy"
+	cont "mencionando"
+	para "(a)Red Crow"
+	
+	para "En cuanto a ti."
+	line "Nos volveremos"
+	cont "a encontrar"
+	cont "y me vengare!"
+	done
+
+Zzz2MovementAfter:
+	step UP
+	step_end
 
 FuchsiaCityYoungster:
 	jumptextfaceplayer FuchsiaCityYoungsterText
@@ -150,8 +251,10 @@ FuchsiaCity_MapEvents:
 	bg_event 20, 27, BGEVENT_READ, FuchsiaCityPokecenterSign
 	bg_event  6, 13, BGEVENT_READ, FuchsiaCityMartSign
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event 23, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaCityYoungster, -1
 	object_event 13,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FuchsiaCityPokefanM, -1
 	object_event 16, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FuchsiaCityTeacher, -1
 	object_event  8,  1, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaCityFruitTree, -1
+	object_event 8, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 2, Zzz2Battle, EVENT_BEAT_ZZZ2
+

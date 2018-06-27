@@ -68,6 +68,8 @@ GoldenrodGmeCornerTMVendor_LoopScript: ; 056c36
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .Thunder:
+    checkitem TM_THUNDER
+    iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 5500
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	itemtotext TM_THUNDER, MEM_BUFFER_0
@@ -79,6 +81,8 @@ GoldenrodGmeCornerTMVendor_LoopScript: ; 056c36
 	jump GoldenrodGmeCornerTMVendor_FinishScript
 
 .Blizzard:
+    checkitem TM_BLIZZARD
+    iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 5500
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	itemtotext TM_BLIZZARD, MEM_BUFFER_0
@@ -90,6 +94,8 @@ GoldenrodGmeCornerTMVendor_LoopScript: ; 056c36
 	jump GoldenrodGmeCornerTMVendor_FinishScript
 
 .FireBlast:
+    checkitem TM_FIRE_BLAST
+    iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 5500
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	itemtotext TM_FIRE_BLAST, MEM_BUFFER_0
@@ -111,6 +117,11 @@ GoldenrodGmeCornerTMVendor_FinishScript:
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
 	jump GoldenrodGmeCornerTMVendor_LoopScript
+
+GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
+	writetext GoldenrodGameCornerPrizeVendorAlreadyHaveTMText
+	waitbutton
+	jump GoldenrodGmeCornerTMVendor_LoopScript	
 
 GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 	writetext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
@@ -163,63 +174,63 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	loadmenu .MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .abra
-	ifequal 2, .cubone
-	ifequal 3, .wobbuffet
+	ifequal 1, .chikorita
+	ifequal 2, .cyndaquil
+	ifequal 3, .totodile
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
-.abra
-	checkcoins 100
+.chikorita
+	checkcoins 5000
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	pokenamemem ABRA, MEM_BUFFER_0
+	pokenamemem CHIKORITA, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	writebyte ABRA
+	writebyte CHIKORITA
 	special GameCornerPrizeMonCheckDex
-	givepoke ABRA, 5
-	takecoins 100
+	givepoke CHIKORITA, 5
+	takecoins 5000
 	jump .loop
 
-.cubone
-	checkcoins 800
+.cyndaquil
+	checkcoins 5000
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	pokenamemem CUBONE, MEM_BUFFER_0
+	pokenamemem CYNDAQUIL, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	writebyte CUBONE
+	writebyte CYNDAQUIL
 	special GameCornerPrizeMonCheckDex
-	givepoke CUBONE, 15
-	takecoins 800
+	givepoke CYNDAQUIL, 5
+	takecoins 5000
 	jump .loop
 
-.wobbuffet
-	checkcoins 1500
+.totodile
+	checkcoins 5000
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	pokenamemem WOBBUFFET, MEM_BUFFER_0
+	pokenamemem TOTODILE, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	writebyte WOBBUFFET
+	writebyte TOTODILE
 	special GameCornerPrizeMonCheckDex
-	givepoke WOBBUFFET, 15
-	takecoins 1500
+	givepoke TOTODILE, 5
+	takecoins 5000
 	jump .loop
 
 .MenuHeader:
@@ -231,9 +242,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "ABRA        100@"
-	db "CUBONE      800@"
-	db "WOBBUFFET  1500@"
+	db "CHIKORITA 5000@"
+	db "CYNDAQUIL 5000@"
+	db "TOTODILE  5000@"
 	db "CANCEL@"
 
 GoldenrodGameCornerPharmacistScript:
@@ -335,6 +346,11 @@ GoldenrodGameCornerPrizeVendorHereYouGoText:
 	text "Here you go!"
 	done
 
+GoldenrodGameCornerPrizeVendorAlreadyHaveTMText:
+	text "But you already"
+	line "have that TM!"
+	done
+	
 GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 	text "Sorry! You need"
 	line "more coins."

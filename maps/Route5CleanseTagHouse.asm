@@ -1,7 +1,8 @@
 	const_def 2 ; object constants
 	const ROUTE5CLEANSETAGHOUSE_GRANNY
 	const ROUTE5CLEANSETAGHOUSE_TEACHER
-
+    const ROUTE5CLEANSETAGHOUSE_SUPER_NERD1
+	
 Route5CleanseTagHouse_MapScripts:
 	db 0 ; scene scripts
 
@@ -29,6 +30,45 @@ Route5CleanseTagHouseTeacherScript:
 
 HouseForSaleBookshelf:
 	jumpstd difficultbookshelf
+
+TrainerSupernerdFelipex88:
+	trainer SUPER_NERD, FELIPEX, EVENT_BEAT_TRAINER6, SupernerdFelipex88SeenText, SupernerdFelipex88BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SupernerdFelipex88AfterBattleText
+	waitbutton
+	closetext
+	end
+
+SupernerdFelipex88SeenText:
+    text "Are not you too"
+	line "old to play"
+	para "Pokemon? :video:"
+	
+	para "Mature adults"
+    line "should play blood,"
+	cont "shots and fighting"
+	cont "videogames."
+	cont ":video:"
+	cont "Pokemon is for"
+	cont "kids, do not keep"
+	cont "playing. :video:"
+	cont "I'll demonstrate."
+    done
+
+SupernerdFelipex88BeatenText:
+    text "I like to cut"
+	line "my tongue."
+    done
+
+SupernerdFelipex88AfterBattleText
+    text "Damn child."
+	line "Right now I'm going"
+	cont "to cut the tongue"
+	cont "of my LICKITUNG."
+    done		
 
 Route5CleanseTagHouseGrannyText1:
 	text "Eeyaaaah!"
@@ -71,6 +111,7 @@ Route5CleanseTagHouse_MapEvents:
 	bg_event  0,  1, BGEVENT_READ, HouseForSaleBookshelf
 	bg_event  1,  1, BGEVENT_READ, HouseForSaleBookshelf
 
-	db 2 ; object events
+	db 3 ; object events
 	object_event  2,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route5CleanseTagHouseGrannyScript, -1
 	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route5CleanseTagHouseTeacherScript, -1
+	object_event  1, 3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdFelipex88, -1

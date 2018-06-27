@@ -218,7 +218,8 @@ ReplaceTimeOfDayPals: ; 8c0e5
 	ld a, [wStatusFlags]
 	bit STATUSFLAGS_FLASH_F, a
 	jr nz, .UsedFlash
-	ld a, %11111111 ; 3, 3, 3, 3
+	;ld a, %11111111 ; 3, 3, 3, 3
+	ld a, %10101010 ; 2, 2, 2, 2  PARA CUEVAS ILUMINADAS SIN DESTELLO NUEVO
 	ld [wTimeOfDayPalset], a
 	ret
 

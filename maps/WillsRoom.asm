@@ -42,9 +42,11 @@ WillsRoom_MapScripts:
 
 WillScript_Battle:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, WillRematchScript
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue WillScript_AfterBattle
+	opentext
 	writetext WillScript_WillBeforeText
 	waitbutton
 	closetext
@@ -52,25 +54,47 @@ WillScript_Battle:
 	loadtrainer WILL, WILL1
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_WILL
-	opentext
-	writetext WillScript_WillDefeatText
-	waitbutton
-	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock 4, 2, $16 ; open door
-	reloadmappart
-	closetext
-	setevent EVENT_WILLS_ROOM_EXIT_OPEN
-	waitsfx
+	scall WillScript_AfterBattle
+	jump WillEndBattleScript
 	end
 
 WillScript_AfterBattle:
+    opentext
 	writetext WillScript_WillDefeatText
 	waitbutton
 	closetext
-	end
+	end	
+	
+WillRematchScript:
+	checkevent EVENT_BEAT_ELITE_4_WILL
+	iftrue .AfterBattle
+	opentext
+	writetext WillScript_WillBeforeText
+	waitbutton
+	closetext
+	winlosstext WillScript_WillBeatenText, 0
+ 	loadtrainer WILL, WILL2
+ 	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle	
+	jump WillEndBattleScript
 
+.AfterBattle:
+    opentext
+	writetext WillScript_WillDefeatText
+	waitbutton
+	closetext
+	end		
+	
+WillEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_WILLS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_WILL
+	waitsfx
+	end	
+	
 WillsRoom_EnterMovement:
 	step UP
 	step UP
@@ -125,7 +149,7 @@ WillScript_WillDefeatText:
 	para "the true ferocity"
 	line "of the ELITE FOUR."
 	done
-
+	
 WillsRoom_MapEvents:
 	db 0, 0 ; filler
 

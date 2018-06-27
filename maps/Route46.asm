@@ -5,11 +5,27 @@
 	const ROUTE46_FRUIT_TREE1
 	const ROUTE46_FRUIT_TREE2
 	const ROUTE46_POKE_BALL
+	const ROUTE46_OFFICER_FURRY_DAY
+    const ROUTE46_OFFICER_FURRY_NIGHT
 
 Route46_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .FurryCallback
+
+.FurryCallback
+	checktime NITE
+	iftrue .AppearNightFurry
+	jump .AppearDayFurry
+.AppearNightFurry:
+	appear ROUTE46_OFFICER_FURRY_NIGHT
+	disappear ROUTE46_OFFICER_FURRY_DAY
+	return
+.AppearDayFurry:
+	appear ROUTE46_OFFICER_FURRY_DAY
+	disappear ROUTE46_OFFICER_FURRY_NIGHT
+	return
 
 TrainerCamperTed:
 	trainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText, 0, .Script
@@ -168,6 +184,90 @@ Route46FruitTree1:
 Route46FruitTree2:
 	fruittree FRUITTREE_ROUTE_46_2
 
+OfficerFurryTrainer:
+	trainer OFFICER, FURRY, EVENT_BEAT_OFFICER_FURRY, OfficerFurrySeenText, OfficerFurryWinText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext OfficerFurryAfterText
+	waitbutton
+	closetext
+	end
+
+OfficerFurryScript:
+	faceplayer
+	opentext
+	writetext OfficerFurryDaytimeText
+	waitbutton
+	closetext
+	end
+
+OfficerFurrySeenText:
+	text "No des ni un"
+	line "paso mas."
+
+	para "Hueles a hackeo."
+	line "No lo niegues,"
+	cont "has tenido que"
+	cont "usar hacks"
+	cont "para llegar"
+	cont "hasta aqui."
+
+	para "MELKOR, el jefe"
+	line "de POLICIA de"
+	cont "JOHTO, cree que"
+	cont "mis tacticas de"
+	cont "baneo son muy"
+	cont "estrictas."
+
+	para "Pero me da"
+	line "igual."
+	cont "Denunciare a"
+	cont "Noentiendo a"
+	cont "todos los"
+	cont "hackers que"
+	cont "usen POKESAV y"
+	cont "POKEHEX."
+
+	para "Preparate, hacker."
+	done
+
+OfficerFurryWinText:
+	text "Has hecho trampas!"
+	done
+
+OfficerFurryAfterText:
+	text "He perdido?"
+	line "Seguro que has"
+	cont "usado hacks."
+
+	para "Te denunciare a"
+	line "la POLICIA."
+
+	para "Espera..."
+	line "la POLICIA"
+	cont "soy yo!"
+	done
+
+OfficerFurryDaytimeText:
+	text "Estoy cazando"
+	line "hackers."
+	para "Por cierto..."
+	
+	para "Hemos iluminado"
+	line "esta cueva debido"
+	cont "a que los malvados"
+	cont "hackers se suelen"
+	cont "esconder en la mas"
+	para "profunda oscuridad."
+
+	para "No molestes y"
+	line "recuerda,"
+	cont "muerte a los"
+	cont "HACKERS."
+	done
+	
 HikerBaileySeenText:
 	text "Awright! I'll show"
 	line "you the power of"
@@ -261,10 +361,12 @@ Route46_MapEvents:
 	db 1 ; bg events
 	bg_event  9, 27, BGEVENT_READ, Route46Sign
 
-	db 6 ; object events
+    db 8 ; object events
 	object_event 12, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	object_event  4, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerCamperTed, -1
 	object_event  2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
 	object_event  7,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree1, -1
 	object_event  8,  6, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree2, -1
 	object_event  1, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route46XSpeed, EVENT_ROUTE_46_X_SPEED
+	object_event  11, 7,  SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 3, OfficerFurryScript, EVENT_OFFICER_FURRY_DAY
+	object_event  11, 7,  SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, OfficerFurryTrainer, EVENT_OFFICER_FURRY_NIGHT

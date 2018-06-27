@@ -160,8 +160,8 @@ CyndaquilPokeBallScript:
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic CYNDAQUIL
-	cry CYNDAQUIL
+	pokepic ABRA
+	cry ABRA
 	waitbutton
 	closepokepic
 	opentext
@@ -173,12 +173,12 @@ CyndaquilPokeBallScript:
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem CYNDAQUIL, MEM_BUFFER_0
+	pokenamemem ABRA, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CYNDAQUIL, 5, BERRY
+	givepoke ABRA, 5, BERRY
 	closetext
 	checkcode VAR_FACING
 	ifequal RIGHT, ElmDirectionsScript
@@ -190,8 +190,8 @@ TotodilePokeBallScript:
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic TOTODILE
-	cry TOTODILE
+	pokepic LARVITAR
+	cry LARVITAR
 	waitbutton
 	closepokepic
 	opentext
@@ -203,12 +203,12 @@ TotodilePokeBallScript:
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem TOTODILE, MEM_BUFFER_0
+	pokenamemem LARVITAR, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke TOTODILE, 5, BERRY
+	givepoke LARVITAR, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterTotodileMovement
 	jump ElmDirectionsScript
@@ -218,8 +218,8 @@ ChikoritaPokeBallScript:
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic CHIKORITA
-	cry CHIKORITA
+	pokepic MACHOP
+	cry MACHOP
 	waitbutton
 	closepokepic
 	opentext
@@ -231,12 +231,12 @@ ChikoritaPokeBallScript:
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem CHIKORITA, MEM_BUFFER_0
+	pokenamemem MACHOP, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CHIKORITA, 5, BERRY
+	givepoke MACHOP, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterChikoritaMovement
 	jump ElmDirectionsScript
@@ -601,9 +601,9 @@ ElmsLabTrashcan:
 ElmsLabPC:
 	jumptext ElmsLabPCText
 
-ElmsLabTrashcan2:
+;ElmsLabTrashcan2:
 ; unused
-	jumpstd trashcan
+;	jumpstd trashcan
 
 ElmsLabBookshelf:
 	jumpstd difficultbookshelf
@@ -858,20 +858,20 @@ LabWhereGoingText:
 
 TakeCyndaquilText:
 	text "ELM: You'll take"
-	line "CYNDAQUIL, the"
-	cont "fire #MON?"
+	line "ABRA, the"
+	cont "psychic #MON?"
 	done
 
 TakeTotodileText:
 	text "ELM: Do you want"
-	line "TOTODILE, the"
-	cont "water #MON?"
+	line "LARVITAR, the"
+	cont "dark #MON?"
 	done
 
 TakeChikoritaText:
 	text "ELM: So, you like"
-	line "CHIKORITA, the"
-	cont "grass #MON?"
+	line "MACHOP, the"
+	cont "fight #MON?"
 	done
 
 DidntChooseStarterText:

@@ -252,4 +252,6 @@ MonMenuIcons: ; 8eac4
 	db ICON_LUGIA       ; LUGIA
 	db ICON_HO_OH       ; HO_OH
 	db ICON_HUMANSHAPE  ; CELEBI
+	db ICON_HUMANSHAPE	; MICOMON
+	db ICON_FOX	; BOMBSEEKER
 ; 8ebbf

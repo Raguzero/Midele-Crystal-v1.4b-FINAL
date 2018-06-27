@@ -49,10 +49,38 @@ VioletGymFalknerScript:
 .SpeechAfterTM:
 	writetext UnknownText_0x68735
 	waitbutton
-.NoRoomForMudSlap:
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_FALKNER_REMATCH
+	iftrue .FalknerRematch
+    closetext
+    end
+
+.FalknerRematch:
+	opentext
+	writetext Falkner_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Falkner_RematchDefeat, 0
+    loadtrainer FALKNER, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Falkner_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_FALKNER_REMATCH
+    end
+
+.Refused:
 	closetext
 	end
 
+.NoRoomForMudSlap:
+	closetext
+	end	
+	
 VioletGymActivateRockets:
 	ifequal 7, .RadioTowerRockets
 	ifequal 6, .GoldenrodRockets
@@ -278,6 +306,28 @@ VioletGymGuyWinText:
 	para "be the CHAMP in no"
 	line "time at all!"
 	done
+
+Falkner_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Falkner_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Falkner_Reward:
+    text "Take your reward!"
+    done
 
 VioletGym_MapEvents:
 	db 0, 0 ; filler

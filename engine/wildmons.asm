@@ -43,6 +43,7 @@ FindNest: ; 2a01f
 	call .FindWater
 	call .RoamMon1
 	call .RoamMon2
+	jp .RoamMon3 ; NUEVO
 	ret
 
 .kanto
@@ -179,7 +180,23 @@ FindNest: ; 2a01f
 	inc de
 	ret
 ; 2a0e7
-
+; NUEVO
+.RoamMon3: ; 2a0cf
+	ld a, [wRoamMon3Species]
+	ld b, a
+	ld a, [wNamedObjectIndexBuffer]
+	cp b
+	ret nz
+	ld a, [wRoamMon3MapGroup]
+	ld b, a
+	ld a, [wRoamMon3MapNumber]
+	ld c, a
+	call .AppendNest
+	ret nc
+	ld [de], a
+	inc de
+	ret
+; NUEVO
 TryWildEncounter:: ; 2a0e7
 ; Try to trigger a wild encounter.
 	call .EncounterRate
@@ -621,7 +638,8 @@ UpdateRoamMons: ; 2a30d
 .SkipEntei:
 	ld a, [wRoamMon3MapGroup]
 	cp GROUP_N_A
-	jr z, .Finished
+	;jr z, .Finished
+	jr z, .SkipSuicune  ; NUEVO
 	ld b, a
 	ld a, [wRoamMon3MapNumber]
 	ld c, a
@@ -631,7 +649,8 @@ UpdateRoamMons: ; 2a30d
 	ld a, c
 	ld [wRoamMon3MapNumber], a
 
-.Finished:
+;.Finished:
+.SkipSuicune ; NUEVO
 	jp _BackUpMapIndices
 ; 2a355
 
@@ -716,14 +735,16 @@ JumpRoamMons: ; 2a394
 .SkipEntei:
 	ld a, [wRoamMon3MapGroup]
 	cp GROUP_N_A
-	jr z, .Finished
+	;jr z, .Finished
+	jr z, .SkipSuicune ;NUEVO
 	call JumpRoamMon
 	ld a, b
 	ld [wRoamMon3MapGroup], a
 	ld a, c
 	ld [wRoamMon3MapNumber], a
 
-.Finished:
+;.Finished:
+.SkipSuicune ; NUEVO
 	jp _BackUpMapIndices
 
 JumpRoamMon: ; 2a3cd

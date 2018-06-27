@@ -41,8 +41,33 @@ SaffronGymSabrinaScript:
 .FightDone:
 	writetext UnknownText_0x189f6c
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_SABRINA_REMATCH
+	iftrue .SabrinaRematch
+    closetext
+    end
+
+.SabrinaRematch:
+	opentext
+	writetext Sabrina_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Sabrina_RematchDefeat, 0
+    loadtrainer SABRINA, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Sabrina_Reward
+	waitbutton
+	verbosegiveitem SILVER_LEAF, 1
 	closetext
-	end
+	clearevent EVENT_SABRINA_REMATCH
+    end
+
+.Refused:
+	closetext
+	end	
 
 TrainerMediumRebecca:
 	trainer MEDIUM, REBECCA, EVENT_BEAT_MEDIUM_REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, .Script
@@ -287,6 +312,28 @@ SaffronGymGuyWinText:
 	text "That was another"
 	line "fantastic battle!"
 	done
+
+Sabrina_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Sabrina_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Sabrina_Reward:
+    text "Take your reward!"
+    done
 
 SaffronGym_MapEvents:
 	db 0, 0 ; filler

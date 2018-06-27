@@ -54,6 +54,31 @@ FuchsiaGymJanineScript:
 .AfterTM:
 	writetext JanineText_ApplyMyself
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_JANINE_REMATCH
+	iftrue .JanineRematch
+    closetext
+    end
+
+.JanineRematch:
+	opentext
+	writetext Janine_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Janine_RematchDefeat, 0
+    loadtrainer JANINE, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Janine_Reward
+	waitbutton
+	verbosegiveitem RARE_CANDY, 3
+	closetext
+	clearevent EVENT_JANINE_REMATCH
+    end
+	
+.Refused:
 	closetext
 	end
 
@@ -377,6 +402,28 @@ FuchsiaGymGuyWinText:
 	line "battle, trainer"
 	cont "from JOHTO!"
 	done
+
+Janine_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Janine_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Janine_Reward:
+    text "Take your reward!"
+    done
 
 FuchsiaGym_MapEvents:
 	db 0, 0 ; filler

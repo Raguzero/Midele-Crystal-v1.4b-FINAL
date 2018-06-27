@@ -573,7 +573,7 @@ DefenseDownHit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	effectchance ; bug: duplicate effectchance shouldn't be here
+	;effectchance ; bug: duplicate effectchance shouldn't be here
 	defensedown
 	statdownmessage
 	endmove
@@ -2072,4 +2072,27 @@ DefenseCurl:
 	raisesub
 	statupmessage
 	statupfailtext
+	endmove
+
+MidelePower:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	allstatsup
+	heal
+	healbell
 	endmove

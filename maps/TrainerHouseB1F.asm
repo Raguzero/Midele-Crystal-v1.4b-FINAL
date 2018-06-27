@@ -18,6 +18,10 @@ TrainerHouseReceptionistScript:
 	iftrue .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
 	buttonsound
+	; NUEVO CAL4
+	checkcode VAR_BADGES
+	if_equal 16, .GetCal4Name
+	; NUEVO CAL4
 	special TrainerHouse
 	iffalse .GetCal3Name
 	trainertotext CAL, CAL2, MEM_BUFFER_0
@@ -25,6 +29,10 @@ TrainerHouseReceptionistScript:
 
 .GetCal3Name:
 	trainertotext CAL, CAL3, MEM_BUFFER_0
+	; NUEVO CAL4
+.GetCal4Name:
+	trainertotext CAL, CAL4, MEM_BUFFER_0
+    ; NUEVO CAL4
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
 	buttonsound
@@ -40,6 +48,10 @@ TrainerHouseReceptionistScript:
 	writetext TrainerHouseB1FCalBeforeText
 	waitbutton
 	closetext
+	; NUEVO CAL4
+	checkcode VAR_BADGES
+	if_equal 16, .BlisseyBattle
+	; NUEVO CAL4
 	special TrainerHouse
 	iffalse .NoSpecialBattle
 	winlosstext TrainerHouseB1FCalBeatenText, 0
@@ -54,6 +66,15 @@ TrainerHouseReceptionistScript:
 	loadtrainer CAL, CAL3
 	startbattle
 	reloadmapafterbattle
+	; NUEVO CAL4
+	jump .End
+.BlisseyBattle:
+	winlosstext TrainerHouseB1FCalBeatenText, 0
+	setlasttalked TRAINERHOUSEB1F_CHRIS
+	loadtrainer CAL, CAL4
+	startbattle
+	reloadmapafterbattle
+	; NUEVO CAL4
 .End:
 	applymovement PLAYER, Movement_ExitTrainerHouseBattleRoom
 	end

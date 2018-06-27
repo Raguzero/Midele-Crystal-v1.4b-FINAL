@@ -20,5 +20,6 @@ UsefulMoves: ; 39301
 	db FIRE_BLAST
 	db SOFTBOILED
 	db SUPER_FANG
+	db MIDELE_POWER
 	db -1 ; end
 ; 39315

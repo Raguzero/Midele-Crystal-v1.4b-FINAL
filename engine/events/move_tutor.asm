@@ -34,13 +34,21 @@ MoveTutor: ; 4925b
 	ret
 
 .GetMoveTutorMove: ; 492a5
-	ld a, [wScriptVar]
-	cp MOVETUTOR_FLAMETHROWER
+    ld a, [wScriptVar]
+	cp MOVETUTOR_MOVE_FLAMETHROWER
 	jr z, .flamethrower
-	cp MOVETUTOR_THUNDERBOLT
+	cp MOVETUTOR_MOVE_THUNDERBOLT
 	jr z, .thunderbolt
-	; MOVETUTOR_ICE_BEAM
-	ld a, ICE_BEAM
+	cp MOVETUTOR_MOVE_SOFTBOILED
+	jr z, .softboiled
+	cp MOVETUTOR_MOVE_LOVELY_KISS
+	jr z, .lovelykiss
+	cp MOVETUTOR_MOVE_MOONLIGHT
+	jr z, .moonlight
+	cp MOVETUTOR_MOVE_MORNING_SUN
+	jr z, .morningsun
+	cp MOVETUTOR_MOVE_ICE_BEAM
+	jr z, .icebeam
 	ret
 
 .flamethrower
@@ -49,6 +57,26 @@ MoveTutor: ; 4925b
 
 .thunderbolt
 	ld a, THUNDERBOLT
+	ret
+
+.icebeam
+	ld a, ICE_BEAM
+	ret
+
+.softboiled
+	ld a, SOFTBOILED
+	ret	
+
+.lovelykiss
+	ld a, LOVELY_KISS
+	ret
+
+.moonlight
+	ld a, MOONLIGHT
+	ret
+
+.morningsun
+	ld a, MORNING_SUN
 	ret
 
 CheckCanLearnMoveTutorMove: ; 492b9

@@ -44,9 +44,34 @@ CeladonGymErikaScript:
 .GotGigaDrain:
 	writetext ErikaAfterBattleText
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_ERIKA_REMATCH
+	iftrue .ErikaRematch
+    closetext
+    end
+
+.ErikaRematch:
+	opentext
+	writetext Erika_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Erika_RematchDefeat, 0
+    loadtrainer ERIKA, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Erika_Reward
+	waitbutton
+	verbosegiveitem SILVER_LEAF, 1
+	closetext
+	clearevent EVENT_ERIKA_REMATCH
+    end
+	
+.Refused:
 	closetext
 	end
-
+	
 TrainerLassMichelle:
 	trainer LASS, MICHELLE, EVENT_BEAT_LASS_MICHELLE, LassMichelleSeenText, LassMichelleBeatenText, 0, .Script
 
@@ -265,6 +290,28 @@ TwinsJoAndZoe2AfterBattleText:
 	line "much stronger!"
 	done
 
+Erika_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Erika_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Erika_Reward:
+    text "Take your reward!"
+    done
+	
 CeladonGym_MapEvents:
 	db 0, 0 ; filler
 

@@ -52,6 +52,34 @@ AzaleaGymBugsyScript:
 .GotFuryCutter:
 	writetext BugsyText_BugMonsAreDeep
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_BUGSY_REMATCH
+	iftrue .BugsyRematch
+    closetext
+    end
+
+.BugsyRematch:
+	opentext
+	writetext Bugsy_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Bugsy_RematchDefeat, 0
+    loadtrainer BUGSY, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Bugsy_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_BUGSY_REMATCH
+    end
+
+.Refused:
+	closetext
+	end
+
 .NoRoomForFuryCutter:
 	closetext
 	end
@@ -358,6 +386,28 @@ AzaleaGymGuyWinText:
 	line "you, the future of"
 	cont "#MON is bright!"
 	done
+
+Bugsy_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Bugsy_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Bugsy_Reward:
+    text "Take your reward!"
+    done
 
 AzaleaGym_MapEvents:
 	db 0, 0 ; filler

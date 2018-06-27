@@ -469,3 +469,150 @@ TrainerHouse: ; 0xc4b9
 	ld a, [sMysteryGiftTrainerHouseFlag]
 	ld [wScriptVar], a
 	jp CloseSRAM
+
+RespawnOneOffs:
+ ld a, ARTICUNO - 1
+    call CheckCaughtMon
+    jr nz, .CaughtArticuno
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_ARTICUNO
+    call EventFlagAction
+    ld de, EVENT_ARTICUNO
+    call EventFlagAction
+
+.CaughtArticuno
+
+ ld a, MOLTRES - 1
+    call CheckCaughtMon
+    jr nz, .CaughtMoltres
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_MOLTRES
+    call EventFlagAction
+    ld de, EVENT_MOLTRES
+    call EventFlagAction
+
+.CaughtMoltres
+
+ ld a, ZAPDOS - 1
+    call CheckCaughtMon
+    jr nz, .CaughtZapdos
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_ZAPDOS
+    call EventFlagAction
+    ld de, EVENT_ZAPDOS
+    call EventFlagAction
+
+.CaughtZapdos
+
+ld a, RAIKOU - 1
+	call CheckCaughtMon
+	jr nz, .CaughtRaikou
+	ld hl, wRoamMon1Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtRaikou
+	ld a, RAIKOU
+	ld [wRoamMon1Species], a
+	ld a, 40
+	ld [wRoamMon1Level], a
+	ld a, GROUP_ROUTE_42
+	ld [wRoamMon1MapGroup], a
+	ld a, MAP_ROUTE_42
+	ld [wRoamMon1MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon1HP], a
+.CaughtRaikou
+
+	ld a, ENTEI - 1
+	call CheckCaughtMon
+	jr nz, .CaughtEntei
+	ld hl, wRoamMon2Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtEntei
+	ld a, ENTEI
+	ld [wRoamMon2Species], a
+	ld a, 40
+	ld [wRoamMon2Level], a
+	ld a, GROUP_ROUTE_37
+	ld [wRoamMon2MapGroup], a
+	ld a, MAP_ROUTE_37
+	ld [wRoamMon2MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon2HP], a
+.CaughtEntei
+
+    ld de, EVENT_FOUGHT_SUICUNE
+    call EventFlagAction
+	jr z, .CaughtSuicune
+	ld a, SUICUNE - 1
+	call CheckCaughtMon
+	jr nz, .CaughtSuicune
+	ld hl, wRoamMon3Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtSuicune
+	ld a, SUICUNE
+	ld [wRoamMon3Species], a
+	ld a, 40
+	ld [wRoamMon3Level], a
+	ld a, GROUP_ROUTE_38
+	ld [wRoamMon3MapGroup], a
+	ld a, MAP_ROUTE_38
+	ld [wRoamMon3MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon3HP], a
+.CaughtSuicune
+
+ ld a, CELEBI - 1
+    call CheckCaughtMon
+    jr nz, .CaughtCelebi
+    ld b, SET_FLAG
+    ld de, EVENT_FOREST_IS_RESTLESS
+    call EventFlagAction
+.CaughtCelebi
+
+ ld a, MEW - 1
+    call CheckCaughtMon
+    jr nz, .CaughtMew
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_MEW
+    call EventFlagAction
+    ld de, EVENT_MEW
+    call EventFlagAction
+
+.CaughtMew
+
+ ld a, MEWTWO - 1
+    call CheckCaughtMon
+    jr nz, .CaughtMewtwo
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_MEWTWO
+    call EventFlagAction
+    ld de, EVENT_MEWTWO
+    call EventFlagAction
+
+.CaughtMewtwo
+
+ ld a, LUGIA - 1
+    call CheckCaughtMon
+    jr nz, .CaughtLugia
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_LUGIA
+    call EventFlagAction
+    ld de, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+    call EventFlagAction
+
+.CaughtLugia
+
+ ld a, HO_OH - 1
+    call CheckCaughtMon
+    jr nz, .CaughtHo_oh
+    ld b, RESET_FLAG
+    ld de, EVENT_FOUGHT_HO_OH
+    call EventFlagAction
+    ld de, EVENT_TIN_TOWER_ROOF_HO_OH
+    call EventFlagAction
+
+.CaughtHo_oh
+	ret

@@ -1,5 +1,6 @@
 INCLUDE "engine/sgb_layouts.asm"
 
+; Now unused
 SHINY_ATK_BIT EQU 5
 SHINY_DEF_VAL EQU 10
 SHINY_SPD_VAL EQU 10
@@ -8,39 +9,50 @@ SHINY_SPC_VAL EQU 10
 CheckShininess:
 ; Check if a mon is shiny by DVs at bc.
 ; Return carry if shiny.
-
+; Credits to Miksy91
+   ; scf SI ESTO SE ACTIVA TODOS SALEN SHINYS
+   ; ret SI ESTO SE ACTIVA TODOS SALEN SHINYS
 	ld l, c
 	ld h, b
-
-; Attack
-	ld a, [hl]
-	and 1 << SHINY_ATK_BIT
-	jr z, .NotShiny
-
-; Defense
-	ld a, [hli]
-	and $f
-	cp  SHINY_DEF_VAL
-	jr nz, .NotShiny
-
-; Speed
-	ld a, [hl]
-	and $f0
-	cp  SHINY_SPD_VAL << 4
-	jr nz, .NotShiny
-
-; Special
-	ld a, [hl]
-	and $f
-	cp  SHINY_SPC_VAL
-	jr nz, .NotShiny
-
-.Shiny:
+	call Shinyness
+	jr c, .NotShiny
 	scf
 	ret
 
-.NotShiny:
+.NotShiny
 	and a
+	ret
+
+Shinyness:
+    call AttackDV
+    call nc, DefSpeedDV
+    call nc, SpecialDV
+    call nc, DefSpeedDV
+    ret
+
+AttackDV:
+; If Attack DV is 6/7 or E/F
+; return without carry.
+    ld a, [hl]
+    res 7, a
+    cp $60
+    ret
+
+; Defense and Speed
+DefSpeedDV:
+; If Defense and Speed DVs are
+; C/D/E/F return without carry.
+	ld a, [hli]
+	and $0f
+	cp $0c
+	ret
+
+; Special
+SpecialDV:
+; if Special DV is C/D/E/F
+; return without carry.
+	ld a, [hl]
+	cp $c0
 	ret
 
 Unused_CheckContestMon:
@@ -381,7 +393,7 @@ LoadStatsScreenPals:
 	ret z
 	ld hl, StatsScreenPals
 	ld b, 0
-	dec c
+	;dec c
 	add hl, bc
 	add hl, bc
 	ld a, [rSVBK]

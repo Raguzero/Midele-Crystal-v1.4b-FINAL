@@ -252,7 +252,8 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	dw BattleAnim_252
+	;dw BattleAnim_252
+	dw BattleAnim_MidelePower
 	dw BattleAnim_253
 	dw BattleAnim_254
 	dw BattleAnim_SweetScent2
@@ -282,7 +283,7 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_252: ; c929b
+;BattleAnim_252: ; c929b
 BattleAnim_253: ; c929b
 BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
@@ -5174,3 +5175,73 @@ BattleAnim_ShowMon_1: ; cbcd2
 	anim_wait 1
 	anim_ret
 ; cbcdd
+
+BattleAnim_MidelePower:
+	; Sacred Fire
+	anim_1gfx ANIM_GFX_MONOCICLO
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+.loop1
+	anim_sound 0, 0, SFX_EMBER
+	anim_obj ANIM_OBJ_SACRED_FIRE, 48, 104, $0
+	anim_wait 8
+	anim_loop 8, .loop1
+	anim_wait 96
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_EMBER
+	anim_obj ANIM_OBJ_FIRE_BLAST, 136, 48, $1
+	anim_obj ANIM_OBJ_FIRE_BLAST, 136, 48, $4
+	anim_obj ANIM_OBJ_FIRE_BLAST, 136, 48, $5
+	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 4
+	anim_incobj  9
+	anim_wait 128
+
+	; Aeroblast
+	anim_2gfx ANIM_GFX_BEAM, ANIM_GFX_AEROBLAST
+	anim_bgp $1b
+	anim_bgeffect ANIM_BG_1F, $50, $4, $10
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_sound 0, 0, SFX_AEROBLAST
+	anim_obj ANIM_OBJ_AEROBLAST, 72, 88, $0
+	anim_wait 32
+	anim_sound 0, 0, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 80, 84, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 96, 76, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 112, 68, $0
+	anim_obj ANIM_OBJ_28, 126, 62, $0
+	anim_wait 50
+
+	; Earthquake
+	anim_bgeffect ANIM_BG_1F, $60, $4, $10
+.loop4
+	anim_sound 0, 1, SFX_EMBER
+	anim_wait 24
+	anim_loop 4, .loop4
+	anim_wait 50
+
+	; Explosion
+	anim_1gfx ANIM_GFX_EXPLOSION
+	anim_bgeffect ANIM_BG_1F, $60, $4, $10
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $24
+	anim_if_param_equal $1, .loop3
+	anim_call BattleAnim_Explosion_branch_cbb8f
+	anim_wait 16
+	anim_ret
+; c9c87
+
+.loop3
+	anim_call BattleAnim_Explosion_branch_cbb62
+	anim_wait 5
+	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+	anim_loop 2, .loop3
+	anim_wait 16
+
+	anim_ret

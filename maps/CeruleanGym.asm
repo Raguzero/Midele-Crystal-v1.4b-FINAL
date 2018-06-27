@@ -77,9 +77,35 @@ CeruleanGymMistyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
+
 .FightDone:
-	writetext UnknownText_0x188782
+    writetext UnknownText_0x188782
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_MISTY_REMATCH
+	iftrue .MistyRematch
+    closetext
+    end
+
+.MistyRematch:
+	opentext
+	writetext Misty_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Misty_RematchDefeat, 0
+    loadtrainer MISTY, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Misty_Reward
+	waitbutton
+	verbosegiveitem GOLD_LEAF, 1
+	closetext
+	clearevent EVENT_MISTY_REMATCH
+    end
+
+.Refused:
 	closetext
 	end
 
@@ -359,6 +385,30 @@ CeruleanGymGuyWinText:
 	line "was one heck of a"
 	cont "great battle!"
 	done
+
+Misty_Rematch:
+    text "On the other hand"
+    line "I've heard a lot" 
+	cont "of good things"
+	cont "about you since"
+	cont "our last battle." 
+	cont "Let me test"
+	cont "how good you are!"
+	done
+
+Misty_RematchDefeat:
+    text "Wow! You are"
+	line "getting stronger"
+	para "by the battle!"
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Misty_Reward:
+    text "Take your reward!"
+    done
 
 CeruleanGym_MapEvents:
 	db 0, 0 ; filler

@@ -42,9 +42,11 @@ KogasRoom_MapScripts:
 
 KogaScript_Battle:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, KogaRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue KogaScript_AfterBattle
+	opentext
 	writetext KogaScript_KogaBeforeText
 	waitbutton
 	closetext
@@ -52,25 +54,47 @@ KogaScript_Battle:
 	loadtrainer KOGA, KOGA1
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_KOGA
-	opentext
-	writetext KogaScript_KogaDefeatText
-	waitbutton
-	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock 4, 2, $16 ; open door
-	reloadmappart
-	closetext
-	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
-	waitsfx
+	scall KogaScript_AfterBattle
+	jump KogaEndBattleScript
 	end
 
 KogaScript_AfterBattle:
+    opentext
 	writetext KogaScript_KogaDefeatText
 	waitbutton
 	closetext
 	end
 
+KogaRematchScript:
+	checkevent EVENT_BEAT_ELITE_4_KOGA
+	iftrue .AfterBattle
+	opentext
+	writetext KogaScript_KogaBeforeText
+	waitbutton
+	closetext
+	winlosstext KogaScript_KogaBeatenText, 0
+ 	loadtrainer KOGA, KOGA2
+ 	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle	
+	jump KogaEndBattleScript
+
+.AfterBattle:
+    opentext
+	writetext KogaScript_KogaDefeatText
+	waitbutton
+	closetext
+	end		
+	
+KogaEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_KOGA
+	waitsfx
+	end		
+	
 KogasRoom_EnterMovement:
 	step UP
 	step UP
@@ -125,8 +149,8 @@ KogaScript_KogaDefeatText:
 	para "Go on to the next"
 	line "room, and put your"
 	cont "abilities to test!"
-	done
-
+	done	
+	
 KogasRoom_MapEvents:
 	db 0, 0 ; filler
 

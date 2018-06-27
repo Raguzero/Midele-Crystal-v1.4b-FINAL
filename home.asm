@@ -1400,3 +1400,4 @@ ReinitSpriteAnimFrame:: ; 3b3c
 
 INCLUDE "home/audio.asm"
 INCLUDE "home/mobile.asm"
+INCLUDE "home/badge_cap.asm"   ; NUEVO LEVEL CAP BADGE

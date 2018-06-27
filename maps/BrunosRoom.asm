@@ -42,9 +42,11 @@ BrunosRoom_MapScripts:
 
 BrunoScript_Battle:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, BrunoRematchScript
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue BrunoScript_AfterBattle
+	opentext
 	writetext BrunoScript_BrunoBeforeText
 	waitbutton
 	closetext
@@ -52,25 +54,47 @@ BrunoScript_Battle:
 	loadtrainer BRUNO, BRUNO1
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_BRUNO
-	opentext
-	writetext BrunoScript_BrunoDefeatText
-	waitbutton
-	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock 4, 2, $16 ; open door
-	reloadmappart
-	closetext
-	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
-	waitsfx
+	scall BrunoScript_AfterBattle
+	jump BrunoEndBattleScript
 	end
 
 BrunoScript_AfterBattle:
+    opentext
 	writetext BrunoScript_BrunoDefeatText
 	waitbutton
 	closetext
 	end
 
+BrunoRematchScript:
+	checkevent EVENT_BEAT_ELITE_4_BRUNO
+	iftrue .AfterBattle
+	opentext
+	writetext BrunoScript_BrunoBeforeText
+	waitbutton
+	closetext
+	winlosstext BrunoScript_BrunoBeatenText, 0
+ 	loadtrainer BRUNO, BRUNO2
+ 	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle	
+    jump BrunoEndBattleScript
+	
+.AfterBattle:
+	opentext
+	writetext BrunoScript_BrunoDefeatText
+ 	waitbutton
+ 	closetext
+ 	end
+
+BrunoEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_BRUNO
+	waitsfx
+	end
+	
 BrunosRoom_EnterMovement:
 	step UP
 	step UP

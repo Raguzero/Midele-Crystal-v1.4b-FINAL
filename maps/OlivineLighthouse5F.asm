@@ -4,6 +4,7 @@
 	const OLIVINELIGHTHOUSE5F_POKE_BALL1
 	const OLIVINELIGHTHOUSE5F_POKE_BALL2
 	const OLIVINELIGHTHOUSE5F_POKE_BALL3
+	const OLIVINELIGHTHOUSE5F_COOLTRAINERM
 
 OlivineLighthouse5F_MapScripts:
 	db 0 ; scene scripts
@@ -32,6 +33,17 @@ TrainerSailorErnest:
 	closetext
 	end
 
+TrainerCooltrainermGrim:
+	trainer COOLTRAINERM, GRIM, EVENT_BEAT_GRIM, CooltrainermGrimSeenText, CooltrainermGrimBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermGrimAfterBattleText
+	waitbutton
+	closetext
+	end
+	
 OlivineLighthouse5FRareCandy:
 	itemball RARE_CANDY
 
@@ -88,6 +100,33 @@ BirdKeeperDenisAfterBattleText:
 	cont "across the sea…"
 	done
 
+CooltrainermGrimSeenText:
+	text "You'll bend the"
+	line "knee or"
+	para "destroy you."
+	done
+
+CooltrainermGrimBeatenText:
+	text "You're truly a"
+	line "fucking good"
+	cont "trainer,"
+	cont "you cunt."
+	done
+
+CooltrainermGrimAfterBattleText:
+	text "Did you heard"
+	line "about the Lord"
+	cont "of Light"
+	cont "and his mighty" 
+	cont "champion,"
+	cont "Stannis I"
+	cont "Baratheon?"
+	
+    para "He's the rightful" 
+	line "king of"
+	cont "these lands."
+	done
+
 OlivineLighthouse5F_MapEvents:
 	db 0, 0 ; filler
 
@@ -105,9 +144,10 @@ OlivineLighthouse5F_MapEvents:
 	db 1 ; bg events
 	bg_event  3, 13, BGEVENT_ITEM, OlivineLighthouse5FHiddenHyperPotion
 
-	db 5 ; object events
+	db 6 ; object events
 	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSailorErnest, -1
 	object_event  8,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerBirdKeeperDenis, -1
 	object_event 15, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse5FRareCandy, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
 	object_event  6, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse5FSuperRepel, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
 	object_event  2, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse5FTMSwagger, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_SWAGGER
+	object_event  11, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainermGrim, -1

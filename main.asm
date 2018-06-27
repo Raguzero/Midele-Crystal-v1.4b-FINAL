@@ -15,6 +15,7 @@ INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
 INCLUDE "engine/events/specials_2.asm"
+INCLUDE "engine/events/catermano.asm"
 
 
 SECTION "bank2", ROMX
@@ -160,8 +161,12 @@ SECTION "Enemy Trainers", ROMX
 
 INCLUDE "engine/battle/ai/items.asm"
 INCLUDE "engine/battle/ai/scoring.asm"
-INCLUDE "engine/battle/read_trainer_attributes.asm"
+
+
+SECTION "Enemy Trainers 2", ROMX
+
 INCLUDE "data/trainers/attributes.asm"
+INCLUDE "engine/battle/read_trainer_attributes.asm"
 INCLUDE "engine/battle/read_trainer_party.asm"
 INCLUDE "data/trainers/party_pointers.asm"
 INCLUDE "data/trainers/parties.asm"
@@ -613,7 +618,7 @@ SECTION "Crystal Events", ROMX
 
 INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
-
+INCLUDE "engine/events/move_relearner.asm"
 
 SECTION "Mobile Stadium 2", ROMX
 
@@ -622,3 +627,33 @@ INCBIN "mobile/stadium/stadium2_2.bin"
 else
 INCBIN "mobile/stadium/stadium2_1.bin"
 endc
+
+; NUEVO LEVEL CAP BADGE
+SECTION "Stat Boost", ROMX
+
+; Gets the stat boost c for a given level b
+; b: the mon's level
+; c: the obtained stat boost value
+GetLevelStatBoost:
+	push bc
+	push hl
+	ld hl, StatBoostTable
+	; Get table entry based on level minus one (Entry 0 for level 1,
+	; entry 99 for level 100)
+	ld c, b ; enemy level
+	ld b, 0
+	add hl, bc
+	dec hl
+	ld a, [hl]
+	pop hl
+	pop bc
+	ld c, a ; Stat boost
+	ret
+
+__level__ = 1
+StatBoostTable:
+REPT 100
+db __level__ * __level__ / 500 * 3
+__level__ = __level__ + 1
+ENDR
+; NUEVO LEVEL CAP BADGE

@@ -157,3 +157,4 @@ MoveEffectsPointers: ; 271f4
 	dw BeatUp
 	dw Fly
 	dw DefenseCurl
+	dw MidelePower

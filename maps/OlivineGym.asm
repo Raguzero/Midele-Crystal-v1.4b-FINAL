@@ -43,9 +43,36 @@ OlivineGymJasmineScript:
 .GotIronTail:
 	writetext Jasmine_GoodLuck
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_JASMINE_REMATCH
+	iftrue .JasmineRematch
+    closetext
+    end
 .NoRoomForIronTail:
 	closetext
 	end
+
+.JasmineRematch:
+	opentext
+	writetext Jasmine_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Jasmine_RematchDefeat, 0
+    loadtrainer JASMINE, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Jasmine_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_JASMINE_REMATCH
+    end
+	
+.Refused:
+	closetext
+	end	
 
 OlivineGymActivateRockets:
 	ifequal 7, .RadioTowerRockets
@@ -194,6 +221,28 @@ OlivineGymGuyPreText:
 	line "has to be compas-"
 	cont "sionate."
 	done
+
+Jasmine_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Jasmine_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Jasmine_Reward:
+    text "Take your reward!"
+    done
 
 OlivineGym_MapEvents:
 	db 0, 0 ; filler

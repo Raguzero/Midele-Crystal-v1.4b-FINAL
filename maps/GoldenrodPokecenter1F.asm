@@ -14,12 +14,10 @@ GoldenrodPokecenter1FNurseScript:
 	jumpstd pokecenternurse
 
 GoldenrodPokecenter1F_GSBallSceneLeft:
+    checkevent EVENT_BEAT_ELITE_FOUR ; NUEVO
+	iffalse .cancel ; NUEVO
 	writebyte BATTLETOWERACTION_CHECKMOBILEEVENT
 	special BattleTowerAction
-	ifequal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-.gsball
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .cancel
 	playsound SFX_EXIT_BUILDING
@@ -46,12 +44,10 @@ GoldenrodPokecenter1F_GSBallSceneLeft:
 	end
 
 GoldenrodPokecenter1F_GSBallSceneRight:
+    checkevent EVENT_BEAT_ELITE_FOUR ; NUEVO
+	iffalse .cancel ; NUEVO
 	writebyte BATTLETOWERACTION_CHECKMOBILEEVENT
 	special BattleTowerAction
-	ifequal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-.gsball
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .cancel
 	playsound SFX_EXIT_BUILDING

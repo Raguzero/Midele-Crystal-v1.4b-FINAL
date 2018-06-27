@@ -6,19 +6,55 @@
 	const POWERPLANT_GYM_GUY3
 	const POWERPLANT_FISHER
 	const POWERPLANT_FOREST
+	const POWERPLANT_ZAPDOS
 
 PowerPlant_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_POWERPLANT_NOTHING
 	scene_script .DummyScene1 ; SCENE_POWERPLANT_GUARD_GETS_PHONE_CALL
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .Zapdos
 
 .DummyScene0:
 	end
 
 .DummyScene1:
 	end
+
+.Zapdos:
+    checkevent EVENT_FOUGHT_ZAPDOS
+    iftrue .NoAppear
+    checkcode VAR_BADGES
+    if_not_equal 16, .NoAppear
+    jump .Appear
+
+.Appear:
+	appear POWERPLANT_ZAPDOS
+	return
+
+.NoAppear:
+	disappear POWERPLANT_ZAPDOS
+	return
+
+Zapdos:
+	faceplayer
+	opentext
+	writetext ZapdosText
+	cry ZAPDOS
+	pause 15
+	closetext
+    setevent EVENT_FOUGHT_ZAPDOS
+	writecode VAR_BATTLETYPE, BATTLETYPE_SUICUNE
+	loadwildmon ZAPDOS, 60
+	startbattle
+	disappear POWERPLANT_ZAPDOS
+	reloadmapafterbattle
+	end
+
+ZapdosText:
+	text "Zap!"
+	done
 
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL
@@ -400,7 +436,7 @@ PowerPlant_MapEvents:
 	bg_event  0,  1, BGEVENT_READ, PowerPlantBookshelf
 	bg_event  1,  1, BGEVENT_READ, PowerPlantBookshelf
 
-	db 7 ; object events
+	db 8 ; object events
 	object_event  4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PowerPlantOfficerScript, -1
 	object_event  2,  9, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuy1Script, -1
 	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuy2Script, -1
@@ -408,3 +444,4 @@ PowerPlant_MapEvents:
 	object_event  7,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuy4Script, -1
 	object_event 14, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PowerPlantManager, -1
 	object_event  5,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Forest, -1
+	object_event 18, 17, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 1, -1, -1, PAL_OW_SILVER,PERSONTYPE_SCRIPT, 0, Zapdos, EVENT_ZAPDOS

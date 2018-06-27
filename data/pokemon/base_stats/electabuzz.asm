@@ -6,10 +6,10 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 45 ; catch rate
 	db 156 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db MAGNET, MAGNET ; items
 	db GENDER_F25 ; gender ratio
 	db 100 ; unknown 1
-	db 25 ; step cycles to hatch
+	db 8 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/electabuzz/front.dimensions"
 	db 0, 0, 0, 0 ; padding

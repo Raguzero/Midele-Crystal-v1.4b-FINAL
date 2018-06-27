@@ -1,4 +1,5 @@
 	const_def 2 ; object constants
+	const ROCKTUNNELB1F_MEWTWO
 	const ROCKTUNNELB1F_POKE_BALL1
 	const ROCKTUNNELB1F_POKE_BALL2
 	const ROCKTUNNELB1F_POKE_BALL3
@@ -6,7 +7,98 @@
 RockTunnelB1F_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .Mewtwo
+	
+.Mewtwo:
+    checkevent EVENT_FOUGHT_MEWTWO
+    iftrue .NoAppear
+    checkcode VAR_BADGES
+    if_not_equal 16, .NoAppear
+    jump .Appear
+
+.Appear:
+	appear ROCKTUNNELB1F_MEWTWO
+	return
+
+.NoAppear:
+	disappear ROCKTUNNELB1F_MEWTWO
+	return
+
+Mewtwo:
+	faceplayer
+	opentext
+	writetext MewtwoText
+	cry MEWTWO
+	pause 15
+	closetext
+	setevent EVENT_FOUGHT_MEWTWO
+	writecode VAR_BATTLETYPE, BATTLETYPE_SUICUNE
+	loadwildmon MEWTWO, 70
+	startbattle
+	disappear ROCKTUNNELB1F_MEWTWO
+	reloadmapafterbattle
+	end
+
+MewtwoText:
+	text "Mew!"
+	done
+
+TrainerTwinsRazandLav1:
+	trainer TWINS, RAZANDLAV1, EVENT_16, TwinsRazSeenText, TwinsRazBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext TwinsRazAfterBattleText
+	waitbutton
+	closetext
+	end
+
+TwinsRazSeenText:
+    text "El que pierda ve"
+    line "Boku no Pico."
+    done
+
+TwinsRazBeatenText:
+    text "Al menos"
+    line "agregame a"
+    cont "MAL..."
+    done
+
+TwinsRazAfterBattleText:
+    text "A mi me"
+    line "banearon por"
+    cont "menos."
+    done
+
+TrainerTwinsRazandLav2:
+	trainer TWINS, RAZANDLAV2, EVENT_16, TwinsLavSeenText, TwinsLavBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext TwinsLavAfterBattleText
+	waitbutton
+	closetext
+	end
+
+TwinsLavSeenText:
+    text "El que pierda ve"
+    line "Boku no Pico."
+    done
+
+TwinsLavBeatenText:
+    text "Al menos"
+    line "agregame a"
+    cont "MAL..."
+    done
+
+TwinsLavAfterBattleText:
+    text "A mi me"
+    line "banearon por"
+    cont "menos."
+    done
 
 RockTunnelB1FIron:
 	itemball IRON
@@ -34,7 +126,10 @@ RockTunnelB1F_MapEvents:
 	db 1 ; bg events
 	bg_event  4, 14, BGEVENT_ITEM, RockTunnelB1FHiddenMaxPotion
 
-	db 3 ; object events
+	db 6 ; object events
+	object_event 3, 18, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 1, -1, -1, PAL_OW_SILVER,PERSONTYPE_SCRIPT, 0, Mewtwo, EVENT_MEWTWO
 	object_event  7, 25, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FIron, EVENT_ROCK_TUNNEL_B1F_IRON
 	object_event  6, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FPPUp, EVENT_ROCK_TUNNEL_B1F_PP_UP
 	object_event 15,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FRevive, EVENT_ROCK_TUNNEL_B1F_REVIVE
+	object_event  4, 7, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsRazandLav1, -1
+	object_event  4, 6, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsRazandLav2, -1

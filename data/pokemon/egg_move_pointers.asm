@@ -254,4 +254,6 @@ endc
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves ; Micomon
+	dw NoEggMoves ; Bombseeker
 ; 0x23d07

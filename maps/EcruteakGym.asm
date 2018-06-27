@@ -64,7 +64,35 @@ EcruteakGymMortyScript:
 .GotShadowBall:
 	writetext UnknownText_0x9a145
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_MORTY_REMATCH
+	iftrue .MortyRematch
+    closetext
+    end
+
 .NoRoomForShadowBall:
+	closetext
+	end
+
+.MortyRematch:
+	opentext
+	writetext Morty_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Morty_RematchDefeat, 0
+    loadtrainer MORTY, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Morty_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_MORTY_REMATCH
+    end
+
+.Refused:
 	closetext
 	end
 
@@ -383,6 +411,28 @@ UnknownText_0x9a49c:
 
 	para "Hohohoho."
 	done
+
+Morty_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Morty_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Morty_Reward:
+    text "Take your reward!"
+    done
 
 EcruteakGym_MapEvents:
 	db 0, 0 ; filler

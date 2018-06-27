@@ -9,7 +9,7 @@
 	db NO_ITEM, DRAGON_SCALE ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
-	db 40 ; step cycles to hatch
+	db 13 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/dragonair/front.dimensions"
 	db 0, 0, 0, 0 ; padding

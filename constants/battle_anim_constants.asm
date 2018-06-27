@@ -804,6 +804,7 @@ BATTLEANIMSTRUCT_LENGTH EQU const_value
 	const ANIM_GFX_ANGELS
 	const ANIM_GFX_WAVE
 	const ANIM_GFX_AEROBLAST
+	const ANIM_GFX_MONOCICLO
 
 ; battle_bg_effect struct members (see macros/wram.asm)
 	const_def

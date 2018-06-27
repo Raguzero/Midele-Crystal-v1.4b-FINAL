@@ -323,13 +323,13 @@ Route29FisherText:
 	done
 
 ; unused
-Text_WaitingForDay:
-	text "I'm waiting for"
-	line "#MON that"
+;Text_WaitingForDay:
+	;text "I'm waiting for"
+	;line "#MON that"
 
-	para "appear only in the"
-	line "daytime."
-	done
+	;para "appear only in the"
+	;line "daytime."
+	;done
 
 Route29CooltrainerMText_WaitingForNight:
 	text "I'm waiting for"

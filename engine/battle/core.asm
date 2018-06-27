@@ -3816,7 +3816,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 	cp HELD_ESCAPE
 	pop de
 	pop hl
-	jr nz, .no_flee_item
+	jp nz, .no_flee_item
 
 	call SetPlayerTurn
 	call GetItemName
@@ -3842,7 +3842,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 	ld hl, hStringCmpString1
 	ld c, $2
 	call StringCmp
-	jr nc, .can_escape
+	jp nc, .can_escape
 
 	xor a
 	ld [hMultiplicand], a
@@ -3861,39 +3861,39 @@ TryToRunAwayFromBattle: ; 3d8b3
 	srl b
 	rr a
 	and a
-	jr z, .can_escape
+	jp z, .can_escape
 	ld [hDivisor], a
 	ld b, 2
 	call Divide
 	ld a, [hQuotient + 1]
 	and a
-	jr nz, .can_escape
+	jp nz, .can_escape
 	ld a, [wNumFleeAttempts]
 	ld c, a
 .loop
 	dec c
-	jr z, .cant_escape_2
+	jp z, .cant_escape_2
 	ld b, 30
 	ld a, [hQuotient + 2]
 	add b
 	ld [hQuotient + 2], a
-	jr c, .can_escape
-	jr .loop
+	jp c, .can_escape
+	jp .loop
 
 .cant_escape_2
 	call BattleRandom
 	ld b, a
 	ld a, [hQuotient + 2]
 	cp b
-	jr nc, .can_escape
+	jp nc, .can_escape
 	ld a, $1
 	ld [wBattlePlayerAction], a
 	ld hl, BattleText_CantEscape2
-	jr .print_inescapable_text
+	jp .print_inescapable_text
 
 .cant_escape
 	ld hl, BattleText_CantEscape
-	jr .print_inescapable_text
+	jp .print_inescapable_text
 
 .cant_run_from_trainer
 	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
@@ -3905,6 +3905,38 @@ TryToRunAwayFromBattle: ; 3d8b3
 	call LoadTileMapToTempTileMap
 	and a
 	ret
+	; TODO LO DE ABAJO ES VER STATS DE RIVAL, PARA BORRAR LO DE ARRIBA Y PONER LO DE ABAJO
+    ;push bc
+    ;push de
+    ;push hl
+	;lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+    ;hlcoord 1, 2
+    ;ld de, wEnemyMonMaxHP
+    ;call PrintNum
+    ;hlcoord 5, 2
+    ;ld de, wEnemyMonHP
+    ;call PrintNum
+    ;hlcoord 1, 3
+    ;ld de, wEnemyMonAttack
+    ;call PrintNum
+    ;hlcoord 1, 4
+    ;ld de, wEnemyMonDefense
+    ;call PrintNum
+    ;hlcoord 1, 5
+    ;ld de, wEnemyMonSpclAtk
+    ;call PrintNum
+    ;hlcoord 1, 6
+    ;ld de, wEnemyMonSpclDef
+    ;call PrintNum
+    ;hlcoord 1, 7
+    ;ld de, wEnemyMonSpeed
+    ;hlcoord 1, 8
+    ;call PrintNum
+    ;pop hl
+    ;pop de
+    ;pop bc
+    ;call StdBattleTextBox
+	;ret
 
 .can_escape
 	ld a, [wLinkMode]
@@ -4000,7 +4032,7 @@ InitBattleMon: ; 3da0d
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
 	call CopyBytes
 	call ApplyStatusEffectOnPlayerStats
-	call BadgeStatBoosts
+	;call BadgeStatBoosts
 	ret
 ; 3da74
 
@@ -5921,7 +5953,7 @@ CheckPlayerHasUsableMoves: ; 3e786
 
 .done
 	; Bug: this will result in a move with PP Up confusing the game.
-	and a ; should be "and PP_MASK"
+	and PP_MASK ; should be "and PP_MASK"
 	ret nz
 
 .force_struggle
@@ -6164,11 +6196,10 @@ LoadEnemyMon: ; 3e8eb
 
 ; Force Item1
 ; Used for Ho-Oh, Lugia and Snorlax encounters
-	ld a, [wBattleType]
-	cp BATTLETYPE_FORCEITEM
-	ld a, [wBaseItems]
-	jr z, .UpdateItem
-
+    ld a, [wBattleType]
+    cp BATTLETYPE_FORCEITEM
+    ld a, [wBaseItems]
+    jr nc, .UpdateItem ; MODIFICADO PARA FORZAR ITEM A TODOS
 ; Failing that, it's all up to chance
 ;  Effective chances:
 ;    75% None
@@ -6369,10 +6400,10 @@ LoadEnemyMon: ; 3e8eb
 ; smaller than 4'0" may be caught by the filter, a lot more than intended.
 	ld a, [wMapGroup]
 	cp GROUP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 	ld a, [wMapNumber]
 	cp MAP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 ; 40% chance of not flooring
 	call Random
 	cp 40 percent - 2
@@ -6561,6 +6592,15 @@ LoadEnemyMon: ; 3e8eb
 	ld a, [wBattleMode]
 	and a
 	ret z
+
+; NUEVO EVS EN TRAINER POR NIVEL
+	ld a, [wBattleMode]
+	cp TRAINER_BATTLE
+	jr nz, .skip_boosts
+	call ApplyEnemyStatBoost
+	call BoostHappiness
+.skip_boosts
+; NUEVO EVS EN TRAINER POR NIVEL
 
 ; Update enemy nick
 	ld hl, wStringBuffer1
@@ -6940,7 +6980,7 @@ ApplyStatLevelMultiplier: ; 3ecb7
 
 INCLUDE "data/battle/stat_multipliers_2.asm"
 
-BadgeStatBoosts: ; 3ed45
+;;BadgeStatBoosts: ; 3ed45
 ; Raise the stats of the battle mon in wBattleMon
 ; depending on which badges have been obtained.
 
@@ -6954,49 +6994,49 @@ BadgeStatBoosts: ; 3ed45
 
 ; The boosted stats are in order, except PlainBadge and MineralBadge's boosts are swapped.
 
-	ld a, [wLinkMode]
-	and a
-	ret nz
+;;	ld a, [wLinkMode]
+;;	and a
+;;	ret nz
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	ret nz
+;;	ld a, [wInBattleTowerBattle]
+;;	and a
+;	ret nz
 
-	ld a, [wJohtoBadges]
+;;	ld a, [wJohtoBadges]
 
 ; Swap badges 3 (PlainBadge) and 5 (MineralBadge).
-	ld d, a
-	and (1 << PLAINBADGE)
-	add a
-	add a
-	ld b, a
-	ld a, d
-	and (1 << MINERALBADGE)
-	rrca
-	rrca
-	ld c, a
-	ld a, d
-	and ((1 << ZEPHYRBADGE) | (1 << HIVEBADGE) | (1 << FOGBADGE) | (1 << STORMBADGE) | (1 << GLACIERBADGE) | (1 << RISINGBADGE))
-	or b
-	or c
-	ld b, a
+;;	ld d, a
+;;	and (1 << PLAINBADGE)
+;;	add a
+;;	add a
+;;	ld b, a
+;;	ld a, d
+;;	and (1 << MINERALBADGE)
+;;	rrca
+;;	rrca
+;;	ld c, a
+;;	ld a, d
+;;	and ((1 << ZEPHYRBADGE) | (1 << HIVEBADGE) | (1 << FOGBADGE) | (1 << STORMBADGE) | (1 << GLACIERBADGE) | (1 << RISINGBADGE))
+;;	or b
+;;	or c
+;;	ld b, a
 
-	ld hl, wBattleMonAttack
-	ld c, 4
-.CheckBadge:
-	ld a, b
-	srl b
-	call c, BoostStat
-	inc hl
-	inc hl
+;;	ld hl, wBattleMonAttack
+;;	ld c, 4
+;;.CheckBadge:
+;;	ld a, b
+;;	srl b
+;;	call c, BoostStat
+;;	inc hl
+;;	inc hl
 ; Check every other badge.
-	srl b
-	dec c
-	jr nz, .CheckBadge
+;;	srl b
+;;	dec c
+;;	jr nz, .CheckBadge
 ; And the last one (RisingBadge) too.
-	srl a
-	call c, BoostStat
-	ret
+;;	srl a
+;;	call c, BoostStat
+;;	ret
 ; 3ed7c
 
 BoostStat: ; 3ed7c
@@ -7187,6 +7227,28 @@ GiveExperiencePoints: ; 3ee3b
 	or [hl]
 	jp z, .skip_stats ; fainted
 
+; NUEVO PARA BADGE LEVEL CAP
+	push hl
+	push bc
+	ld hl, MON_LEVEL
+	add hl, bc
+	ld a, [hl]
+; NUEVO PARA BADGE LEVEL CAP
+	cp $64
+	jr z, .not_cap
+	call GetBadgeLevel
+	cp b
+	pop bc
+	pop hl
+	jp nc, .skip_stats
+	jr .gain_exp
+
+.not_cap
+	pop bc
+	pop hl
+.gain_exp
+; NUEVO PARA BADGE LEVEL CAP
+
 	push bc
 	ld hl, wBattleParticipantsNotFainted
 	ld a, [wCurPartyMon]
@@ -7294,7 +7356,12 @@ GiveExperiencePoints: ; 3ee3b
 	call GetPartyParamLocation
 	ld a, [hl]
 	cp LUCKY_EGG
-	call z, BoostExp
+;	call z, BoostExp
+	jr nz, .not_lucky_egg
+	rept 2
+	call BoostExp
+	endr
+.not_lucky_egg
 	ld a, [hQuotient + 2]
 	ld [wStringBuffer2 + 1], a
 	ld a, [hQuotient + 1]
@@ -7460,7 +7527,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld [wd265], a
 	call ApplyStatLevelMultiplierOnAllStats
 	callfar ApplyStatusEffectOnPlayerStats
-	callfar BadgeStatBoosts
+	;callfar BadgeStatBoosts
 	callfar UpdatePlayerHUD
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
@@ -8346,14 +8413,23 @@ InitEnemyTrainer: ; 3f594
 	ld [wTempEnemyMonSpecies], a
 	callfar GetTrainerAttributes
 	callfar ReadTrainerParty
-
+	; NUEVO
+	; If we are not in battle tower,
+	; apply party boost
+	ld a, [wInBattleTowerBattle]
+	bit 0, a
+    jr nz, .skip_boosts
+	call ApplyPartyStatBoost
+	call ApplyPartyPPHappinessBoost
+.skip_boosts
+; NUEVO
 	; RIVAL1's first mon has no held item
-	ld a, [wTrainerClass]
-	cp RIVAL1
-	jr nz, .ok
-	xor a
-	ld [wOTPartyMon1Item], a
-.ok
+	;ld a, [wTrainerClass]
+	;cp RIVAL1
+	;jr nz, .ok
+	;xor a
+	;ld [wOTPartyMon1Item], a
+;.ok
 
 	ld de, vTiles2
 	callfar GetTrainerPic
@@ -9396,3 +9472,274 @@ BattleStartMessage: ; 3fc8b
 
 	ret
 ; 3fd26
+
+; NUEVO EVS EN TRAINERS
+; Boosts a mon happiness to
+; its maximum
+
+BoostHappiness:
+	ld hl, wEnemyMonHappiness
+	ld a, $ff
+	ld [hl], a
+	ret
+
+; Boosts stats of each enemy party mon,
+; including current HP by
+; level * level / 500 * 3
+; By LavenderG
+ApplyPartyStatBoost:
+	push bc
+	push de
+	push hl
+	; Save loop counter and party count
+	ld a, [wOTPartyCount]
+	ld b, a
+	ld c, 0
+	push bc
+
+	; partyMon HP in de
+	; partyMon level in hl
+	ld de, wOTPartyMon1HP + 1
+	ld hl, wOTPartyMon1Level
+
+.start_loop
+	; Get level from hl into b
+	; and get stat boost into c.
+	ld a, [hl]
+	ld b, a
+;	call GetLevelStatBoost BORRADO ESTE Y AÑADO LAS 3 LINEAS DE ABAJO LEVEL CAP BADGE
+    push hl
+	farcall GetLevelStatBoost
+	pop hl
+	; Save hl and de
+	; Get current stat from de, add stat boost
+	; and update current stat in de.
+	push hl
+	push de
+	; loop counter
+	ld b, 0
+	ld h, d
+	ld l, e
+.stats_loop
+	ld a, [hl]
+	add c
+	ld [hl], a
+	jr nc, .continue
+	dec hl
+	inc [hl]
+	inc hl
+.continue
+	; increment counter and check stats loop condition
+	inc b
+	ld a, b
+	cp 7 ; number of stats including current HP and max HP
+	jr z, .end
+	inc hl
+	inc hl
+	jr .stats_loop
+.end
+	; Restore de and hl
+	; Add partyMon struct size to hl and de
+	pop de
+	pop hl
+	ld bc, wOTPartyMon2 - wOTPartyMon1
+	add hl, bc
+	push hl
+	ld h, d
+	ld l, e
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	; Restore loop counter
+	; Increment loop counter and check loop condition
+	pop bc
+	inc c
+	ld a, c
+	cp b
+	jr z, .done
+	; Save loop counter
+	push bc
+	jr .start_loop
+.done
+	pop hl
+	pop de
+	pop bc
+	ret
+
+; Boosts each current enemy stat excluding current HP
+; for level^2 / 500 * 3
+; By LavenderG
+ApplyEnemyStatBoost:
+	ld a, [wEnemyMonLevel]
+	ld b, a
+	;call GetLevelStatBoost BORRADO ESTE Y AÑADO TRES LINEAS ABAJO LEVEL CAP BADGE
+	push hl
+	farcall GetLevelStatBoost
+	pop hl
+	ld b, c
+	ld a, b
+	; If the boost is 0, don't bother applying it
+	cp 0
+	jr z, .done
+
+	ld hl, wEnemyMonHP + 1 ; Start Address
+	ld c, 0 ; Loop counter
+.stats_loop
+	; Gets next stat LSB...
+	inc hl
+	inc hl
+
+	; Add boost to stat LSB
+	ld a, [hl]
+	add b
+	ld [hl], a
+	jr nc, .continue
+	; Add carry in MSB if needed
+	dec hl
+	inc [hl]
+	inc hl
+.continue
+	; Increment counter and check loop condition
+	inc c
+	ld a, c
+	cp 6 ; Number of stats not including Max HP and current HP
+	jr z, .done
+	jr .stats_loop
+.done
+	ret
+
+; Boosts a enemy party move's PP by
+; 60% of its original PPs.
+; By LavenderG
+ApplyPartyPPHappinessBoost
+	push bc
+	push de
+	push hl
+
+	ld a, [wOTPartyCount]
+	ld b, a
+	ld c, 0
+	push bc
+	ld hl, wOTPartyMon1PP
+
+.start_loop
+	ld d, NUM_MOVES
+	ld e, 0 ; loop counter
+.pp_loop
+	ld a, [hl]
+	ld b, a
+	call RaisePPToMax
+	ld a, c
+	ld [hl], a
+
+	inc e
+	ld a, e
+	cp d
+	jr z, .happiness_loop
+	inc hl
+	jr .pp_loop
+
+.happiness_loop
+	pop de
+	push hl
+	ld hl, wOTPartyMon1Happiness
+	ld a, 0
+.happiness_party_loop
+	cp e
+	jr z, .boost_happiness
+	inc a
+	ld bc, wOTPartyMon2 - wOTPartyMon1
+	add hl, bc
+	jr .happiness_party_loop
+.boost_happiness
+	ld a, $ff
+	ld [hl], a
+	pop hl
+	push de
+
+.next_mon
+	dec hl
+	dec hl
+	dec hl
+	pop bc
+	inc c
+	ld a, c
+	cp b
+	jr z, .end
+	push bc
+	ld bc, wOTPartyMon2 - wOTPartyMon1
+	add hl, bc
+	jr .start_loop
+.end
+	pop hl
+	pop de
+	pop bc
+	ret
+
+; Raise PP in b to its maximum
+; and store the result in c
+; By LavenderG
+; PP calculation taken from ComputeMaxPP
+RaisePPToMax:
+	push bc
+	push de
+	; Divide PP by 5
+	ld d, b
+	ld a, b
+	ld [hDividend + 3], a
+	xor a
+	ld [hDividend], a
+	ld [hDividend + 1], a
+	ld [hDividend + 2], a
+	ld a, 5
+	ld [hDivisor], a
+	ld b, 4
+	call Divide
+
+	; Normally, a move with 40 PP would have 64 PP with three PP Ups.
+	; Since this would overflow into bit 6, we prevent that from happening
+	; by decreasing the extra amount of PP each PP Up provides, resulting
+	; in a maximum of 61.
+	ld a, [hQuotient + 2]
+	cp $8
+	jr c, .okay
+	ld a, $7
+.okay
+	; add boost to current PP three times
+	ld e, a
+	ld a, d
+	add e
+	add e
+	add e
+
+	pop de
+	pop bc
+	ld c, a
+	ret
+
+;; Gets the stat boost c for a given level b
+;; b: the mon's level
+;; c: the obtained stat boost value
+;GetLevelStatBoost:
+;	push bc
+;	push hl
+;	ld hl, StatBoostTable
+;	; Get table entry based on level minus one (Entry 0 for level 1,
+;	; entry 99 for level 100)
+;	ld c, b ; enemy level
+;	ld b, 0
+;	add hl, bc
+;	dec hl
+;	ld a, [hl]
+;	pop hl
+;	pop bc
+;	ld c, a ; Stat boost
+;	ret
+
+;__level__ = 1
+;StatBoostTable:
+;REPT 100
+;db __level__ * __level__ / 500 * 3
+;__level__ = __level__ + 1
+;ENDR

@@ -3,7 +3,7 @@
 	const ROUTE34_YOUNGSTER2
 	const ROUTE34_YOUNGSTER3
 	const ROUTE34_LASS
-	const ROUTE34_OFFICER
+	;const ROUTE34_OFFICER
 	const ROUTE34_POKEFAN_M
 	const ROUTE34_GRAMPS
 	const ROUTE34_DAY_CARE_MON_1
@@ -12,12 +12,14 @@
 	const ROUTE34_COOLTRAINER_F2
 	const ROUTE34_COOLTRAINER_F3
 	const ROUTE34_POKE_BALL
+	const ROUTE34_MICOLO
 
 Route34_MapScripts:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, .EggCheckCallback
+	;callback MAPCALLBACK_OBJECTS, .EggCheckCallback
+	callback MAPCALLBACK_OBJECTS, .MicoloAndEggCheck
 
 .EggCheckCallback:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
@@ -50,6 +52,124 @@ Route34_MapScripts:
 .HideMon2:
 	setevent EVENT_DAY_CARE_MON_2
 	return
+
+.MicoloAndEggCheck
+.Micolo:
+    checkevent EVENT_BEAT_AVADER
+    iftrue .Appear
+	jump .NoAppear
+
+.Appear:
+	appear ROUTE34_MICOLO
+	jump .EggCheckCallback
+
+.NoAppear:
+	disappear ROUTE34_MICOLO
+    jump .EggCheckCallback
+
+MicoloBattle:
+    faceplayer
+	opentext
+	checkevent EVENT_BEAT_MICOLO
+	iftrue .Micoloterminado
+    checkevent EVENT_BEAT_HUEVO
+    iftrue .Preguntardenuevo
+    faceplayer
+	playmusic MUSIC_POKEMANIAC_ENCOUNTER
+	opentext
+	writetext MicoloSeenText
+	waitbutton
+	closetext
+	winlosstext MicoloBeatenText, 0
+	setlasttalked ROUTE34_MICOLO
+	loadtrainer POKEMANIAC, MICOLO
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .FinishMicoloBattle
+
+.FinishMicoloBattle:
+	playmapmusic
+    faceplayer
+	opentext
+	checkevent EVENT_BEAT_HUEVO
+	iftrue .Preguntardenuevo
+	writetext MicoloHuevo
+
+.Preguntarhuevo:
+    yesorno
+    iffalse .Rechazarhuevo
+    checkcode VAR_PARTYCOUNT
+    ifequal PARTY_LENGTH, .Equipolleno
+    giveegg MEWTWO, 5
+    stringtotext .eggmewtwo, MEM_BUFFER_1
+    scall .Daelhuevo
+	closetext
+    clearevent EVENT_15
+    setevent EVENT_BEAT_MICOLO
+    end
+
+.eggmewtwo
+    db "EGG@"
+
+.Equipolleno:
+    writetext Nositio
+    waitbutton
+    closetext
+	setevent EVENT_BEAT_HUEVO
+    end
+
+.Daelhuevo:
+    jumpstd receivetogepiegg
+    end
+
+.Rechazarhuevo:
+	writetext Responderno
+	waitbutton
+	closetext
+	setevent EVENT_BEAT_HUEVO
+	end
+
+.Preguntardenuevo:
+	writetext Huevomastarde
+	jump .Preguntarhuevo
+
+.Micoloterminado:
+    faceplayer
+	setevent EVENT_18 ; rematch AVADER EN SILVERCAVEROOM1
+	checkevent EVENT_15
+	iftrue .MicoloBattle2
+    writetext Micolotermina
+    waitbutton
+	closetext
+	end
+
+.MicoloBattle2:
+	playmusic MUSIC_POKEMANIAC_ENCOUNTER
+	opentext
+	writetext MicoloSeenText2
+	waitbutton
+	yesorno
+	iffalse .Refused
+	writetext Micolobatalla2
+	waitbutton
+	winlosstext MicoloBeatenText, 0
+	setlasttalked ROUTE34_MICOLO
+	loadtrainer POKEMANIAC, MICOLO
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	closetext
+	clearevent EVENT_15
+	playmapmusic
+	end
+
+.Refused:
+    closetext
+	dontrestartmapmusic
+	reloadmapafterbattle
+	playmapmusic
+    end
 
 DayCareManScript_Outside:
 	faceplayer
@@ -348,36 +468,36 @@ TrainerPicnickerGina1:
 	jumpstd packfullf
 	end
 
-OfficerKeithScript:
-	faceplayer
-	opentext
-	checktime NITE
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICER_KEITH
-	iftrue .AfterScript
-	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext OfficerKeithSeenText
-	waitbutton
-	closetext
-	winlosstext OfficerKeithWinText, 0
-	loadtrainer OFFICER, KEITH
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICER_KEITH
-	closetext
-	end
+;OfficerKeithScript:
+;	faceplayer
+;	opentext
+;	checktime NITE
+;	iffalse .NoFight
+;	checkevent EVENT_BEAT_OFFICER_KEITH
+;	iftrue .AfterScript
+;	playmusic MUSIC_OFFICER_ENCOUNTER
+;	writetext OfficerKeithSeenText
+;	waitbutton
+;	closetext
+;	winlosstext OfficerKeithWinText, 0
+;	loadtrainer OFFICER, KEITH
+;	startbattle
+;	reloadmapafterbattle
+;	setevent EVENT_BEAT_OFFICER_KEITH
+;	closetext
+;	end
 
-.AfterScript:
-	writetext OfficerKeithAfterText
-	waitbutton
-	closetext
-	end
+;.AfterScript:
+;	writetext OfficerKeithAfterText
+;	waitbutton
+;	closetext
+;	end
 
-.NoFight:
-	writetext OfficerKeithDaytimeText
-	waitbutton
-	closetext
-	end
+;.NoFight:
+;	writetext OfficerKeithDaytimeText
+;	waitbutton
+;	closetext
+;	end
 
 TrainerYoungsterSamuel:
 	trainer YOUNGSTER, SAMUEL, EVENT_BEAT_YOUNGSTER_SAMUEL, YoungsterSamuelSeenText, YoungsterSamuelBeatenText, 0, .Script
@@ -469,10 +589,6 @@ TrainerCooltrainerfKate:
 .BagFull:
 	closetext
 	end
-
-Route34IlexForestSign:
-; unused
-	jumptext Route34IlexForestSignText
 
 Route34Sign:
 	jumptext Route34SignText
@@ -599,30 +715,30 @@ PicnickerGina1AfterText:
 	cont "partner."
 	done
 
-OfficerKeithSeenText:
-	text "Who goes there?"
-	line "What are you up"
-	cont "to?"
-	done
+;OfficerKeithSeenText:
+;	text "Who goes there?"
+;	line "What are you up"
+;	cont "to?"
+;	done
 
-OfficerKeithWinText:
-	text "You're a tough"
-	line "little kid."
-	done
+;OfficerKeithWinText:
+;	text "You're a tough"
+;	line "little kid."
+;	done
 
-OfficerKeithAfterText:
-	text "Yep, I see nothing"
-	line "wrong today. You"
+;OfficerKeithAfterText:
+;	text "Yep, I see nothing"
+;	line "wrong today. You"
 
-	para "be good and stay"
-	line "out of trouble."
-	done
+;	para "be good and stay"
+;	line "out of trouble."
+;	done
 
-OfficerKeithDaytimeText:
-	text "I'm on patrol for"
-	line "suspicious indi-"
-	cont "viduals."
-	done
+;OfficerKeithDaytimeText:
+;	text "I'm on patrol for"
+;	line "suspicious indi-"
+;	cont "viduals."
+;	done
 
 PokefanmBrandonSeenText:
 	text "I just got my"
@@ -725,12 +841,6 @@ CooltrainerfKateAfterText:
 	line "startled us."
 	done
 
-Route34IlexForestSignText:
-; unused
-	text "ILEX FOREST"
-	line "THROUGH THE GATE"
-	done
-
 Route34SignText:
 	text "ROUTE 34"
 
@@ -754,11 +864,162 @@ Route34TrainerTipsText:
 	done
 
 DayCareSignText:
-	text "DAY-CARE"
+	text "RINCON DE MIDELE"
+	line "regido por MICOLO"
 
-	para "LET US RAISE YOUR"
-	line "#MON FOR YOU!"
+	para "CUIDAMOS A TUS"
+	line "#MON POR TI!"
+
+   para "-Los diez"
+   line "micomandamientos-"
+   para "1. Amaras al mico" 
+   line "sobre todas las"
+   cont "cosas."
+   para "2. No tomaras el"
+   line "nombre de MICOLO" 
+   cont "en vano."
+   para "3. Santificaras"
+   line "los monociclos."
+   para "4. Honraras a"
+   line "Midele y a"
+   cont "ULTRAMAGIC."
+   para "5. No pensaras."
+   para "6. No hackearas"
+   line "pokémon impuros."
+   para "7. No robaras"
+   line "protagonismo a"   
+   cont "MICOLO."
+   para "8. No diras"
+   line "LOOOOL por decir."
+   para "9. No consentiras" 
+   line "pensamientos ni"
+   cont "deseos"
+   cont "inteligentes."
+   para "10. No codiciaras" 
+   line "monociclos ajenos."
+   para "En nombre"
+   line "del mico," 
+   cont "del hijo,"
+   cont "del"
+   cont "espiritu midelar." 
+   para "LOOOOL."
+   done
+	
+MicoloSeenText:
+    text "Hola reina n.n"
+    line "Yo soy MICOLO."
+    cont "Te doy la"
+	cont "bienvenida al"
+	para "Rincon de Midele."
+
+	para "MONOCICLO!!!"
+	line "Porque la VIDA es"
+	cont "es un CICLO y"
+	cont "y MONO es uno!!!"
+	
+    para "Sabes?"
+    line "El poder Midelar"
+    cont "es un poder"
+	cont "inmenso que"
+	cont "escapa de los"
+    cont "limites de nuestra"
+	para "imaginacion."
+
+    para "Pero deja que te"
+	line "hablen mis pokemon"
+    para "(Poder Midelar)"
+
+    para "MOLTRES: Eh ZAPDOS"
+    line "estas que echas"
+	para "chispas!"
+    
+	para "ZAPDOS: Y a ti que"
+	line "MOLTRES?"
+	cont "Solo eres un pollo"
+	cont "frito!"
+
+    para "ARTICUNO: Buen"
+	line "punto ZAPDOS." 
+	cont "El pollo es"
+	cont "mejor guardarlo en"
+	cont "frio para respetar"
+	para "la cadena de frio."
+    
+	para "Mis pokemon han"
+	line "hablado!"
+	cont "Acabas de"
+	cont "presenciar el"
+	cont "poder Midelar."
+
+    para "Te dare un huevo"
+	line "de mi"
+	cont "Rincon de Midele"
+	cont "pero solo si eres"
+	para "capaz de vencerme!"
+	
+	para "MONOCICLOOOOOON!!"
+    done
+
+MicoloBeatenText:
+    text "MICOLOOOOOOOOL!!!"
+    done
+
+MicoloHuevo:
+    text "Como te prometi."
+    line "Te doy el"
+    cont "huevo especial"
+	cont "de mi"
+	cont "Rincon de Midele."
 	done
+
+Nositio:
+	text "Pero si no hay"
+	line "sitio en tu equipo"
+
+	para "Haz sitio y te"
+	line "te dare el huevo."
+	done
+
+Huevomastarde:
+	text "Entonces has"
+	line "hecho sitio para"
+	cont "el huevo?"
+	done
+
+Responderno:
+	text "Vas a rechazar un"
+	line "huevo del Rincon"
+	cont "de Midele?"
+	cont "Sera mejor que te"
+	cont "lo pienses."
+	done
+
+Micolotermina:
+	text "Que por que este"
+	line "lugar lo llamo"
+	para "Rincon de Midele?"
+
+	para "Este es el unico"
+	line "lugar en el que"
+	cont "puedes criar"
+	cont "legendarios usando"
+	para "un DITTO para ello"
+
+	para "Todo gracias al"
+	line "Poder Midelar que"
+	cont "he liberado en"
+	cont "esta guarderia."
+	done
+
+MicoloSeenText2:
+    text "Quieres luchar"
+	line "de nuevo contra"
+	cont "el PODER MIDELAR?"
+	done
+	
+Micolobatalla2:
+	text "MONOCICLOOOOOON!!"
+    done
 
 Route34_MapEvents:
 	db 0, 0 ; filler
@@ -784,7 +1045,7 @@ Route34_MapEvents:
 	object_event 15, 32, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
 	object_event 11, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterIan, -1
 	object_event 10, 26, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	object_event  9, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerKeithScript, -1
+	;object_event  9, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerKeithScript, -1
 	object_event 18, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
 	object_event 15, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAY_CARE_MAN_ON_ROUTE_34
 	object_event 14, 18, SPRITE_DAY_CARE_MON_1, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon1Script, EVENT_DAY_CARE_MON_1
@@ -793,3 +1054,4 @@ Route34_MapEvents:
 	object_event  3, 48, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	object_event  6, 51, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	object_event  7, 30, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
+	object_event 19, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MicoloBattle, EVENT_DISAPPEAR_MICOLO

@@ -4,19 +4,103 @@
 	const PLAYERSHOUSE1F_MOM3
 	const PLAYERSHOUSE1F_MOM4
 	const PLAYERSHOUSE1F_POKEFAN_F
+	const PLAYERSHOUSE1F_AVADER
 
 PlayersHouse1F_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .SetAvader
+
+.SetAvader:
+	checkevent EVENT_BEAT_RED
+	iftrue .AppearAvader
+	jump .DisappearAvader
+.AppearAvader
+	appear PLAYERSHOUSE1F_AVADER
+	return
+.DisappearAvader
+	disappear PLAYERSHOUSE1F_AVADER
+	return
 
 .DummyScene0:
 	end
 
 .DummyScene1:
 	end
+
+TrainerAvader:
+	trainer SCIENTIST, AVADER, EVENT_BEAT_AVADER, AvaderSeenText, AvaderBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext AvaderAfterBattleText
+	waitbutton
+	closetext
+	end
+
+AvaderSeenText:
+    text "Hello there!"
+
+    para "You must be the"
+	line "kid that defeated"
+	para "Team Rocket."
+
+    para "I am the"
+	line "mastermind"
+    cont "behind their"
+	para "crimes."
+
+    para "How so?"
+    line "Well, defeat me"
+    cont "and I'll tell you"
+    done
+
+AvaderBeatenText:
+    text "You're good, boy."
+    line "Truly a descendant"
+	cont "of King Micolo."
+    done
+
+AvaderAfterBattleText:
+    text "I manipulated"
+	line "Giovanni into"
+	cont "creating"
+	para "Team Rocket."
+
+    para "With the money"
+	line "from their crimes,"
+    cont "I could conduct my" 
+	para "experiments."
+
+    para "I wanted to create"
+	line "the ultimate"
+	cont "lifeform"
+    para "THE MICOLOL"
+
+    para "But most"
+	line "experiments"
+	cont "ended in failure"
+    cont "These Mews are"
+	cont "lacking"
+	para "in Midele power."
+
+    para "One of our"
+	line "creations"
+	cont "was more powerful"
+	para "than the rest."
+
+    para "We called him"
+	line "Micolo."
+    cont "He's now in the"
+	cont "DAY-CARE." 
+	cont "Maybe you'll be"
+	cont "able to"
+	cont "capture him."
+    done
 
 MeetMomLeftScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -401,9 +485,10 @@ PlayersHouse1F_MapEvents:
 	bg_event  2,  1, BGEVENT_READ, FridgeScript
 	bg_event  4,  1, BGEVENT_READ, TVScript
 
-	db 5 ; object events
+	db 6 ; object events
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_1
 	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NeighborScript, EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
+	object_event  7,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerAvader, EVENT_AVADER_DESAPARECER

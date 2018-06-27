@@ -32,20 +32,25 @@ GoldenrodCity_MapScripts:
 	return
 
 .MoveTutor:
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse .MoveTutorDone
-	checkitem COIN_CASE
-	iffalse .MoveTutorDisappear
+	;checkevent EVENT_BEAT_ELITE_FOUR
+	;iffalse .MoveTutorDone
+	;checkitem COIN_CASE
+	;iffalse .MoveTutorDisappear
 	checkcode VAR_WEEKDAY
 	ifequal WEDNESDAY, .MoveTutorAppear
 	ifequal SATURDAY, .MoveTutorAppear
+	ifequal MONDAY, .MoveTutorAppear
+	ifequal TUESDAY, .MoveTutorAppear
+	ifequal THURSDAY, .MoveTutorAppear
+	ifequal FRIDAY, .MoveTutorAppear
+	ifequal SUNDAY, .MoveTutorAppear
 .MoveTutorDisappear:
-	disappear GOLDENRODCITY_POKEFAN_M2
+	;disappear GOLDENRODCITY_POKEFAN_M2
 	return
 
 .MoveTutorAppear:
-	checkflag ENGINE_DAILY_MOVE_TUTOR
-	iftrue .MoveTutorDone
+	;checkflag ENGINE_DAILY_MOVE_TUTOR
+	;iftrue .MoveTutorDone
 	appear GOLDENRODCITY_POKEFAN_M2
 .MoveTutorDone:
 	return
@@ -60,33 +65,41 @@ MoveTutorScript:
 	writetext UnknownText_0x199090
 	yesorno
 	iffalse .Refused2
-	checkcoins 4000
+	checkcoins 2000
 	ifequal HAVE_LESS, .NotEnoughMoney
 	writetext UnknownText_0x1990ce
 	loadmenu .MoveMenuHeader
 	verticalmenu
 	closewindow
-	ifequal MOVETUTOR_FLAMETHROWER, .Flamethrower
-	ifequal MOVETUTOR_THUNDERBOLT, .Thunderbolt
-	ifequal MOVETUTOR_ICE_BEAM, .IceBeam
+	ifequal MOVETUTOR_MOVE1, .Flamethrower
+	ifequal MOVETUTOR_MOVE2, .Thunderbolt
+	ifequal MOVETUTOR_MOVE3, .IceBeam
+	ifequal MOVETUTOR_MOVE4, .Softboiled
 	jump .Incompatible
 
 .Flamethrower:
-	writebyte MOVETUTOR_FLAMETHROWER
+	writebyte MOVETUTOR_MOVE_FLAMETHROWER
 	writetext UnknownText_0x1991cf
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	jump .Incompatible
 
 .Thunderbolt:
-	writebyte MOVETUTOR_THUNDERBOLT
+	writebyte MOVETUTOR_MOVE_THUNDERBOLT
 	writetext UnknownText_0x1991cf
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	jump .Incompatible
 
 .IceBeam:
-	writebyte MOVETUTOR_ICE_BEAM
+	writebyte MOVETUTOR_MOVE_ICE_BEAM
+	writetext UnknownText_0x1991cf
+	special MoveTutor
+	ifequal FALSE, .TeachMove
+	jump .Incompatible
+
+.Softboiled:
+	writebyte MOVETUTOR_MOVE_SOFTBOILED
 	writetext UnknownText_0x1991cf
 	special MoveTutor
 	ifequal FALSE, .TeachMove
@@ -94,16 +107,17 @@ MoveTutorScript:
 
 .MoveMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 2, 15, TEXTBOX_Y - 1
+    menu_coords 0, 0, 15, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
+	db 5 ; items
 	db "FLAMETHROWER@"
 	db "THUNDERBOLT@"
 	db "ICE BEAM@"
+	db "SOFTBOILED@"
 	db "CANCEL@"
 
 .Refused:
@@ -121,17 +135,17 @@ MoveTutorScript:
 .TeachMove:
 	writetext UnknownText_0x19913a
 	buttonsound
-	takecoins 4000
+	takecoins 0
 	waitsfx
 	playsound SFX_TRANSACTION
 	special DisplayCoinCaseBalance
 	writetext UnknownText_0x19918b
 	waitbutton
 	closetext
-	checkcode VAR_FACING
-	ifequal LEFT, .WalkAroundPlayer
-	applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a5f
-	jump .GoInside
+	;checkcode VAR_FACING
+	;ifequal LEFT, .WalkAroundPlayer
+	;applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a5f
+	;jump .GoInside
 
 .WalkAroundPlayer:
 	applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a63
@@ -500,7 +514,7 @@ UnknownText_0x199042:
 
 UnknownText_0x199090:
 	text "It will cost you"
-	line "4000 coins. Okay?"
+	line "2000 coins. Okay?"
 	done
 
 UnknownText_0x1990b4:

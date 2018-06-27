@@ -148,81 +148,81 @@ DoWeatherModifiers: ; fbda4
 INCLUDE "data/battle/weather_modifiers.asm"
 
 
-DoBadgeTypeBoosts: ; fbe24
-	ld a, [wLinkMode]
-	and a
-	ret nz
+;;DoBadgeTypeBoosts: ; fbe24
+;;	ld a, [wLinkMode]
+	;;and a
+;;	ret nz
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	ret nz
+;;	ld a, [wInBattleTowerBattle]
+;;	and a
+;;	ret nz
 
-	ld a, [hBattleTurn]
-	and a
-	ret nz
+;;	ld a, [hBattleTurn]
+;;	and a
+;;	ret nz
 
-	push de
-	push bc
+;;	push de
+;;	push bc
 
-	ld hl, BadgeTypeBoosts
+	;;ld hl, BadgeTypeBoosts
 
-	ld a, [wKantoBadges]
-	ld b, a
-	ld a, [wJohtoBadges]
-	ld c, a
+;;	ld a, [wKantoBadges]
+;;	ld b, a
+;;	ld a, [wJohtoBadges]
+;;	ld c, a
 
-.CheckBadge:
-	ld a, [hl]
-	cp -1
-	jr z, .done
+;;.CheckBadge:
+	;;ld a, [hl]
+	;;cp -1
+;;	jr z, .done
 
-	srl b
-	rr c
-	jr nc, .NextBadge
+;;	srl b
+;;	rr c
+;;	jr nc, .NextBadge
 
-	ld a, [wd265] ; move type
-	cp [hl]
-	jr z, .ApplyBoost
+;;	ld a, [wd265] ; move type
+;;	cp [hl]
+;;	jr z, .ApplyBoost
 
-.NextBadge:
-	inc hl
-	jr .CheckBadge
+;;.NextBadge:
+;;	inc hl
+;;	jr .CheckBadge
 
-.ApplyBoost:
-	ld a, [wCurDamage]
-	ld h, a
-	ld d, a
-	ld a, [wCurDamage + 1]
-	ld l, a
-	ld e, a
+;;.ApplyBoost:
+;;	ld a, [wCurDamage]
+;;	ld h, a
+;;	ld d, a
+;;	ld a, [wCurDamage + 1]
+;;	ld l, a
+;;	ld e, a
 
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
+;;	srl d
+;;	rr e
+;;	srl d
+;;	rr e
+;;	srl d
+;;	rr e
 
-	ld a, e
-	or d
-	jr nz, .done_min
-	ld e, 1
+;;	ld a, e
+;;	or d
+;;	jr nz, .done_min
+;;	ld e, 1
 
-.done_min
-	add hl, de
-	jr nc, .Update
+;;.done_min
+;;	add hl, de
+;;	jr nc, .Update
 
-	ld hl, $ffff
+;;	ld hl, $ffff
 
-.Update:
-	ld a, h
-	ld [wCurDamage], a
-	ld a, l
-	ld [wCurDamage + 1], a
+;;.Update:
+;;	ld a, h
+;;	ld [wCurDamage], a
+;;	ld a, l
+;;	ld [wCurDamage + 1], a
 
-.done
-	pop bc
-	pop de
-	ret
+;;.done
+;;	pop bc
+;;	pop de
+;;	ret
 
-INCLUDE "data/types/badge_type_boosts.asm"
+;;INCLUDE "data/types/badge_type_boosts.asm"

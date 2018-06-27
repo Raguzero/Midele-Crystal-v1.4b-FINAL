@@ -302,6 +302,7 @@ EvolveAfterBattle_MasterLoop
 	xor a
 	ld [wMonType], a
 	call LearnLevelMoves
+	call LearnEvolutionMove ; NUEVO PARA EVOLUTION MOVES
 	ld a, [wd265]
 	dec a
 	call SetSeenAndCaughtMon
@@ -428,6 +429,45 @@ Text_WhatEvolving: ; 0x42482
 	db "@"
 ; 0x42487
 
+LearnEvolutionMove: ; NUEVO PARA EVOLUTION MOVES
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	dec a
+	ld b, 0
+	ld c, a
+	ld hl, EvolutionMoves
+	add hl, bc
+	ld a, [hl]
+	and a
+	ret z
+
+	push hl
+	ld d, a
+	ld hl, wPartyMon1Moves
+	ld a, [wCurPartyMon]
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+
+	ld b, NUM_MOVES
+.check_move
+	ld a, [hli]
+	cp d
+	jr z, .has_move
+	dec b
+	jr nz, .check_move
+
+	ld a, d
+	ld [wPutativeTMHMMove], a
+	ld [wd265], a
+	call GetMoveName
+	call CopyName1
+	predef LearnMove
+	ld a, [wCurPartySpecies]
+	ld [wd265], a
+
+.has_move
+	pop hl
+	ret
 
 LearnLevelMoves: ; 42487
 	ld a, [wd265]

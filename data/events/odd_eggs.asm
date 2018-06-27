@@ -34,7 +34,7 @@ OddEggs: ; 1fb56e
 OddEgg1:
 	db PICHU
 	db NO_ITEM
-	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
+	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, EXTREMESPEED
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -43,10 +43,11 @@ OddEgg1:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -61,7 +62,7 @@ OddEgg1:
 OddEgg2:
 	db PICHU
 	db NO_ITEM
-	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
+	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, EXTREMESPEED
 	dw 00256 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -70,10 +71,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -87,7 +89,7 @@ OddEgg2:
 
 	db CLEFFA
 	db NO_ITEM
-	db POUND, CHARM, DIZZY_PUNCH, 0
+	db POUND, CHARM, DIZZY_PUNCH, SEISMIC_TOSS
 	dw 04096 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -96,10 +98,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 35, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -113,7 +116,7 @@ OddEgg2:
 
 	db CLEFFA
 	db NO_ITEM
-	db POUND, CHARM, DIZZY_PUNCH, 0
+	db POUND, CHARM, DIZZY_PUNCH, SEISMIC_TOSS
 	dw 00768 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -122,10 +125,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 35, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -139,7 +143,7 @@ OddEgg2:
 
 	db IGGLYBUFF
 	db NO_ITEM
-	db SING, CHARM, DIZZY_PUNCH, 0
+	db SING, CHARM, DIZZY_PUNCH, SEISMIC_TOSS
 	dw 04096 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -148,10 +152,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 15, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -165,7 +170,7 @@ OddEgg2:
 
 	db IGGLYBUFF
 	db NO_ITEM
-	db SING, CHARM, DIZZY_PUNCH, 0
+	db SING, CHARM, DIZZY_PUNCH, SEISMIC_TOSS
 	dw 00768 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -174,10 +179,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 15, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -191,7 +197,7 @@ OddEgg2:
 
 	db SMOOCHUM
 	db NO_ITEM
-	db POUND, LICK, DIZZY_PUNCH, 0
+	db POUND, LICK, DIZZY_PUNCH, PETAL_DANCE
 	dw 03584 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -200,10 +206,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -217,7 +224,7 @@ OddEgg2:
 
 	db SMOOCHUM
 	db NO_ITEM
-	db POUND, LICK, DIZZY_PUNCH, 0
+	db POUND, LICK, DIZZY_PUNCH, PETAL_DANCE
 	dw 00512 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -226,10 +233,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -243,7 +251,7 @@ OddEgg2:
 
 	db MAGBY
 	db NO_ITEM
-	db EMBER, DIZZY_PUNCH, 0, 0
+	db EMBER, DIZZY_PUNCH, BARRIER, CROSS_CHOP
 	dw 02560 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -252,10 +260,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 25, 10, 0, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -269,7 +278,7 @@ OddEgg2:
 
 	db MAGBY
 	db NO_ITEM
-	db EMBER, DIZZY_PUNCH, 0, 0
+	db EMBER, DIZZY_PUNCH, BARRIER, CROSS_CHOP
 	dw 00512 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -278,10 +287,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 25, 10, 0, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -295,7 +305,7 @@ OddEgg2:
 
 	db ELEKID
 	db NO_ITEM
-	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
+	db QUICK_ATTACK, LEER, DIZZY_PUNCH, CROSS_CHOP
 	dw 03072 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -304,10 +314,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -321,7 +332,7 @@ OddEgg2:
 
 	db ELEKID
 	db NO_ITEM
-	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
+	db QUICK_ATTACK, LEER, DIZZY_PUNCH, CROSS_CHOP
 	dw 00512 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -330,10 +341,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -347,7 +359,7 @@ OddEgg2:
 
 	db TYROGUE
 	db NO_ITEM
-	db TACKLE, DIZZY_PUNCH, 0, 0
+	db TACKLE, DIZZY_PUNCH, FORESIGHT, MACH_PUNCH
 	dw 02560 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -356,10 +368,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $0, $0 ; DVs
+	db $ec, $cc ; DVs
 	db 35, 10, 0, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -373,7 +386,7 @@ OddEgg2:
 
 	db TYROGUE
 	db NO_ITEM
-	db TACKLE, DIZZY_PUNCH, 0, 0
+	db TACKLE, DIZZY_PUNCH, FORESIGHT, MACH_PUNCH
 	dw 00256 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -382,10 +395,11 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $2a, $aa ; DVs
+	db $ec, $cc ; DVs
 	db 35, 10, 0, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+    ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
+	db $F4, 0, 0 ; Pokerus, Caught data
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP

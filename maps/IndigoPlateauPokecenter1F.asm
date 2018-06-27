@@ -168,6 +168,7 @@ TeleportGuyScript:
 	end
 
 AbraScript:
+	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	opentext
 	writetext AbraText
 	cry ABRA

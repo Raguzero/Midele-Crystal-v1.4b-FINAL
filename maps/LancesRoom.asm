@@ -49,9 +49,12 @@ Script_ApproachLanceFromLeft:
 Script_ApproachLanceFromRight:
 	special FadeOutMusic
 	applymovement PLAYER, MovementData_ApproachLanceFromRight
+
 LancesRoomLanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
 	opentext
+	checkcode VAR_BADGES
+	if_equal 16, LanceRematchScript
 	writetext LanceBattleIntroText
 	waitbutton
 	closetext
@@ -64,6 +67,8 @@ LancesRoomLanceScript:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	opentext
 	writetext LanceBattleAfterText
+
+LanceEndBattleScript:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -127,6 +132,21 @@ LancesRoomLanceScript:
 	pause 15
 	warpfacing UP, HALL_OF_FAME, 4, 13
 	end
+
+LanceRematchScript:
+	writetext LanceBattleIntroText
+	waitbutton
+	closetext
+	winlosstext LanceBattleWinText, 0
+	setlasttalked LANCESROOM_LANCE
+ 	loadtrainer CHAMPION, LANCE2
+ 	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	setevent EVENT_BEAT_CHAMPION_LANCE
+	opentext
+	writetext LanceBattleAfterText
+	jump LanceEndBattleScript
 
 LancesRoom_EnterMovement:
 	step UP
@@ -272,7 +292,7 @@ LanceBattleAfterText:
 	para "grow strong with"
 	line "your #MON."
 	done
-
+	
 UnknownText_0x1811dd:
 	text "MARY: Oh, no!"
 	line "It's all over!"

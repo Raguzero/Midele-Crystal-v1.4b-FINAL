@@ -6,12 +6,28 @@
 	const ROUTE31_FRUIT_TREE
 	const ROUTE31_POKE_BALL1
 	const ROUTE31_POKE_BALL2
+	const ROUTE31_OFFICER_TSURUKO_DAY
+	const ROUTE31_OFFICER_TSURUKO_NIGHT
 
 Route31_MapScripts:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
+	db 2 ; callbacks
 	callback MAPCALLBACK_NEWMAP, .CheckMomCall
+	callback MAPCALLBACK_OBJECTS, .TsurukoCallback
+
+.TsurukoCallback
+	checktime NITE
+	iftrue .AppearNightTsuruko
+	jump .AppearDayTsuruko
+.AppearNightTsuruko:
+	appear ROUTE31_OFFICER_TSURUKO_NIGHT
+	disappear ROUTE31_OFFICER_TSURUKO_DAY
+	return
+.AppearDayTsuruko:
+	appear ROUTE31_OFFICER_TSURUKO_DAY
+	disappear ROUTE31_OFFICER_TSURUKO_NIGHT
+	return
 
 .CheckMomCall:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
@@ -240,6 +256,66 @@ Route31MailRecipientScript:
 	closetext
 	end
 
+OfficerTsurukoTrainer:
+	trainer OFFICER, TSURUKO, EVENT_BEAT_OFFICER_TSURUKO, OfficerTsurukoSeenText, OfficerTsurukoWinText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext OfficerTsurukoAfterText
+	waitbutton
+	closetext
+	end
+
+OfficerTsurukoScript:
+	faceplayer
+	opentext
+	writetext OfficerTsurukoDaytimeText
+	waitbutton
+	closetext
+	end
+
+OfficerTsurukoSeenText:
+	text "Alto ahi, primate!"
+	line "Que haces por ahi"
+	cont "a estas horas?"
+
+	para "Eres sospechoso,"
+	line "acaso intentas"
+	cont "crearte una"
+	cont "multicuenta?"
+
+	para "Tendre que darte"
+	line "un WARN, para"
+	cont "que aprendas."
+	done
+
+OfficerTsurukoWinText:
+	text "Maldito primate..."
+	done
+
+OfficerTsurukoAfterText:
+	text "Parece que me"
+	line "confundi contigo."
+
+	para "Si ves a un tal"
+	line "ULTRAMAGIC"
+	cont "avisanos, es un"
+	cont "tipo muy"
+	cont "peligroso."
+	done
+
+OfficerTsurukoDaytimeText:
+	text "Estoy patrullando"
+	line "en busca de"
+	cont "multicuentas."
+
+	para "No te metas en"
+	line "problemas y te"
+	cont "dare karma"
+	cont "positivo."
+	done
+
 ReceivedSpearowMailText:
 	db   "DARK CAVE leads"
 	next "to another road@"
@@ -429,7 +505,7 @@ Route31_MapEvents:
 	bg_event  7,  5, BGEVENT_READ, Route31Sign
 	bg_event 31,  5, BGEVENT_READ, DarkCaveSign
 
-	db 7 ; object events
+    db 9 ; object events
 	object_event 17,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
 	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
@@ -437,3 +513,5 @@ Route31_MapEvents:
 	object_event 16,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
 	object_event 29,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
 	object_event 19, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+	object_event  6, 5,  SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, OfficerTsurukoScript, EVENT_OFFICER_TSURUKO_DAY
+	object_event  6, 5,  SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, OfficerTsurukoTrainer, EVENT_OFFICER_TSURUKO_NIGHT

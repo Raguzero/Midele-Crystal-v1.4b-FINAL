@@ -142,7 +142,21 @@ SECTION "Extra Songs 2", ROMX
 
 INCLUDE "audio/music/postcredits.asm"
 
+SECTION "Custom Songs 1", ROMX
 
+INCLUDE "audio/music/finalbattle.asm"
+INCLUDE "audio/music/motherbeast.asm"
+INCLUDE "audio/music/elitefourunova.asm"
+INCLUDE "audio/music/wally.asm"
+INCLUDE "audio/music/zinnia.asm"
+INCLUDE "audio/music/cintia.asm"
+INCLUDE "audio/music/cipherpeon.asm"
+INCLUDE "audio/music/rivalxy.asm"
+INCLUDE "audio/music/irisbattle.asm"
+INCLUDE "audio/music/lastpokemon.asm"
+INCLUDE "audio/music/santalune.asm"
+INCLUDE "audio/music/maxiearchiebattle.asm"
+INCLUDE "audio/music/efalola.asm"
 
 SECTION "Sound Effects", ROMX
 

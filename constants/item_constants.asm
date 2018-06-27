@@ -287,7 +287,11 @@ NUM_HMS = const_value - HM01
 	add_mt FLAMETHROWER
 	add_mt THUNDERBOLT
 	add_mt ICE_BEAM
-NUM_TM_HM_TUTOR = __enum__ + -1
+	add_mt SOFTBOILED
+	add_mt LOVELY_KISS
+	add_mt MOONLIGHT
+	add_mt MORNING_SUN
+NUM_TM_HM_TUTOR = __enum__ + -2
 
 	const ITEM_FA       ; fa
 

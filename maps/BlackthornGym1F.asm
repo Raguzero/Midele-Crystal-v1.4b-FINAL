@@ -87,6 +87,31 @@ BlackthornGymClairScript:
 .GotTM24:
 	writetext BlackthornGymClairText_League
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_CLAIR_REMATCH
+	iftrue .ClairRematch
+    closetext
+    end
+
+.ClairRematch:
+	opentext
+	writetext Clair_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Clair_RematchDefeat, 0
+    loadtrainer CLAIR, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Clair_Reward
+	waitbutton
+	verbosegiveitem NUGGET, 5
+	closetext
+	clearevent EVENT_CLAIR_REMATCH
+    end
+
+.Refused:
 	closetext
 	end
 
@@ -383,6 +408,28 @@ BlackthornGymGuyWinText:
 	line "to becoming the"
 	cont "#MON CHAMPION!"
 	done
+
+Clair_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Clair_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Clair_Reward:
+    text "Take your reward!"
+    done
 
 BlackthornGym1F_MapEvents:
 	db 0, 0 ; filler

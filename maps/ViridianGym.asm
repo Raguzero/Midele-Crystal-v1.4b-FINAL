@@ -33,6 +33,31 @@ ViridianGymBlueScript:
 .FightDone:
 	writetext LeaderBlueEpilogueText
 	waitbutton
+	checkevent EVENT_BEAT_ZZZ3
+	iffalse .Refused
+	checkevent EVENT_BLUE_REMATCH
+	iftrue .BlueRematch
+    closetext
+    end
+
+.BlueRematch:
+	opentext
+	writetext Blue_Rematch
+    yesorno
+	iffalse .Refused
+    winlosstext Blue_RematchDefeat, 0
+    loadtrainer BLUE, 2
+    startbattle
+    reloadmapafterbattle
+	opentext
+	writetext Blue_Reward
+	waitbutton
+	verbosegiveitem GOLD_LEAF, 3
+	closetext
+	clearevent EVENT_BLUE_REMATCH
+    end
+	
+.Refused:
 	closetext
 	end
 
@@ -166,6 +191,28 @@ ViridianGymGuyWinText:
 	para "battle. It brought"
 	line "tears to my eyes."
 	done
+
+Blue_Rematch:
+    text "On the other hand."
+    line "The promise"
+	cont "we made!" 
+	cont "Let's battle again!"
+	done
+
+Blue_RematchDefeat:
+    text "Oh no! You are"
+	line "very strong!"
+	cont "But I will repay"
+	para "my debt someday."
+
+    para "Talk to me again"
+    line "if you want a"
+    cont "rematch."
+    done
+
+Blue_Reward:
+    text "Take your reward!"
+    done
 
 ViridianGym_MapEvents:
 	db 0, 0 ; filler

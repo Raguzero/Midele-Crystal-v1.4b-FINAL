@@ -2847,7 +2847,6 @@ Script_checksave:
 	ld [wScriptVar], a
 	ret
 
-
 ; unused
 	ld a, [.byte]
 	ld [wScriptVar], a

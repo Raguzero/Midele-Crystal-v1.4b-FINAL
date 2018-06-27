@@ -246,13 +246,13 @@ Options_BattleStyle: ; e43a0
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
 	bit BATTLE_SHIFT, [hl]
-	jr nz, .ToggleShift
+	jr nz, .ToggleSet
 	jr .ToggleSet
 
 .LeftPressed:
 	bit BATTLE_SHIFT, [hl]
 	jr z, .ToggleSet
-	jr .ToggleShift
+	jr .ToggleSet
 
 .NonePressed:
 	bit BATTLE_SHIFT, [hl]
@@ -260,7 +260,7 @@ Options_BattleStyle: ; e43a0
 
 .ToggleShift:
 	res BATTLE_SHIFT, [hl]
-	ld de, .Shift
+	ld de, .Set
 	jr .Display
 
 .ToggleSet:
@@ -274,7 +274,6 @@ Options_BattleStyle: ; e43a0
 	ret
 ; e43d1
 
-.Shift: db "SHIFT@"
 .Set:   db "SET  @"
 ; e43dd
 

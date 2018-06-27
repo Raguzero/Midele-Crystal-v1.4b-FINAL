@@ -252,4 +252,6 @@ NewPokedexOrder: ; 0x40d60
 	db MEWTWO
 	db MEW
 	db CELEBI
+	db MICOMON
+	db BOMBSEEKER
 ; 0x40e5b

@@ -23,7 +23,13 @@ BattleCommand_HealBell: ; 35cc9
 	add hl, bc
 	dec d
 	jr nz, .loop
+
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_MIDELE_POWER
+	jr z, .skip_animation
 	call AnimateCurrentMove
+.skip_animation
 
 	ld hl, BellChimedText
 	call StdBattleTextBox
