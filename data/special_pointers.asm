@@ -184,4 +184,5 @@ SpecialsPointers:: ; c029
 	add_special DummySpecial_c224 ; $a8
 	add_special RespawnOneOffs ; NUEVO RESPAWN
 	add_special GiveCatermano   ; NUEVO
+	add_special MusicPlayer
 ; c224

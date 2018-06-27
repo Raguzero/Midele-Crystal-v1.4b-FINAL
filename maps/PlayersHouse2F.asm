@@ -105,6 +105,12 @@ PlayersHousePosterScript:
 	describedecoration DECODESC_POSTER
 
 PlayersHouseRadioScript:
+	opentext
+	writetext MusicPlayerText
+	waitbutton
+	special MusicPlayer
+	closetext
+	end
     ;setevent EVENT_BEAT_ELITE_FOUR ;quitar
     ;setevent EVENT_BEAT_RED  ;quitar
 	;setevent EVENT_BEAT_AVADER  ;quitar
@@ -144,10 +150,6 @@ PlayersHouseRadioScript:
 	;setflag ENGINE_STORMBADGE
 	;end
 	; QUITAR LO DE ARRIBA
-	opentext
-	givepoke BOMBSEEKER, 99
-	closetext
-	end
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .NormalRadio
 	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
@@ -227,11 +229,16 @@ Notatrofeo2:
 	cont "an admirer-"
 	done
 
+MusicPlayerText:
+	text "It's a music"
+	line "player!"
+	done
+
 PlayersHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event  7,  0, SILVER_CAVE_OUTSIDE, 1
+	warp_event  7,  0, PLAYERS_HOUSE_1F, 1
 
 	db 0 ; coord events
 
