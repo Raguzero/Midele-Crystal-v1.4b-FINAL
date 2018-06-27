@@ -39,7 +39,7 @@ ItemEffects: ; e73c
 	dw EvoStoneEffect      ; FIRE_STONE
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
-	dw NoEffect            ; ITEM_19
+	dw MusicPlayerEffect   ; MUSIC_PLAYER
 	dw VitaminEffect       ; HP_UP
 	dw VitaminEffect       ; PROTEIN
 	dw VitaminEffect       ; IRON
@@ -1158,6 +1158,10 @@ BicycleEffect: ; ee08
 	ret
 ; ee0f
 
+MusicPlayerEffect:
+	farcall MusicPlayerFunction
+	ret
+
 
 EvoStoneEffect: ; ee0f
 	ld b, PARTYMENUACTION_EVO_STONE
@@ -1212,7 +1216,7 @@ VitaminEffect: ; ee3d
     ld a, [hl]
 	ld c, a
 	ld a, b
-	
+
 	; If the most significant byte is maxed out, check least significant byte
     cp $ff
 	jr z, .check_lsb
@@ -1365,14 +1369,14 @@ RareCandyEffect: ; ef14
 
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
-	
+
 ; NUEVO LEVEL CAP BADGE
 	push bc
 	call GetBadgeLevel
 ; NUEVO LEVEL CAP BADGE
-	
+
 	ld a, [hl]
-	
+
 ; NUEVO LEVEL CAP BADGE
 	cp b
 	pop bc

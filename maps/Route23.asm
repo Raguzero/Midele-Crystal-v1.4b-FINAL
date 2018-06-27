@@ -21,7 +21,7 @@ IndigoPlateauSignText:
 	done
 
 Luckyegg:
-	itemball LUCKY_EGG
+	itemball MUSIC_PLAYER
 
 Route23_MapEvents:
 	db 0, 0 ; filler

@@ -1733,6 +1733,24 @@ BikeFunction: ; d0b3
 	scf
 	ret
 
+MusicPlayerFunction:
+	ld hl, Script_MusicPlayer
+	call QueueScript
+	ret
+
+Script_MusicPlayer:
+	opentext
+	writetext .Text_ChooseMusicPlayer
+	waitbutton
+	special MusicPlayer
+	closetext
+	end
+
+.Text_ChooseMusicPlayer:
+	text "Music player"
+	line "powered on."
+	done
+
 Script_GetOnBike: ; 0xd13e
 	reloadmappart
 	special UpdateTimePals
