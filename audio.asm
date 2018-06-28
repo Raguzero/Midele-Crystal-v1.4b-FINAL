@@ -158,6 +158,9 @@ INCLUDE "audio/music/santalune.asm"
 INCLUDE "audio/music/maxiearchiebattle.asm"
 INCLUDE "audio/music/efalola.asm"
 
+SECTION "Custom Songs 2", ROMX
+INCLUDE "audio/music/gamecornersinnoh.asm"
+
 SECTION "Sound Effects", ROMX
 
 INCLUDE "audio/sfx.asm"

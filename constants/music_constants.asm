@@ -122,6 +122,7 @@ NUM_ORIGINAL_MUSIC EQU const_value
 	const MUSIC_SANTALUNE
 	const MUSIC_MAXIEARCHIEBATTLE
 	const MUSIC_ALOLAELITEFOURBATTLE
+	const MUSIC_GAMECORNER_SINNOH
 
 ; GetMapMusic picks music for this value (see home/map.asm)
 MUSIC_MAHOGANY_MART EQU $64

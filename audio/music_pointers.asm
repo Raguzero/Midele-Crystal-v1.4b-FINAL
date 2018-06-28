@@ -125,3 +125,4 @@ Music: ; e906e
 	dba Music_SantaluneForest
 	dba Music_MaxieArchieBattle
 	dba Music_AlolaEliteFourBattle
+	dba Music_SinnohGameCorner
