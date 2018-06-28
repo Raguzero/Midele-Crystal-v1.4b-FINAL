@@ -1,5 +1,5 @@
 MUSIC_NAME_LENGTH EQU 16 ; max music name length
-NUMBER_OF_MENU_SONGS   EQU 13
+NUMBER_OF_MENU_SONGS   EQU 14
 
 ; Cómo añadir una música al reproductor:
 ;   1. Aumenta el valor de NUMBER_OF_MENU_SONGS en 1
@@ -12,7 +12,7 @@ MusicPlayer:
   call CloseSubmenu
   pop af
   jr c, .no_play_song
-  jr z, .no_play_song
+  jr z, .cancel_song
   ld b, 0
   ld c, a
   call GetMusicFromMenuSongs
@@ -23,8 +23,14 @@ MusicPlayer:
 	call PlayMusic
 	call DelayFrame ; ¿Hace falta?
   pop de
+  ld a, e
+  ld [wCustomBattleMusic], a
   call PlayMusic
 .no_play_song
+  ret
+.cancel_song
+  ld a, 0
+  ld [wCustomBattleMusic], a
   ret
 
 
@@ -172,6 +178,7 @@ MusicMenuSongs:
 	db MUSIC_SANTALUNE
 	db MUSIC_MAXIEARCHIEBATTLE
 	db MUSIC_ALOLAELITEFOURBATTLE
+  db MUSIC_GAMECORNER_SINNOH
 
 ; Music names corresponding to MUSIC_* constants
 MusicNames:
@@ -191,6 +198,7 @@ endr
   dw .Santalune
   dw .MaxieArchieBattle
   dw .Elite4AlolaBattle
+  dw .GameCornerSinnoh
 
 .None:              db "NONE@"
 .FinalBattle:       db "FINAL BATTLE@"
@@ -206,6 +214,7 @@ endr
 .Santalune:         db "SANTALUNE@"
 .MaxieArchieBattle: db "MAXIE&ARCHIE@"
 .Elite4AlolaBattle: db "ELITE4 ALOLA@"
+.GameCornerSinnoh:  db "SINNOH CASINO@"
 
 CancelText:         db "CANCEL@"
 WhichSongToText:     db "Which song to@"

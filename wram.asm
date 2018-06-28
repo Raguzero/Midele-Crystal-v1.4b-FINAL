@@ -2586,7 +2586,7 @@ wMobileBattleRoomSceneID::                        db ; d9c0
 
 ; fight counts
 wJackFightCount::    db ; d9f2
-wBeverlyFightCount:: db ; unused
+wCustomBattleMusic:: db ; unused <- not anymore
 wHueyFightCount::    db
 wGavenFightCount::   db
 wBethFightCount::    db

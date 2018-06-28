@@ -58,6 +58,14 @@ PlayBattleMusic: ; 2ee6c
 	call DelayFrame
 	call MaxVolume
 
+	ld a, [wCustomBattleMusic]
+	cp 0
+	jr z, .regular_music
+	ld d, 0
+	ld e, a
+	jp .done
+	
+.regular_music
 	ld a, [wBattleType]
 	cp BATTLETYPE_SUICUNE
 	ld de, MUSIC_SUICUNE_BATTLE
@@ -206,7 +214,7 @@ PlayBattleMusic: ; 2ee6c
 	jr z, .done_custom_music
 .not_ragu
 	;;;;;;;
-	
+
 	;;;;;;;;
 	; Load trainer class at a
 	ld a, c
@@ -338,7 +346,7 @@ PlayBattleMusic: ; 2ee6c
 	cp MERUM
 	jr z, .done_custom_music
 .not_merum
-	;;;;;;;	
+	;;;;;;;
 
 	;;;;;;;;
 	; Load trainer class at a
