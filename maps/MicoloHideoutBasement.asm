@@ -41,13 +41,32 @@ MicoloHideoutBasementCatermano:
 MicoloHideoutBasementPCScript:
   opentext
   playsound SFX_BOOT_PC
+  checkevent EVENT_114
+  iftrue .already_got_pkhex
+  writetext MicoloHideoutBasementPCPasswordText
+  waitbutton
   special HackMon
   iftrue .correct
+  writetext MicoloHideoutBasementPCIncorrectText
   playsound SFX_SHUT_DOWN_PC
+  waitsfx
+  cry MEWTWO
+  pause 15
   closetext
+  writecode VAR_BATTLETYPE, BATTLETYPE_SHINY
+  loadwildmon MEWTWO, 100
+  startbattle
+  reloadmapafterbattle
   end
 .correct
-  writetext MicoloHideoutBasementPCText
+  writetext MicoloHideoutBasementPCCorrectText
+  waitbutton
+  verbosegiveitem PKHEX
+  setevent EVENT_113
+  closetext
+  end
+.already_got_pkhex
+  writetext MicoloHideoutBasementPCAfterText
   waitbutton
   closetext
   end
@@ -166,8 +185,30 @@ CatermanoGivenText:
   line "#MON."
   done
 
-MicoloHideoutBasementPCText:
-  text "Login correcto."
+MicoloHideoutBasementPCPasswordText:
+  text "Servidor central"
+  line "de MIDELE."
+  para "USER: MICOLO"
+  line "PASSWORD..."
+  done
+
+MicoloHideoutBasementPCCorrectText:
+  text "Iniciada sesion"
+  line "como MICOLO."
+  para "Descargando datos"
+  line "de PKHex..."
+  done
+
+MicoloHideoutBasementPCIncorrectText:
+  text "Inicio de sesion"
+  line "fallido."
+  para "Activando sistema"
+  line "de seguridad."
+  done
+
+MicoloHideoutBasementPCAfterText:
+  text "El PKHex ya ha"
+  line "sido descargado."
   done
 
 
