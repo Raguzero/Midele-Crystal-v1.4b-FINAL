@@ -5178,7 +5178,7 @@ BattleAnim_ShowMon_1: ; cbcd2
 
 BattleAnim_MidelePower:
 	; Sacred Fire
-	anim_1gfx ANIM_GFX_MONOCICLO
+	anim_1gfx ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 .loop1
