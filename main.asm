@@ -654,8 +654,9 @@ GetLevelStatBoost:
 
 __level__ = 1
 StatBoostTable:
-REPT 100
+REPT 99
 db __level__ * __level__ / 500 * 3
 __level__ = __level__ + 1
 ENDR
+db 64
 ; NUEVO LEVEL CAP BADGE
