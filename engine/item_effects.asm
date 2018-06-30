@@ -202,6 +202,9 @@ PokeBallEffect: ; e8a2
 	dec a
 	jp nz, UseBallInTrainerBattle
 
+	call IsMicoloHideoutWildmon
+	jp c, UseBallInLevel100Mon
+
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
 	jr nz, .room_in_party
@@ -2236,6 +2239,8 @@ XAccuracyEffect: ; f482
 
 
 PokeDollEffect: ; f48f
+	call IsMicoloHideoutWildmon
+	jr c, .asm_f4a6
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .asm_f4a6
@@ -2813,6 +2818,22 @@ UseBallInTrainerBattle: ; f7a0
 	jr UseDisposableItem
 ; f7ca
 
+UseBallInLevel100Mon:
+	call ReturnToBattle_UseBall
+	ld de, ANIM_THROW_POKE_BALL
+	ld a, e
+	ld [wFXAnimID], a
+	ld a, d
+	ld [wFXAnimID + 1], a
+	xor a
+	ld [wBattleAnimParam], a
+	ld [hBattleTurn], a
+	ld [wNumHits], a
+	predef PlayBattleAnim
+	ld hl, CannotUseBallText
+	call PrintText
+	jr UseDisposableItem
+
 WontHaveAnyEffect_NotUsedMessage: ; f7ca
 	ld hl, WontHaveAnyEffectText
 	call PrintText
@@ -2909,6 +2930,10 @@ DontBeAThiefText: ; 0xf829
 	text_jump UnknownText_0x1c5def
 	db "@"
 ; 0xf82e
+
+CannotUseBallText:
+	text_jump CannotUseBall
+	db "@"
 
 CyclingIsntAllowedText: ; 0xf82e
 	; Cycling isn't allowed here.
@@ -3162,3 +3187,42 @@ GetMthMoveOfCurrentMon: ; f969
 	add hl, bc
 	ret
 ; f971
+
+IsMicoloHideoutWildmon:
+	push bc
+	push hl
+	ld a, [wBattleMode]
+	dec a
+	jr nz, .not_micolo_wildmon
+	ld a, [wEnemyMonLevel]
+	cp 100
+	jr nz, .not_micolo_wildmon
+	ld a, [wEnemyMonSpecies]
+	ld b, a
+	ld hl, .MicoloHideoutWildmonTable
+.loop
+	ld a, [hli]
+	cp -1
+	jr z, .not_micolo_wildmon
+	cp b
+	jr z, .micolo_wildmon
+	jr .loop
+.not_micolo_wildmon
+	pop hl
+	pop bc
+	and a
+	ret
+.micolo_wildmon
+	pop hl
+	pop bc
+	scf
+	ret
+
+.MicoloHideoutWildmonTable
+	db ARTICUNO
+	db ZAPDOS
+	db MOLTRES
+	db LUGIA
+	db HO_OH
+	db MEWTWO
+	db -1

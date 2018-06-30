@@ -1363,6 +1363,11 @@ UnknownText_0x1c5def::
 	text "Don't be a thief!"
 	prompt
 
+CannotUseBall::
+	text "The #MON"
+	line "cannot be caught!"
+	prompt
+
 UnknownText_0x1c5e01::
 	text "Cycling isn't"
 	line "allowed here."

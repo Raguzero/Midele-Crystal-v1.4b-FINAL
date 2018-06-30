@@ -3776,6 +3776,13 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 
 TryToRunAwayFromBattle: ; 3d8b3
 ; Run away from battle, with or without item
+
+; Cannot escape from Micolo wildmons
+	push hl
+	farcall IsMicoloHideoutWildmon
+	pop hl
+	jp c, .cant_escape
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_DEBUG
 	jp z, .can_escape
