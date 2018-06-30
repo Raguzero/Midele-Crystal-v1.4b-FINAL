@@ -106,9 +106,7 @@ PlayersHousePosterScript:
 
 PlayersHouseRadioScript:
 	opentext
-	writetext MusicPlayerText
-	waitbutton
-	special MusicPlayer
+	givepoke BOMBSEEKER, 100
 	closetext
 	end
     ;setevent EVENT_BEAT_ELITE_FOUR ;quitar
@@ -238,7 +236,7 @@ PlayersHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event  7,  0, PLAYERS_HOUSE_1F, 1
+	warp_event  7,  0, MICOLO_HIDEOUT, 1
 
 	db 0 ; coord events
 

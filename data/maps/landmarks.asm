@@ -53,6 +53,7 @@ Landmarks: ; 0x1ca8c3
 	landmark 120,  88, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 156,  84, SilverCaveName
+	landmark 60, 104, MicoloHideoutName
 	landmark  60, 124, PalletTownName
 	landmark  60, 108, Route1Name
 	landmark  60,  92, ViridianCityName
@@ -206,3 +207,4 @@ TohjoFallsName:      db "TOHJO FALLS@"
 UndergroundName:     db "UNDERGROUND@"
 BattleTowerName:     db "BATTLE¯TOWER@"
 SpecialMapName:      db "SPECIAL@"
+MicoloHideoutName:   db "MICOLO¯HIDEOUT@"

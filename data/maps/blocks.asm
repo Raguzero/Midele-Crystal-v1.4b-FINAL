@@ -1045,3 +1045,9 @@ BetaBlank_Blocks:
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+
+MicoloHideout_Blocks:
+	INCBIN "maps/MicoloHideout.blk"
+
+MicoloHideoutBasement_Blocks:
+	INCBIN "maps/MicoloHideoutBasement.blk"
