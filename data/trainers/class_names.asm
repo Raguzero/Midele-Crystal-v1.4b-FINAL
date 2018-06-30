@@ -67,3 +67,4 @@ TrainerClassNames:: ; 2c1ef
 	db "OFFICER@"
 	db "ROCKET@"
 	db "MYSTICALMAN@"
+	db "CLONE@"

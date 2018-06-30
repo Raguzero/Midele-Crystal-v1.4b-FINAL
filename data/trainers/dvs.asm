@@ -12,12 +12,12 @@ TrainerClassDVs: ; 270d6
 	db $DD, $DD ; clair
 	db $DD, $DD ; rival1
 	db $DD, $DD ; pokemon prof
-	db $DD, $DD ; will 
+	db $DD, $DD ; will
 	db $DD, $DD ; cal
-	db $DD, $DD ; bruno 
-	db $DD, $DD ; karen 
-	db $DD, $DD ; koga 
-	db $DD, $DD ; champion 
+	db $DD, $DD ; bruno
+	db $DD, $DD ; karen
+	db $DD, $DD ; koga
+	db $DD, $DD ; champion
 	db $DD, $DD ; brock
 	db $DD, $DD ; misty
 	db $BD, $FF ; lt surge
@@ -69,4 +69,5 @@ TrainerClassDVs: ; 270d6
 	db $DD, $DD ; officer
 	db $DD, $DD ; gruntf
 	db $FF, $FF ; mysticalman
+	db $FF, $FF
 ; 2715c

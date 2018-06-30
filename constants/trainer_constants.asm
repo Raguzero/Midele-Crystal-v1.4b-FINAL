@@ -36,15 +36,15 @@ KRIS EQU __enum__
 	trainerclass BUGSY ; 3
 	const BUGSY1
 	const BUGSY2
-	
+
 	trainerclass MORTY ; 4
 	const MORTY1
 	const MORTY2
-	
+
 	trainerclass PRYCE ; 5
 	const PRYCE1
 	const PRYCE2
-	
+
 	trainerclass JASMINE ; 6
 	const JASMINE1
 	const JASMINE2
@@ -432,6 +432,7 @@ KRIS EQU __enum__
 	const LEWIS
 	const PARKER
 	const PACOBEER
+	const PACOBEER2
 
 	trainerclass SWIMMERF ; 27
 	const ELAINE
@@ -745,6 +746,8 @@ KRIS EQU __enum__
 	const ALLIARE
 	const MELKOR
 	const FURRY
+	const TOPO
+	const FURRY2
 
 	trainerclass GRUNTF ; 42
 	const GRUNTF_1
@@ -755,5 +758,8 @@ KRIS EQU __enum__
 
 	trainerclass MYSTICALMAN ; 43
 	const EUSINE
+
+	trainerclass CLONE
+	const MEWTWO_T
 
 NUM_TRAINER_CLASSES EQU __enum__
