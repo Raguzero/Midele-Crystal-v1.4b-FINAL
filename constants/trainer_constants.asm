@@ -304,7 +304,6 @@ KRIS EQU __enum__
 	const MILLER
 	const JZOMBIE
 	const LAVNDER
-	const MICOLO
 
 	trainerclass GRUNTM ; 1f
 	const GRUNTM_1
@@ -761,5 +760,8 @@ KRIS EQU __enum__
 
 	trainerclass CLONE
 	const MEWTWO_T
+
+	trainerclass MASTERMIND
+	const MICOLO
 
 NUM_TRAINER_CLASSES EQU __enum__

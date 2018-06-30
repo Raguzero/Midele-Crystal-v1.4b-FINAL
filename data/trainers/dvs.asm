@@ -69,5 +69,6 @@ TrainerClassDVs: ; 270d6
 	db $DD, $DD ; officer
 	db $DD, $DD ; gruntf
 	db $FF, $FF ; mysticalman
-	db $FF, $FF
+	db $FF, $FF ; Clone
+	db $FF, $FF ; Mastermind
 ; 2715c

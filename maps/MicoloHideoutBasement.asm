@@ -75,7 +75,7 @@ TrainerCloneMewtwo2:
   end
 
 TrainerMicolo:
-  trainer POKEMANIAC, MICOLO, EVENT_110, MicoloHideoutSeenText, MicoloHideoutBeatenText, 0, .Script
+  trainer MASTERMIND, MICOLO, EVENT_110, MicoloHideoutSeenText, MicoloHideoutBeatenText, 0, .Script
 .Script:
   endifjustbattled
   opentext

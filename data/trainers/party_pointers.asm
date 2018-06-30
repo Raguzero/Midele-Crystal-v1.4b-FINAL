@@ -70,3 +70,4 @@ TrainerGroups: ; 0x39999
 	dw GruntFGroup
 	dw MysticalmanGroup
 	dw CloneGroup
+	dw MastermindGroup
