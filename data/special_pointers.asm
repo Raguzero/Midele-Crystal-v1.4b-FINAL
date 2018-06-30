@@ -185,4 +185,5 @@ SpecialsPointers:: ; c029
 	add_special RespawnOneOffs ; NUEVO RESPAWN
 	add_special GiveCatermano   ; NUEVO
 	add_special MusicPlayer
+	add_special HackMon
 ; c224

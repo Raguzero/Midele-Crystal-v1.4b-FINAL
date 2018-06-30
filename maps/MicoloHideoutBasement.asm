@@ -39,10 +39,17 @@ MicoloHideoutBasementCatermano:
   end
 
 MicoloHideoutBasementPCScript:
+  opentext
   playsound SFX_BOOT_PC
-  waitsfx
+  special HackMon
+  iftrue .correct
   playsound SFX_SHUT_DOWN_PC
-  waitsfx
+  closetext
+  end
+.correct
+  writetext MicoloHideoutBasementPCText
+  waitbutton
+  closetext
   end
 
 
@@ -157,6 +164,10 @@ CatermanoPartyFullText:
 CatermanoGivenText:
   text "<PLAYER> received a"
   line "#MON."
+  done
+
+MicoloHideoutBasementPCText:
+  text "Login correcto."
   done
 
 

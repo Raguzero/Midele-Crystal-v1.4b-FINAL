@@ -17,6 +17,7 @@ INCLUDE "engine/events/happiness_egg.asm"
 INCLUDE "engine/events/specials_2.asm"
 INCLUDE "engine/events/catermano.asm"
 INCLUDE "engine/events/music_player.asm"
+INCLUDE "engine/events/hack_mon.asm"
 
 
 SECTION "bank2", ROMX

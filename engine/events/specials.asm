@@ -616,3 +616,7 @@ ld a, RAIKOU - 1
 
 .CaughtHo_oh
 	ret
+
+HackMon:
+	farcall PromptPassword
+	jp ScriptReturnCarry

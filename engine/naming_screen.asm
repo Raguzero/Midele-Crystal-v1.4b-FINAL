@@ -217,7 +217,7 @@ NamingScreen: ; 116c1
 ; 11839 (4:5839)
 
 .oTomodachi_no_namae_sutoringu ; 11839
-	db "おともだち　の　なまえは？@"
+	db "PASSWORD?@"
 
 ; 11847
 
