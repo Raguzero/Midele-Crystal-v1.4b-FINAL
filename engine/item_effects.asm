@@ -59,7 +59,7 @@ ItemEffects: ; e73c
 	dw SuperRepelEffect    ; SUPER_REPEL
 	dw MaxRepelEffect      ; MAX_REPEL
 	dw DireHitEffect       ; DIRE_HIT
-	dw NoEffect            ; ITEM_2D
+	dw PKHexEffect         ; PKHex
 	dw RestoreHPEffect     ; FRESH_WATER
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
@@ -1236,7 +1236,7 @@ VitaminEffect: ; ee3d
 	; else, max out least significant byte
 	ld a, c
 	cp $ff
-	jr z, NoEffectMessage
+	jp z, NoEffectMessage
 	jr .max_out_lsb
 .max_out_msb
 	ld b, $ff
@@ -1271,6 +1271,121 @@ VitaminEffect: ; ee3d
 	farcall ChangeHappiness
 
 	jp UseDisposableItem
+
+PKHexEffect:
+
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call RareCandy_StatBooster_GetParameters
+	
+	; DVs
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+
+	; Stat experience
+	ld a, MON_STAT_EXP
+	call GetPartyParamLocation
+	ld a, $ff
+	; HP
+	ld [hli], a
+	ld [hli], a
+	; Atk
+	ld [hli], a
+	ld [hli], a
+	; Def
+	ld [hli], a
+	ld [hli], a
+	; Speed
+	ld [hli], a
+	ld [hli], a
+	; Special
+	ld [hli], a
+	ld [hl], a
+
+	; Level
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, $64
+
+	ld [hl], a
+	ld [wCurPartyLevel], a
+	push de
+	ld d, a
+	farcall CalcExpAtLevel
+
+	pop de
+	ld a, MON_EXP
+	call GetPartyParamLocation
+
+	ld a, [hMultiplicand]
+	ld [hli], a
+	ld a, [hMultiplicand + 1]
+	ld [hli], a
+	ld a, [hMultiplicand + 2]
+	ld [hl], a
+
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	push bc
+	call UpdateStatsAfterItem
+
+	ld a, MON_MAXHP + 1
+	call GetPartyParamLocation
+
+	pop bc
+	ld a, [hld]
+	sub c
+	ld c, a
+	ld a, [hl]
+	sbc b
+	ld b, a
+	dec hl
+	ld a, [hl]
+	add c
+	ld [hld], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	farcall LevelUpHappinessMod
+
+	ld a, PARTYMENUTEXT_LEVEL_UP
+	call ItemActionText
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+	predef CopyMonToTempMon
+
+	hlcoord 9, 0
+	ld b, 10
+	ld c, 9
+	call TextBox
+
+	hlcoord 11, 1
+	ld bc, 4
+	predef PrintTempMonStats
+
+	call WaitPressAorB_BlinkCursor
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+	ld a, [wCurPartySpecies]
+	ld [wd265], a
+	predef LearnLevelMoves
+
+	xor a
+	ld [wForceEvolution], a
+	farcall EvolvePokemon
+
+	jp ClearPalettes
 
 
 NoEffectMessage: ; ee83
