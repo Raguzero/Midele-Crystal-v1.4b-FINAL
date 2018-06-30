@@ -631,7 +631,7 @@ MicoloHideout_MapEvents:
   db 0, 0 ; filler
 
   db 2 ; warp events
-  warp_event 3, 2, PLAYERS_HOUSE_1F, 1
+  warp_event 3, 2, DAY_CARE, 5
   warp_event 15, 36, MICOLO_HIDEOUT_BASEMENT, 1
 
   db 0 ; coord events

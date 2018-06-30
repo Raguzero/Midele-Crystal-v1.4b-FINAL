@@ -1,6 +1,7 @@
 	const_def 2 ; object constants
 	const DAYCARE_GRAMPS
 	const DAYCARE_GRANNY
+	const DAYCARE_GUARD
 
 DayCare_MapScripts:
 	db 0 ; scene scripts
@@ -9,6 +10,7 @@ DayCare_MapScripts:
 	callback MAPCALLBACK_OBJECTS, .EggCheckCallback
 
 .EggCheckCallback:
+	scall .MicoloGuardCallback
 	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
@@ -18,6 +20,15 @@ DayCare_MapScripts:
 .PutDayCareManOutside:
 	setevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
 	clearevent EVENT_DAY_CARE_MAN_ON_ROUTE_34
+	return
+
+.MicoloGuardCallback:
+	checkevent EVENT_BEAT_RED
+	iftrue .DisappearGuard
+	appear DAYCARE_GUARD
+	return
+.DisappearGuard
+	disappear DAYCARE_GUARD
 	return
 
 DayCareManScript_Inside:
@@ -66,6 +77,14 @@ DayCareLadyScript:
 
 .HusbandWasLookingForYou:
 	writetext Text_GrampsLookingForYou
+	waitbutton
+	closetext
+	end
+
+MicoloHideoutGuardScript:
+	faceplayer
+	opentext
+	writetext MicoloHideoutGuardText
 	waitbutton
 	closetext
 	end
@@ -153,14 +172,24 @@ DayCareText_PartyFull:
 	line "this."
 	done
 
+MicoloHideoutGuardText:
+	text "No puedes pasar."
+	line "Esta zona es"
+	cont "privada."
+	para "Aqui es donde"
+	line "Midele guarda"
+	cont "todos sus huevos."
+	done
+
 DayCare_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
+	db 5 ; warp events
 	warp_event  0,  5, ROUTE_34, 3
 	warp_event  0,  6, ROUTE_34, 4
 	warp_event  2,  7, ROUTE_34, 5
 	warp_event  3,  7, ROUTE_34, 5
+	warp_event  0,  2, MICOLO_HIDEOUT, 1
 
 	db 0 ; coord events
 
@@ -168,6 +197,7 @@ DayCare_MapEvents:
 	bg_event  0,  1, BGEVENT_READ, DayCareBookshelf
 	bg_event  1,  1, BGEVENT_READ, DayCareBookshelf
 
-	db 2 ; object events
+	db 3 ; object events
 	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAY_CARE_MAN_IN_DAY_CARE
 	object_event  5,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DayCareLadyScript, -1
+	object_event  0,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MicoloHideoutGuardScript, EVENT_113
