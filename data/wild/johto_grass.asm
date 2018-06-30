@@ -1649,4 +1649,58 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 90, MURKROW
 	db 90, MURKROW
 
+	map_id MICOLO_HIDEOUT
+	db 30 percent, 30 percent, 30 percent ; encounter rates: morn/day/nite
+	; morn
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; day
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; nite
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+
+	map_id MICOLO_HIDEOUT_BASEMENT
+	db 30 percent, 30 percent, 30 percent ; encounter rates: morn/day/nite
+	; morn
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; day
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; nite
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+
 	db -1 ; end
