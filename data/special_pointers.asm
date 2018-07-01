@@ -186,4 +186,5 @@ SpecialsPointers:: ; c029
 	add_special GiveCatermano   ; NUEVO
 	add_special MusicPlayer
 	add_special HackMon
+	add_special CloneMon
 ; c224
