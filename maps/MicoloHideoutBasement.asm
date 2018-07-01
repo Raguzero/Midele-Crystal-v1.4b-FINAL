@@ -71,6 +71,17 @@ MicoloHideoutBasementPCScript:
   closetext
   end
 
+MicoloHideoutBasementClonationScript:
+  opentext
+  playsound SFX_BOOT_PC
+  special CloneMon
+  playsound SFX_SHUT_DOWN_PC
+  closetext
+  end
+
+MicoloHideoutBasementPPUp:
+  itemball PP_UP, 99
+
 
 TrainerOfficerFurry:
   trainer OFFICER, FURRY2, EVENT_10E, OfficerFurrySeenText2, OfficerFurryBeatenText2, 0, .Script
@@ -215,18 +226,22 @@ MicoloHideoutBasementPCAfterText:
 MicoloHideoutBasement_MapEvents:
   db 0, 0 ; filler
 
-  db 1 ; warp events
+  db 2 ; warp events
   warp_event 9, 12, MICOLO_HIDEOUT, 2
+  warp_event 3,  8, MICOLO_HIDEOUT, 3
 
   db 0 ; coord events
 
-  db 2 ; bg events
+  db 4 ; bg events
   bg_event 4, 2, BGEVENT_UP, MicoloHideoutBasementPCScript
   bg_event 5, 2, BGEVENT_UP, MicoloHideoutBasementPCScript
+  bg_event 8, 2, BGEVENT_UP, MicoloHideoutBasementClonationScript
+  bg_event 9, 2, BGEVENT_UP, MicoloHideoutBasementClonationScript
 
 
-  db 4 ; object events
+  db 5 ; object events
   object_event  5, 7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerOfficerFurry, -1
   object_event  7, 7, SPRITE_MONSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCloneMewtwo2, -1
   object_event  6, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerMicolo, -1
   object_event  2, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MicoloHideoutBasementCatermano, EVENT_111
+  object_event  3, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutBasementPPUp, EVENT_116
