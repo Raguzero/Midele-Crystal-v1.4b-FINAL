@@ -1,3 +1,7 @@
+  const_def
+  const PASSWORD_MIDELE
+  const PASSWORD_FURRY
+
 PromptPassword:
   ld b, $05
   ld hl, _NamingScreen
@@ -6,7 +10,11 @@ PromptPassword:
   rst FarCall
 
   ld de, wStringBuffer1
-  ld hl, .Password
+  ld hl, .Passwords
+  ld a, [wScriptVar]
+  ld b, 0
+  ld c, a
+  add hl, bc
 .password_check_loop
   ld a, [de]
   ld b, [hl]
@@ -24,5 +32,6 @@ PromptPassword:
   scf
   ret
 
-.Password:
+.Passwords:
   db "MIDELE@"
+  db "FURRY@"
