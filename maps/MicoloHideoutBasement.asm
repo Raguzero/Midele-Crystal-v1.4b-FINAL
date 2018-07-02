@@ -62,7 +62,7 @@ MicoloHideoutBasementPCScript:
   writetext MicoloHideoutBasementPCCorrectText
   waitbutton
   verbosegiveitem PKHEX
-  setevent EVENT_113
+  setevent EVENT_114
   closetext
   end
 .already_got_pkhex
