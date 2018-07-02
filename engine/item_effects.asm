@@ -1280,7 +1280,7 @@ PKHexEffect:
 	jp c, RareCandy_StatBooster_ExitMenu
 
 	call RareCandy_StatBooster_GetParameters
-	
+
 	; DVs
 	ld a, MON_DVS
 	call GetPartyParamLocation
@@ -1381,9 +1381,18 @@ PKHexEffect:
 	ld [wd265], a
 	predef LearnLevelMoves
 
+	ld a, MON_LEVEL
+	push hl
+	call GetPartyParamLocation
+	ld a, [hl]
+	cp MAX_LEVEL
+	jr z, .skip_evolution
+
 	xor a
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
+.skip_evolution
+	pop hl
 
 	jp ClearPalettes
 
