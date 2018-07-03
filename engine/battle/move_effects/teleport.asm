@@ -1,6 +1,9 @@
 BattleCommand_Teleport: ; 36778
 ; teleport
-
+	push hl
+	farcall IsMicoloHideoutWildmon
+	pop hl
+	jr c, .failed
 	ld a, [wBattleType]
 	cp BATTLETYPE_SHINY
 	jr z, .failed
