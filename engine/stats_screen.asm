@@ -706,6 +706,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, $28
 	ld [wBuffer1], a
 	predef ListMovePP
+	; Hidden Power
+	; String
+	call PlaceHiddenPower
 	ret
 
 .GetItemName: ; 4e189 (13:6189)
@@ -1421,4 +1424,200 @@ FourthPage_PlaceStatExpValues:
 	;pop bc
 	;pop de
 
+	ret
+
+PlaceHiddenPower:
+	ld de, .HiddenPowerString
+	hlcoord 0, 12
+	call PlaceString
+
+	; Type
+	call GetHiddenPowerTypeString
+	hlcoord 0, 13
+	call PlaceString
+	; Power
+	hlcoord 0, 14
+	ld de, .HiddenPowerPWRString
+	call PlaceString
+	call GetHiddenPowerPower
+
+	hlcoord 4, 14
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	ld de, wBuffer1
+	call PrintNum
+
+	ret
+
+.HiddenPowerString
+	db "H.POWER@"
+.HiddenPowerPWRString:
+	db "PWR@"
+
+; Gets hidden power type string location of wTempMon in de
+GetHiddenPowerTypeString:
+	push bc
+	push hl
+
+	call GetHiddenPowerType
+	ld hl, .TypeNames
+	add hl, bc
+	add hl, bc
+
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	
+	pop hl
+	pop bc
+	ret
+
+.TypeNames:
+dw .Normal
+dw .Fight
+dw .Flying
+dw .Poison
+dw .Ground
+dw .Rock
+dw .Bird
+dw .Bug
+dw .Ghost
+dw .Steel
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Normal
+dw .Curse
+dw .Fire
+dw .Water
+dw .Grass
+dw .Electric
+dw .Psychic
+dw .Ice
+dw .Dragon
+dw .Dark
+
+.Normal:   db "NORMAL@"
+.Fight:    db "FIGHTING@"
+.Flying:   db "FLYING@"
+.Poison:   db "POISON@"
+.Ground:   db "GROUND@"
+.Rock:     db "ROCK@"
+.Bird:     db "BIRD@"
+.Bug:      db "BUG@"
+.Ghost:    db "GHOST@"
+.Steel:    db "STEEL@"
+.Curse:    db "???@"
+.Fire:     db "FIRE@"
+.Water:    db "WATER@"
+.Grass:    db "GRASS@"
+.Electric: db "ELECTRIC@"
+.Psychic:  db "PSYCHIC@"
+.Ice:      db "ICE@"
+.Dragon:   db "DRAGON@"
+.Dark:     db "DARK@"
+
+
+
+
+
+
+; Gets hidden power type of wTempMon type in bc
+GetHiddenPowerType:
+
+	; Def & 3
+	ld a, [wTempMonDVs]
+	and %0011
+	ld b, a
+
+	; + (Atk & 3) << 2
+	ld a, [wTempMonDVs]
+	and %0011 << 4
+	swap a
+	add a
+	add a
+	or b
+
+	; Skip Normal
+	inc a
+
+; Skip Bird
+	cp BIRD
+	jr c, .done
+	inc a
+
+	; Skip unused types
+	cp UNUSED_TYPES
+	jr c, .done
+	add SPECIAL - UNUSED_TYPES
+
+.done
+	ld b, 0
+	ld c, a
+	ret
+
+; Gets Hidden Power power in wBuffer1
+GetHiddenPowerPower:
+	push bc
+	push hl
+; Power:
+
+; Take the top bit from each stat
+
+	; Attack
+	ld hl, wTempMonDVs
+	ld a, [hl]
+	swap a
+	and %1000
+
+	; Defense
+	ld b, a
+	ld a, [hli]
+	and %1000
+	srl a
+	or b
+
+	; Speed
+	ld b, a
+	ld a, [hl]
+	swap a
+	and %1000
+	srl a
+	srl a
+	or b
+
+	; Special
+	ld b, a
+	ld a, [hl]
+	and %1000
+	srl a
+	srl a
+	srl a
+	or b
+
+; Multiply by 5
+	ld b, a
+	add a
+	add a
+	add b
+
+; Add Special & 3
+	ld b, a
+	ld a, [hld]
+	and %0011
+	add b
+
+; Divide by 2 and add 30 + 1
+	srl a
+	add 30
+	inc a
+
+	ld [wBuffer1], a
+
+	pop hl
+	pop bc
 	ret
