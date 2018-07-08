@@ -55,6 +55,8 @@ Route34_MapScripts:
 
 .MicoloAndEggCheck
 .Micolo:
+	checkevent EVENT_106
+	iftrue .NoAppear
     checkevent EVENT_BEAT_AVADER
     iftrue .Appear
 	jump .NoAppear
@@ -872,11 +874,11 @@ DayCareSignText:
 
    para "-Los diez"
    line "micomandamientos-"
-   para "1. Amaras al mico" 
+   para "1. Amaras al mico"
    line "sobre todas las"
    cont "cosas."
    para "2. No tomaras el"
-   line "nombre de MICOLO" 
+   line "nombre de MICOLO"
    cont "en vano."
    para "3. Santificaras"
    line "los monociclos."
@@ -887,24 +889,24 @@ DayCareSignText:
    para "6. No hackearas"
    line "pokémon impuros."
    para "7. No robaras"
-   line "protagonismo a"   
+   line "protagonismo a"
    cont "MICOLO."
    para "8. No diras"
    line "LOOOOL por decir."
-   para "9. No consentiras" 
+   para "9. No consentiras"
    line "pensamientos ni"
    cont "deseos"
    cont "inteligentes."
-   para "10. No codiciaras" 
+   para "10. No codiciaras"
    line "monociclos ajenos."
    para "En nombre"
-   line "del mico," 
+   line "del mico,"
    cont "del hijo,"
    cont "del"
-   cont "espiritu midelar." 
+   cont "espiritu midelar."
    para "LOOOOL."
    done
-	
+
 MicoloSeenText:
     text "Hola reina n.n"
     line "Yo soy MICOLO."
@@ -916,7 +918,7 @@ MicoloSeenText:
 	line "Porque la VIDA es"
 	cont "es un CICLO y"
 	cont "y MONO es uno!!!"
-	
+
     para "Sabes?"
     line "El poder Midelar"
     cont "es un poder"
@@ -932,19 +934,19 @@ MicoloSeenText:
     para "MOLTRES: Eh ZAPDOS"
     line "estas que echas"
 	para "chispas!"
-    
+
 	para "ZAPDOS: Y a ti que"
 	line "MOLTRES?"
 	cont "Solo eres un pollo"
 	cont "frito!"
 
     para "ARTICUNO: Buen"
-	line "punto ZAPDOS." 
+	line "punto ZAPDOS."
 	cont "El pollo es"
 	cont "mejor guardarlo en"
 	cont "frio para respetar"
 	para "la cadena de frio."
-    
+
 	para "Mis pokemon han"
 	line "hablado!"
 	cont "Acabas de"
@@ -956,7 +958,7 @@ MicoloSeenText:
 	cont "Rincon de Midele"
 	cont "pero solo si eres"
 	para "capaz de vencerme!"
-	
+
 	para "MONOCICLOOOOOON!!"
     done
 
@@ -1016,7 +1018,7 @@ MicoloSeenText2:
 	line "de nuevo contra"
 	cont "el PODER MIDELAR?"
 	done
-	
+
 Micolobatalla2:
 	text "MONOCICLOOOOOON!!"
     done
