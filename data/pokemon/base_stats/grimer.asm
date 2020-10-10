@@ -6,7 +6,7 @@
 	db POISON, POISON ; type
 	db 190 ; catch rate
 	db 90 ; base exp
-	db POISON_BARB, NUGGET ; items
+	db NUGGET, NUGGET ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
 	db 6 ; step cycles to hatch

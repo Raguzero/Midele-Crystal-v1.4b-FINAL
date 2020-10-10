@@ -71,20 +71,20 @@ TreeMonSet_Route: ; b8346
 
 TreeMonSet_Kanto: ; b836c
 ; common
-	db 50, HOOTHOOT,   60
-	db 15, EKANS,      60
-	db 15, HOOTHOOT,   60
-	db 10, EXEGGCUTE,  60
-	db  5, EXEGGCUTE,  60
-	db  5, EXEGGCUTE,  60
+	db 50, HOOTHOOT,   40
+	db 15, EKANS,      40
+	db 15, HOOTHOOT,   40
+	db 10, EXEGGCUTE,  40
+	db  5, EXEGGCUTE,  40
+	db  5, EXEGGCUTE,  40
 	db -1
 ; rare
-	db 50, HOOTHOOT,   60
-	db 15, PINECO,     60
-	db 15, PINECO,     60
-	db 10, EXEGGCUTE,  60
-	db  5, EXEGGCUTE,  60
-	db  5, EXEGGCUTE,  60
+	db 50, HOOTHOOT,   40
+	db 15, PINECO,     40
+	db 15, PINECO,     40
+	db 10, EXEGGCUTE,  40
+	db  5, EXEGGCUTE,  40
+	db  5, EXEGGCUTE,  40
 	db -1
 
 TreeMonSet_Lake: ; b8392

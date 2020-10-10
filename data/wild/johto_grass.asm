@@ -1032,79 +1032,79 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 83, GOLEM
-	db 74, URSARING
-	db 72, JYNX
-	db 75, MAGMAR
-	db 75, ELECTABUZZ
+	db 84, URSARING
+	db 82, JYNX
+	db 85, MAGMAR
+	db 85, ELECTABUZZ
 	db 20, LARVITAR
 	db 15, LARVITAR
 	; day
-	db 73, GOLEM
-	db 74, URSARING
-	db 72, JYNX
-	db 75, MAGMAR
-	db 75, ELECTABUZZ
+	db 83, GOLEM
+	db 84, URSARING
+	db 82, JYNX
+	db 85, MAGMAR
+	db 85, ELECTABUZZ
 	db 20, LARVITAR
 	db 15, LARVITAR
 	; nite
-	db 73, GOLEM
-	db 74, CROBAT
-	db 72, STEELIX
-	db 72, CROBAT
-	db 75, GOLDUCK
-	db 76, STEELIX
-	db 76, STEELIX
+	db 83, GOLEM
+	db 84, CROBAT
+	db 82, STEELIX
+	db 82, CROBAT
+	db 85, GOLDUCK
+	db 86, STEELIX
+	db 86, STEELIX
 
 	map_id SILVER_CAVE_ROOM_2
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 78, CROBAT
-	db 78, MACHAMP
-	db 77, URSARING
-	db 76, GOLEM
-	db 78, SNORLAX
+	db 88, CROBAT
+	db 88, MACHAMP
+	db 87, URSARING
+	db 86, GOLEM
+	db 88, SNORLAX
 	db 15, LARVITAR
 	db 20, PUPITAR
 	; day
-	db 78, CROBAT
-	db 78, MACHAMP
-	db 77, URSARING
-	db 76, GOLEM
-	db 78, SNORLAX
+	db 88, CROBAT
+	db 88, MACHAMP
+	db 87, URSARING
+	db 86, GOLEM
+	db 88, SNORLAX
 	db 15, LARVITAR
 	db 20, PUPITAR
 	; nite
-	db 78, CROBAT
-	db 78, GOLDUCK
-	db 76, CROBAT
-	db 76, GOLEM
-	db 78, SNORLAX
-	db 75, MISDREAVUS
-	db 75, MISDREAVUS
+	db 88, CROBAT
+	db 88, GOLDUCK
+	db 86, CROBAT
+	db 86, GOLEM
+	db 88, SNORLAX
+	db 85, MISDREAVUS
+	db 85, MISDREAVUS
 
 	map_id SILVER_CAVE_ROOM_3
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 70, CHANSEY
-	db 70, CHANSEY
 	db 80, CHANSEY
 	db 80, CHANSEY
+	db 80, CHANSEY
+	db 90, CHANSEY
 	db 90, CHANSEY
 	db 90, CHANSEY
 	db 100, BLISSEY
 	; day
-	db 70, CHANSEY
-	db 70, CHANSEY
 	db 80, CHANSEY
 	db 80, CHANSEY
+	db 80, CHANSEY
+	db 90, CHANSEY
 	db 90, CHANSEY
 	db 90, CHANSEY
 	db 100, BLISSEY
 	; nite
-	db 70, CHANSEY
-	db 70, CHANSEY
 	db 80, CHANSEY
 	db 80, CHANSEY
+	db 80, CHANSEY
+	db 90, CHANSEY
 	db 90, CHANSEY
 	db 90, CHANSEY
 	db 100, BLISSEY
@@ -1118,7 +1118,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 86, PARASECT
 	db 85, DUNSPARCE
 	db 80, SUDOWOODO
-	db 82, WOBBUFFET
+	db 90, WOBBUFFET
 	; day
 	db 90, DELIBIRD
 	db 90, SHUCKLE
@@ -1128,13 +1128,13 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 80, SUDOWOODO
 	db 82, WOBBUFFET
 	; nite
-	db 75, MISDREAVUS
-	db 78, CROBAT
-	db 70, CROBAT
-	db 76, PARASECT
-	db 85, DUNSPARCE
-	db 70, SUDOWOODO
-	db 82, WOBBUFFET
+	db 85, MISDREAVUS
+	db 88, CROBAT
+	db 80, CROBAT
+	db 86, PARASECT
+	db 90, DUNSPARCE
+	db 80, SUDOWOODO
+	db 90, WOBBUFFET
 
 	map_id DARK_CAVE_VIOLET_ENTRANCE
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -1626,31 +1626,31 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 85, TANGELA
-	db 72, STANTLER
-	db 72, ARBOK
-	db 74, RAPIDASH
-	db 71, GIRAFARIG
+	db 82, STANTLER
+	db 82, ARBOK
+	db 84, RAPIDASH
+	db 81, GIRAFARIG
 	db 90, FARFETCH_D
-	db 73, DODRIO
+	db 83, DODRIO
 	; day
 	db 85, TANGELA
-	db 72, STANTLER
-	db 72, ARBOK
-	db 74, RAPIDASH
-	db 71, GIRAFARIG
+	db 82, STANTLER
+	db 82, ARBOK
+	db 84, RAPIDASH
+	db 81, GIRAFARIG
 	db 90, FARFETCH_D
-	db 73, DODRIO
+	db 83, DODRIO
 	; nite
 	db 85, TANGELA
-	db 72, POLIWHIRL
-	db 72, NOCTOWL
-	db 74, POLIWHIRL
-	db 75, NOCTOWL
+	db 82, POLIWHIRL
+	db 82, NOCTOWL
+	db 84, POLIWHIRL
+	db 85, NOCTOWL
 	db 90, MURKROW
 	db 90, MURKROW
 
 	map_id MICOLO_HIDEOUT
-	db 30 percent, 30 percent, 30 percent ; encounter rates: morn/day/nite
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 100, ARTICUNO
 	db 100, ZAPDOS
@@ -1677,7 +1677,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 100, MEWTWO
 
 	map_id MICOLO_HIDEOUT_BASEMENT
-	db 30 percent, 30 percent, 30 percent ; encounter rates: morn/day/nite
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 100, ARTICUNO
 	db 100, ZAPDOS

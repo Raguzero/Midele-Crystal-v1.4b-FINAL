@@ -322,7 +322,7 @@ PlayBattleMusic: ; 2ee6c
 	; Load trainer id at a
 	; Load music at de
 	ld a, b
-	ld de, MUSIC_SANTALUNE
+	ld de, MUSIC_WALLYBATTLE
 	; If the trainer id matches, done
 	cp SANTYAGO
 	jr z, .done_custom_music

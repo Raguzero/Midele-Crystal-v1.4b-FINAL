@@ -16,6 +16,7 @@ BuenaPrizeItems: ; 8b15e
 	db FOCUS_BAND,        2
 	db LEFTOVERS,  2
 	db SCOPE_LENS,        2
+	db EXP_SHARE, 2
 	db BERSERK_GENE,      3
 	db MASTER_BALL, 7
 .End

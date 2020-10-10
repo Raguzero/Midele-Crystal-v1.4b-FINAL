@@ -23,7 +23,7 @@ DayCare_MapScripts:
 	return
 
 .MicoloGuardCallback:
-	checkevent EVENT_BEAT_RED
+	checkevent EVENT_BEAT_MICOLO
 	iftrue .DisappearGuard
 	appear DAYCARE_GUARD
 	return

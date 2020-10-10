@@ -122,6 +122,7 @@ KRIS EQU __enum__
 	const RICH
 	const PROGAMER
 	const AVADER
+	const PHENT
 
 	trainerclass ERIKA ; 15
 	const ERIKA1
@@ -304,6 +305,7 @@ KRIS EQU __enum__
 	const MILLER
 	const JZOMBIE
 	const LAVNDER
+	const MICOLO2
 
 	trainerclass GRUNTM ; 1f
 	const GRUNTM_1

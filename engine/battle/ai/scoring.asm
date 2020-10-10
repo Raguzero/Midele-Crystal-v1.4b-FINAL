@@ -2448,8 +2448,8 @@ AI_Smart_HiddenPower: ; 3909e
 	jr nc, .good
 
 ; Encourage Hidden Power if its base power is 70.
-	ld a, d
-	cp 70
+;	ld a, d
+;	cp 70
 	ret c
 
 .good

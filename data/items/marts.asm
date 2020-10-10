@@ -126,12 +126,13 @@ MartGoldenrod2F2: ; 16121
 ; 1612b
 
 MartGoldenrod3F: ; 1612b
-	db 5 ; # items
+	db 6 ; # items
 	db WATER_STONE
 	db FIRE_STONE
 	db LEAF_STONE
 	db MOON_STONE
 	db THUNDERSTONE
+	db SUN_STONE
 	db -1 ; end
 ; 16134
 
@@ -337,10 +338,8 @@ MartCeladon2F2: ; 161c2
 ; 161ce
 
 MartCeladon3F: ; 161ce
-	db 3 ; # items
-	db TM_SUNNY_DAY
+	db 1 ; # items
 	db TM_PROTECT
-	db TM_RAIN_DANCE
 	db -1 ; end
 ; 161d5
 
@@ -372,12 +371,13 @@ MartCeladon5F1: ; 161da
 ; 161e1
 
 MartCeladon5F2: ; 161e1
-	db 5 ; # items
+	db 6 ; # items
 	db WATER_STONE
 	db FIRE_STONE
 	db LEAF_STONE
 	db MOON_STONE
 	db THUNDERSTONE
+	db SUN_STONE
 	db -1 ; end
 ; 161ea
 
@@ -416,7 +416,7 @@ MartMtMoon: ; 161fd
 ; 16205
 
 MartIndigoPlateau: ; 16205
-	db 11 ; # items
+	db 8 ; # items
 	db ULTRA_BALL
 	db MAX_REPEL
 	db HYPER_POTION
@@ -425,9 +425,6 @@ MartIndigoPlateau: ; 16205
 	db REVIVE
 	db FULL_HEAL
 	db ETHER
-	db MAX_ETHER
-	db ELIXER
-	db MAX_ELIXER
 	db -1 ; end
 ; 1620e
 

@@ -350,8 +350,8 @@ KantoGrassWildMons: ; 0x2b274
 	db 58, HOUNDOOM
 	db 58, PERSIAN
 	db 58, JIGGLYPUFF
-	db 16, ABRA
-	db 16, ABRA
+	db 56, ABRA
+	db 56, ABRA
 
 	map_id ROUTE_8
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -793,29 +793,29 @@ KantoGrassWildMons: ; 0x2b274
 	db 90, YANMA
 	db 90, AIPOM
 	db 80, LICKITUNG
-	db 73, DODRIO
-	db 73, DODRIO
+	db 83, DODRIO
+	db 83, DODRIO
 	; day
 	db 90, SMEARGLE
 	db 80, STANTLER
 	db 90, YANMA
 	db 90, AIPOM
 	db 80, LICKITUNG
-	db 73, DODRIO
-	db 73, DODRIO
+	db 83, DODRIO
+	db 83, DODRIO
 	; nite
 	db 90, SMEARGLE
-	db 70, SNEASEL
-	db 70, GLIGAR
-	db 70, SNEASEL
-	db 72, GLIGAR
-	db 72, GOLBAT
-	db 72, GOLBAT
+	db 80, SNEASEL
+	db 80, GLIGAR
+	db 80, SNEASEL
+	db 82, GLIGAR
+	db 82, GOLBAT
+	db 82, GOLBAT
 
 	map_id SAFARI_ZONE_BETA
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 80, LEDIAN
+	db 90, LEDIAN
 	db 80, SCYTHER
 	db 80, TAUROS
 	db 80, EXEGGUTOR
@@ -823,7 +823,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 80, HERACROSS
 	db 90, WEEPINBELL
 	; day
-	db 80, LEDIAN
+	db 90, LEDIAN
 	db 80, SCYTHER
 	db 80, TAUROS
 	db 80, EXEGGUTOR

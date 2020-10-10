@@ -84,7 +84,7 @@ MicoloBattle:
 	closetext
 	winlosstext MicoloBeatenText, 0
 	setlasttalked ROUTE34_MICOLO
-	loadtrainer POKEMANIAC, MICOLO
+	loadtrainer POKEMANIAC, MICOLO2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -157,7 +157,7 @@ MicoloBattle:
 	waitbutton
 	winlosstext MicoloBeatenText, 0
 	setlasttalked ROUTE34_MICOLO
-	loadtrainer POKEMANIAC, MICOLO
+	loadtrainer POKEMANIAC, MICOLO2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

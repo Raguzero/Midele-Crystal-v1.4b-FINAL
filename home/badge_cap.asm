@@ -34,6 +34,6 @@ BadgeLevelTable: ; 3fef
 	db $55 ; 11 badges, level 85
 	db $55 ; 12 badges, level 85
 	db $5a ; 13 badges, level 90
-	db $64 ; 14 badges, level 100
-	db $64 ; 15 badges, level 100
+	db $5a ; 14 badges, level 90
+	db $5a ; 15 badges, level 90
 	db $64 ; 16 badges, level 100
