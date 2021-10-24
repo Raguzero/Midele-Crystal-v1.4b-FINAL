@@ -238,6 +238,7 @@ PidgeottoEvosAttacks:
 	db 1, GUST
 	db 15, QUICK_ATTACK
 	db 23, WHIRLWIND
+	db 28, STEEL_WING
 	db 33, WING_ATTACK
 	db 43, AGILITY
 	db 55, MIRROR_MOVE
@@ -250,7 +251,9 @@ PidgeotEvosAttacks:
 	db 1, GUST
 	db 1, QUICK_ATTACK
 	db 23, WHIRLWIND
+	db 28, STEEL_WING
 	db 33, WING_ATTACK
+	db 40, DOUBLE_EDGE
 	db 46, AGILITY
 	db 61, MIRROR_MOVE
 	db 0 ; no more level-up moves
@@ -274,8 +277,11 @@ RaticateEvosAttacks:
 	db 1, QUICK_ATTACK
 	db 13, HYPER_FANG
 	db 20, SCARY_FACE
+	db 25, SWORDS_DANCE
 	db 30, PURSUIT
+	db 35, THUNDER_WAVE
 	db 40, SUPER_FANG
+	db 45, REVERSAL
 	db 0 ; no more level-up moves
 
 SpearowEvosAttacks:
@@ -299,6 +305,7 @@ FearowEvosAttacks:
 	db 1, FURY_ATTACK
 	db 26, PURSUIT
 	db 32, MIRROR_MOVE
+	db 36, STEEL_WING
 	db 40, DRILL_PECK
 	db 47, AGILITY
 	db 0 ; no more level-up moves
@@ -1155,6 +1162,7 @@ FarfetchDEvosAttacks:
 	db 19, FURY_CUTTER
 	db 21, SWORDS_DANCE
 	db 25, AGILITY
+	db 27, STEEL_WING
 	db 29, BATON_PASS
 	db 34, SLASH
 	db 36, FALSE_SWIPE
@@ -2283,6 +2291,7 @@ SentretEvosAttacks:
 	db 11, QUICK_ATTACK
 	db 17, FURY_SWIPES
 	db 25, SLAM
+	db 29, DIZZY_PUNCH
 	db 33, REST
 	db 41, AMNESIA
 	db 0 ; no more level-up moves
@@ -2294,6 +2303,7 @@ FurretEvosAttacks:
 	db 1, QUICK_ATTACK
 	db 18, FURY_SWIPES
 	db 28, SLAM
+	db 33, DIZZY_PUNCH
 	db 38, REST
 	db 42, BATON_PASS
 	db 48, AMNESIA
@@ -2324,6 +2334,7 @@ NoctowlEvosAttacks:
 	db 16, HYPNOSIS
 	db 25, REFLECT
 	db 27, WING_ATTACK
+	db 29, MOONLIGHT
 	db 33, TAKE_DOWN
 	db 41, CONFUSION
 	db 44, FAINT_ATTACK
@@ -2338,30 +2349,33 @@ LedybaEvosAttacks:
 	db EVOLVE_LEVEL, 18, LEDIAN
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 8, SUPERSONIC
-	db 15, COMET_PUNCH
-	db 22, LIGHT_SCREEN
-	db 22, REFLECT
-	db 22, SAFEGUARD
-	db 29, BATON_PASS
-	db 36, SWIFT
-	db 43, AGILITY
-	db 50, DOUBLE_EDGE
+	db 1, SUPERSONIC
+	db 5, COMET_PUNCH
+	db 10, LIGHT_SCREEN
+	db 10, REFLECT
+	db 10, SAFEGUARD
+	db 14, MORNING_SUN
+	db 19, BATON_PASS
+	db 22, SWIFT
+	db 25, AGILITY
+	db 31, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 LedianEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, SUPERSONIC
-	db 15, COMET_PUNCH
-	db 24, LIGHT_SCREEN
-	db 24, REFLECT
-	db 24, SAFEGUARD
-	db 33, BATON_PASS
-	db 42, SWIFT
-	db 51, AGILITY
-	db 60, DOUBLE_EDGE
-	db 64, BARRIER
+	db 5, COMET_PUNCH
+	db 10, LIGHT_SCREEN
+	db 10, REFLECT
+	db 10, SAFEGUARD
+	db 14, MORNING_SUN
+	db 19, BATON_PASS
+	db 21, GIGA_DRAIN
+	db 21, ICE_PUNCH
+	db 21, THUNDERPUNCH
+	db 29, AGILITY
+	db 33, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 SpinarakEvosAttacks:
@@ -2492,6 +2506,11 @@ TogepiEvosAttacks:
 	db 33, ANCIENTPOWER
 	db 38, DOUBLE_EDGE
 	db 41, BATON_PASS
+	db 44, SEISMIC_TOSS
+	db 46, HEAL_BELL
+	db 49, COUNTER
+	db 52, THUNDER_WAVE
+	db 55, SUBSTITUTE
 	db 0 ; no more level-up moves
 
 TogeticEvosAttacks:
@@ -2700,12 +2719,19 @@ AipomEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, TAIL_WHIP
-	db 6, SAND_ATTACK
-	db 12, BATON_PASS
-	db 19, FURY_SWIPES
-	db 27, SWIFT
-	db 36, SCREECH
-	db 46, AGILITY
+	db 4, SAND_ATTACK
+	db 8, BATON_PASS
+	db 10, TOXIC
+	db 10, PROTECT
+	db 12, FURY_SWIPES
+	db 14, LOW_KICK
+	db 17, SWIFT
+	db 20, SCREECH
+	db 23, AGILITY
+	db 26, SLAM
+	db 30, BODY_SLAM
+	db 33, THUNDER_WAVE
+	db 44, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 SunkernEvosAttacks:
@@ -2743,7 +2769,9 @@ YanmaEvosAttacks:
 	db 22, PURSUIT
 	db 25, DETECT
 	db 28, ANCIENTPOWER
+	db 29, GIGA_DRAIN
 	db 31, SUPERSONIC
+	db 32, LEECH_LIFE
 	db 34, PSYCHIC_M
 if _CRYSTAL
 	db 37, WING_ATTACK
@@ -2760,6 +2788,7 @@ WooperEvosAttacks:
 	db 1, TAIL_WHIP
 	db 11, SLAM
 	db 21, AMNESIA
+	db 25, RECOVER
 	db 31, EARTHQUAKE
 	db 41, RAIN_DANCE
 	db 51, MIST
@@ -2772,6 +2801,7 @@ QuagsireEvosAttacks:
 	db 1, TAIL_WHIP
 	db 11, SLAM
 	db 23, AMNESIA
+	db 30, RECOVER
 	db 35, EARTHQUAKE
 	db 47, RAIN_DANCE
 	db 59, MIST
@@ -2816,6 +2846,7 @@ MurkrowEvosAttacks:
 	db 23, DRILL_PECK
 	db 26, NIGHT_SHADE
 	db 31, FAINT_ATTACK
+	db 36, STEEL_WING
 	db 41, MEAN_LOOK
 	db 44, PERISH_SONG
 	db 48, PSYCHIC_M
@@ -2885,6 +2916,7 @@ PinecoEvosAttacks:
 	db 8, SELFDESTRUCT
 	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
+	db 25, PIN_MISSILE
 	db 29, BIDE
 	db 36, EXPLOSION
 	db 43, SPIKES
@@ -2898,6 +2930,7 @@ ForretressEvosAttacks:
 	db 1, SELFDESTRUCT
 	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
+	db 25, PIN_MISSILE
 	db 29, BIDE
 	db 39, EXPLOSION
 	db 42, ROCK_SLIDE
@@ -3047,6 +3080,7 @@ HeracrossEvosAttacks:
 	db 19, FURY_ATTACK
 	db 27, COUNTER
 	db 30, ROCK_SLIDE
+	db 33, PIN_MISSILE
 	db 35, TAKE_DOWN
 	db 44, REVERSAL
 	db 47, SWORDS_DANCE
@@ -3280,6 +3314,7 @@ KingdraEvosAttacks:
 	db 29, TWISTER
 	db 40, AGILITY
 	db 51, HYDRO_PUMP
+	db 55, OUTRAGE
 	db 0 ; no more level-up moves
 
 PhanpyEvosAttacks:
