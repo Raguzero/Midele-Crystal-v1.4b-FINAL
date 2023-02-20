@@ -1428,20 +1428,20 @@ FourthPage_PlaceStatExpValues:
 
 PlaceHiddenPower:
 	ld de, .HiddenPowerString
-	hlcoord 0, 12
+	hlcoord 0, 14
 	call PlaceString
 
 	; Type
 	call GetHiddenPowerTypeString
-	hlcoord 0, 13
+	hlcoord 0, 15
 	call PlaceString
 	; Power
-	hlcoord 0, 14
+	hlcoord 0, 16
 	ld de, .HiddenPowerPWRString
 	call PlaceString
 	call GetHiddenPowerPower
 
-	hlcoord 4, 14
+	hlcoord 4, 16
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	ld de, wBuffer1
 	call PrintNum

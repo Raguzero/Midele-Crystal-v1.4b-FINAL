@@ -2090,7 +2090,6 @@ MidelePower:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
 	buildopponentrage
 	allstatsup
 	heal

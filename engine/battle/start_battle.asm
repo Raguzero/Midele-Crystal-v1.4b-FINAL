@@ -128,6 +128,16 @@ PlayBattleMusic: ; 2ee6c
 	jp z, .done
 	ld a, [wOtherTrainerClass]
 .not_avader
+
+	ld a, [wOtherTrainerClass]
+	ld de, MUSIC_ZINNIABATTLE
+	cp SCIENTIST
+	jr nz, .not_phent
+	ld a, [wOtherTrainerID]
+	cp PHENT
+	jp z, .done
+	ld a, [wOtherTrainerClass]
+.not_phent
 	; NUEVO MUSICAS
 
 	; They should have included EXECUTIVEM, EXECUTIVEF, and SCIENTIST too...
@@ -192,8 +202,26 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CHAMPIONBATTLE_B2W2
 	; If the trainer id matches, done
 	cp GOLDY
-	jr z, .done_custom_music
+	jp z, .done_custom_music
 .not_goldy
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp SUPER_NERD
+	jr nz, .not_darki
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_XYLEGENDBATTLE
+	; If the trainer id matches, done
+	cp DARKI
+	jp z, .done_custom_music
+.not_darki
 	;;;;;;;
 
 	;;;;;;;;
@@ -211,8 +239,65 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CIPHERPEONBATTLE
 	; If the trainer id matches, done
 	cp RAGU
-	jr z, .done_custom_music
+	jp z, .done_custom_music
 .not_ragu
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp CAMPER
+	jr nz, .not_exi
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_SANTALUNE
+	; If the trainer id matches, done
+	cp EXI
+	jp z, .done_custom_music
+.not_exi
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp FISHER
+	jr nz, .not_kaisser
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_HEARTMULHOLLAND
+	; If the trainer id matches, done
+	cp KAISSER
+	jp z, .done_custom_music
+.not_kaisser
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp BEAUTY
+	jr nz, .not_entropia
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_EVERGRANDECITY
+	; If the trainer id matches, done
+	cp ENTROPIA
+	jp z, .done_custom_music
+.not_entropia
 	;;;;;;;
 
 	;;;;;;;;
@@ -265,7 +350,7 @@ PlayBattleMusic: ; 2ee6c
 	; Load trainer id at a
 	; Load music at de
 	ld a, b
-	ld de, MUSIC_WALLYBATTLE
+	ld de, MUSIC_LOOKGLADION
 	; If the trainer id matches, done
 	cp LAVNDER
 	jr z, .done_custom_music
@@ -278,7 +363,7 @@ PlayBattleMusic: ; 2ee6c
 
 	; If the trainer is not from SCIENTIST trainer class,
 	; continue to next trainer
-	cp POKEMANIAC
+	cp MASTERMIND
 	jr nz, .not_micolo
 
 	; Load trainer id at a
@@ -336,6 +421,25 @@ PlayBattleMusic: ; 2ee6c
 	; If the trainer is not from SCIENTIST trainer class,
 	; continue to next trainer
 	cp JUGGLER
+	jr nz, .not_utalawea
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_GAMECORNER_SINNOH
+	; If the trainer id matches, done
+	cp UTALAWEA
+	jr z, .done_custom_music
+.not_utalawea
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp HIKER
 	jr nz, .not_merum
 
 	; Load trainer id at a
@@ -365,6 +469,24 @@ PlayBattleMusic: ; 2ee6c
 	cp PACOBEER
 	jr z, .done_custom_music
 .not_pacobeer
+
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp SWIMMERM
+	jr nz, .not_pacobeer2
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_LASTPOKEMON
+	; If the trainer id matches, done
+	cp PACOBEER2
+	jr z, .done_custom_music
+.not_pacobeer2
 	;;;;;;;
 	jr .done_custom_trainer
 

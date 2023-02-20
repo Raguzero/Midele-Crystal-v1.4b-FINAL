@@ -124,6 +124,9 @@ FuchsiaCityPokefanM:
 FuchsiaCityTeacher:
 	jumptextfaceplayer FuchsiaCityTeacherText
 
+FuchsiaCityGuardSafari:
+	jumptextfaceplayer FuchsiaCityGuardSafariText
+
 FuchsiaCitySign:
 	jumptext FuchsiaCitySignText
 
@@ -175,6 +178,12 @@ FuchsiaCityTeacherText:
 	para "considering it's"
 	line "FUCHSIA's main"
 	cont "attraction."
+	done
+
+FuchsiaCityGuardSafariText:
+	text "Only you can"
+	line "pass if you have"
+	cont "all KANTO badges."
 	done
 
 FuchsiaCitySignText:
@@ -251,10 +260,11 @@ FuchsiaCity_MapEvents:
 	bg_event 20, 27, BGEVENT_READ, FuchsiaCityPokecenterSign
 	bg_event  6, 13, BGEVENT_READ, FuchsiaCityMartSign
 
-	db 5 ; object events
+	db 6 ; object events
 	object_event 23, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaCityYoungster, -1
 	object_event 13,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FuchsiaCityPokefanM, -1
 	object_event 16, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FuchsiaCityTeacher, -1
 	object_event  8,  1, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaCityFruitTree, -1
 	object_event 8, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 2, Zzz2Battle, EVENT_BEAT_ZZZ2
+	object_event 18,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaCityGuardSafari, EVENT_BEAT_BLUE
 

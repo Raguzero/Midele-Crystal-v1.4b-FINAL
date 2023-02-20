@@ -50,7 +50,6 @@ HallOfFame_MapScripts:
 	setevent EVENT_PRYCE_REMATCH
 	setevent EVENT_CLAIR_REMATCH
 	clearevent EVENT_BEAT_RAGU
-	clearevent EVENT_BEAT_PACOCHEF
 	clearevent EVENT_BEAT_GOLDY
 	clearevent EVENT_BEAT_SPOLKER
 	clearevent EVENT_BEAT_MERUM
@@ -62,7 +61,6 @@ HallOfFame_MapScripts:
 	clearevent EVENT_BEAT_TRAINER9 ; SAPPHIRE
 	clearevent EVENT_BEAT_SHELEA
 	clearevent EVENT_BEAT_EXI
-	clearevent EVENT_BEAT_SANTYAGO
 	clearevent EVENT_12 ; DENYS
 	clearevent EVENT_13 ; KAISSER
 	clearevent EVENT_14 ; JZOMBIE

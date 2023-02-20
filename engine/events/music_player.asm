@@ -1,5 +1,5 @@
 MUSIC_NAME_LENGTH EQU 16 ; max music name length
-NUMBER_OF_MENU_SONGS   EQU 14
+NUMBER_OF_MENU_SONGS   EQU 19
 
 ; Cómo añadir una música al reproductor:
 ;   1. Aumenta el valor de NUMBER_OF_MENU_SONGS en 1
@@ -28,11 +28,11 @@ MusicPlayer:
   call PlayMusic
 .no_play_song
   ret
+
 .cancel_song
   ld a, 0
   ld [wCustomBattleMusic], a
   ret
-
 
 ChooseMusic:
   call FadeToMenu
@@ -155,10 +155,10 @@ MusicMenu:
   db NUMBER_OF_MENU_SONGS; Number of songs (plus cancel)
 
   ; Music menu songs indices
-COUNTER = 1
+CONTADOR = 1
 rept NUMBER_OF_MENU_SONGS
-  db COUNTER
-COUNTER = COUNTER + 1
+  db CONTADOR
+CONTADOR = CONTADOR + 1
 endr
 
   db 0 ; cancel
@@ -178,7 +178,12 @@ MusicMenuSongs:
 	db MUSIC_SANTALUNE
 	db MUSIC_MAXIEARCHIEBATTLE
 	db MUSIC_ALOLAELITEFOURBATTLE
-  db MUSIC_GAMECORNER_SINNOH
+	db MUSIC_HEARTMULHOLLAND
+	db MUSIC_EVERGRANDECITY
+	db MUSIC_XYLEGENDBATTLE
+    db MUSIC_GAMECORNER_SINNOH
+ 	db MUSIC_ZINNIABATTLE
+	db MUSIC_LOOKGLADION
 
 ; Music names corresponding to MUSIC_* constants
 MusicNames:
@@ -198,7 +203,12 @@ endr
   dw .Santalune
   dw .MaxieArchieBattle
   dw .Elite4AlolaBattle
+  dw .HeartMulHolland
+  dw .EverGrandeCity
+  dw .XYLegendBattle
   dw .GameCornerSinnoh
+  dw .ZINNIABATTLE
+  dw .LOOKGLADION
 
 .None:              db "NONE@"
 .FinalBattle:       db "FINAL BATTLE@"
@@ -214,7 +224,12 @@ endr
 .Santalune:         db "SANTALUNE@"
 .MaxieArchieBattle: db "MAXIE&ARCHIE@"
 .Elite4AlolaBattle: db "ELITE4 ALOLA@"
+.HeartMulHolland:   db "HEARTMULHOLLAND@"
+.EverGrandeCity:    db "EVERGRANDECITY@"
+.XYLegendBattle:    db "XY LEGENDBATTLE@"
 .GameCornerSinnoh:  db "SINNOH CASINO@"
+.ZINNIABATTLE:      db "ZINNIA BATTLE@"
+.LOOKGLADION:       db "LOOK GLADION@"
 
 CancelText:         db "CANCEL@"
 WhichSongToText:     db "Which song to@"

@@ -172,6 +172,7 @@ KRIS EQU __enum__
 	const Zzz
 	const Zzz2
 	const Zzz3
+	const Zzz4
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD

@@ -180,7 +180,27 @@ MicoloHideoutFurryNoteScript:
   waitbutton
   closetext
   end
-
+  
+MicoloHideoutFelipexNoteScript:
+  opentext
+  writetext MicoloHideoutFelipexNoteText
+  waitbutton
+  closetext
+  end
+  
+MicoloHideoutDarkiNoteScript:
+  opentext
+  writetext MicoloHideoutDarkiNoteText
+  waitbutton
+  closetext
+  end
+  
+MicoloHideoutZzzNoteScript:
+  opentext
+  writetext MicoloHideoutZzzNoteText
+  waitbutton
+  closetext
+  end
 
 MicoloHideoutFDEScript:
   opentext
@@ -301,33 +321,64 @@ MicoloHideoutJournal1Text:
 
 MicoloHideoutJournal2Text:
   text "Diario de Micolo,"
-  line "4 de febrero."
-  para "A.VADER ha"
-  line "aparecido y le he"
-  cont "dado varios de mis"
-  cont "MEW."
-  para "Dice que los usara"
-  line "para liberar a"
-  cont "ULTRAMAGIC."
-  cont "El plan progresa"
-  cont "adecuadamente."
+  line "6 de enero de X"
+  para "He conseguido"
+  line "traspasar el"
+  cont "firewall de la"
+  cont "red de BILL,"
+  cont "el creador del"
+  para "sistema de"
+  line "almacenamiento de"
+  cont "#MON."
+  cont "Pero no pude"
+  cont "avanzar mas o me"
+  cont "iban a descubrir."
+  
+  para "No sin antes" 
+  line "copiar toda la"
+  cont "info sobre el"
+  cont "glitch de la"
+  para "clonacion"
+  
+  para "Saber todo sobre"
+  line "ese glitch sera"
+  cont "valioso para poder"
+  cont "llevar a cabo todos"
+  cont "mis planes."
+  
+  para "Toda la tecnologia"
+  line "de la que dispongo"
+  cont "sera de mucha"
+  cont "ayuda para ello."
   done
 
 MicoloHideoutJournal3Text:
   text "Diario de Micolo,"
-  line "23 de febrero de X"
-  para "ULTRAMAGIC ha sido"
-  line "liberado."
-  cont "Su objetivo es"
-  cont "causar caos en"
-  cont "la region para"
-  cont "poder seguir con"
-  cont "mis experimentos."
-  para "En otro orden de"
-  line "cosas, parece que"
-  cont "A.VADER se niega a"
-  cont "devolverme a mis"
-  cont "MEW."
+  line "4 de febrero."
+  para "A.VADER ha"
+  line "aparecido y le he"
+  cont "dado varios de mis"
+  cont "MEW clonados."
+  
+  para "Segun me ha"
+  line "contado, A.VADER"
+  cont "el tiene la"
+  cont "la habilidad"
+  cont "especial de ZANZA"
+  cont "que le permite ser"
+  cont "OMNIPRESENTE."
+  
+  para "Es decir, AVADER"
+  line "puede estar en"
+  cont "varios lugares al"
+  cont "mismo tiempo, lo"
+  cont "cual es muy util."
+  
+  para "Dice que usara los"
+  line "MEW para liberar a"
+  cont "ULTRAMAGIC."
+  cont "El plan progresa"
+  cont "adecuadamente."
   done
 
 MicoloHideoutNote1Text:
@@ -344,8 +395,10 @@ MicoloHideoutNote1Text:
 MicoloHideoutNote2Text:
   text "Hay algo escrito"
   line "en una nota:"
-  para "“MIDELE POWER, un"
-  line "ataque creado"
+  para "“MIDELE POWER, el"
+  line "poder del Trueno"
+  cont "de Oscuridad, un"
+  cont "ataque creado"
   cont "a partir del"
   cont "poder de MIDELE."
   para "Debemos investigar"
@@ -418,6 +471,69 @@ MicoloHideoutFurryNoteText:
   cont "Debe ser"
   cont "investigado."
   done
+  
+MicoloHideoutZzzNoteText:
+  text "Datos Sujeto 06:"
+  line "Nombre: Zzz."
+  cont "Clonacion: Apto."
+  para "Anotaciones:"
+  line "Hubo un fallo en"
+  cont "el sistema en el"
+  cont "momento de su"
+  para "creacion."
+  
+  line "Esto le hizo"
+  cont "desarrollar un"
+  cont "trastorno"
+  cont "obsesivo"
+  cont "compulsivo"
+  cont "en encontrar a"
+  cont "su sensei"
+  para "Red Krow."
+  
+  line "Sufre de ataques"
+  cont "momentaneos de"
+  cont "locura retando"
+  cont "a combate a"
+  cont "todo el que"
+  cont "encuentre en su"
+  cont "camino."
+  done
+  
+MicoloHideoutFelipexNoteText:
+  text "Datos Sujeto 07:"
+  line "Nombre: Felipex."
+  cont "Clonacion: Apto."
+  para "Anotaciones:"
+  line "Su principal"
+  cont "aficion es"
+  cont "cortarse la"
+  cont "lengua."
+  cont "Tambien suele"
+  cont "poner videos y"
+  cont "usar estrategias"
+  cont "muy sucias"
+  cont "basadas en el"
+  cont "Minimize y los"
+  cont "OHKO Moves."
+  
+  para "Se desconoce su"
+  line "paradero actual."
+  done
+  
+MicoloHideoutDarkiNoteText:
+  text "Datos Sujeto 08:"
+  line "Nombre: Darki."
+  cont "Clonacion: Apto."
+  para "Anotaciones:"
+  line "Tuvo varios"
+  cont "problemas al inicio"
+  cont "pero esta siendo"
+  cont "bastante Maduro."
+  para "Parece ser que esta"
+  line "Madurando de forma"
+  cont "adecuada"
+  done
 
 MicoloHideoutFDEText:
   text "Hay un libro que"
@@ -473,7 +589,7 @@ TrainerNerdLavender:
  end
 
 TrainerScientistPhent:
- trainer POKEMANIAC, LAVNDER, EVENT_109, ScientistPhentSeenText, ScientistPhentBeatenText, 0, .Script
+ trainer SCIENTIST, PHENT, EVENT_109, ScientistPhentSeenText, ScientistPhentBeatenText, 0, .Script
 .Script:
   endifjustbattled
   opentext
@@ -566,25 +682,31 @@ SwimmerPacochefAfterText:
   done
 
 ScientistPhentSeenText:
-  text "PHENT TEST SEEN"
-  line "PHENT TEST SEEN"
-  cont "PHENT TEST SEEN"
-  cont "PHENT TEST SEEN"
-  cont "PHENT TEST SEEN"
+  text "Mi investigacion"
+  line "apenas ha empezado" 
+  cont "a dar frutos y un"
+  cont "obstaculo como tu" 
+  cont "no puede pararme." 
+  
+  para "Quieres ver de que"
+  line "son capaces mis"
+  cont "#MON?"
   done
+
 ScientistPhentBeatenText:
-  text "PHENT TEST BEAT"
-  line "PHENT TEST BEAT"
-  cont "PHENT TEST BEAT"
-  cont "PHENT TEST BEAT"
-  cont "PHENT TEST BEAT"
+  text "No puede ser!"
+  line "Tantos meses para" 
+  cont "NADA?"
   done
+
 ScientistPhentAfterText:
-  text "PHENT TEST AFTER"
-  line "PHENT TEST AFTER"
-  cont "PHENT TEST AFTER"
-  cont "PHENT TEST AFTER"
-  cont "PHENT TEST AFTER"
+  text "No podras contra el"
+  line "poder del Trueno" 
+  cont "de Oscuridad..."
+  
+  para "Vuelvete a tu casa" 
+  line "si quieres seguir" 
+  cont "con vida."
   done
 
 NerdLavenderSeenText:
@@ -620,11 +742,32 @@ ScientistAvaderSeenText:
   done
 ScientistAvaderBeatenText:
   text "Estos MEW son"
-  line "basura."
+  line "basura!"
+  cont "No tienen la"
+  cont "divinidad del"
+  cont "poder de ZANZA!"
   done
 ScientistAvaderAfterText:
-  text "Mi derrota es"
-  line "insignificante."
+  text "Que te pasa? te"
+  line "asombra que te"
+  cont "hable ahora en"
+  cont "otro idioma?"
+  
+  para "Yo soy bilingue!"
+  line "Este idioma me lo" 
+  cont "aprendi gracias a"
+  cont "..."
+  cont "..."
+  cont "TU PRIMA!"
+  cont "(y me la tire)"
+  para "jeje!"
+  
+  para "Ah, y no te creas"
+  line "que te has salido"
+  cont "con la tuya,"
+  cont "Mi derrota es"
+  cont "insignificante."
+  
   para "Con el nuevo poder"
   line "midelar reinaremos"
   cont "sobre la region."
@@ -662,7 +805,7 @@ MicoloHideout_MapEvents:
 
   db 0 ; coord events
 
-  db 38 ; bg events
+  db 36 ; bg events
   ; PCs
   ; PC 1
   bg_event 2, 10, BGEVENT_UP, MicoloHideoutPC1Script
@@ -706,7 +849,7 @@ MicoloHideout_MapEvents:
   bg_event 27, 31, BGEVENT_READ, MicoloHideoutNote1Script
 
   ; Bookshelves 13-18
-  bg_event 30, 31, BGEVENT_READ, MicoloHideoutNote2Script
+  bg_event 30, 31, BGEVENT_READ, MicoloHideoutNote1Script
   bg_event 31, 31, BGEVENT_READ, MicoloHideoutGoldyNoteScript
   bg_event 32, 31, BGEVENT_READ, MicoloHideoutTopoNoteScript
   bg_event 33, 31, BGEVENT_READ, MicoloHideoutSantyNoteScript
@@ -715,11 +858,9 @@ MicoloHideout_MapEvents:
 
   ; Bookshelves 19-24
   bg_event 30, 35, BGEVENT_READ, MicoloHideoutNote2Script
-  bg_event 31, 35, BGEVENT_READ, MicoloHideoutGoldyNoteScript
-  bg_event 32, 35, BGEVENT_READ, MicoloHideoutTopoNoteScript
-  bg_event 33, 35, BGEVENT_READ, MicoloHideoutSantyNoteScript
-  bg_event 34, 35, BGEVENT_READ, MicoloHideoutPacoNoteScript
-  bg_event 35, 35, BGEVENT_READ, MicoloHideoutFurryNoteScript
+  bg_event 31, 35, BGEVENT_READ, MicoloHideoutZzzNoteScript
+  bg_event 32, 35, BGEVENT_READ, MicoloHideoutFelipexNoteScript
+  bg_event 33, 35, BGEVENT_READ, MicoloHideoutDarkiNoteScript
 
   db 10 ; object events
   object_event  10,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN,   0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerOfficerTopo, -1

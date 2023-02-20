@@ -1,10 +1,10 @@
-db "DOLL@" ; species name
-dw 305, 295 ; height, weight
+db "SEAL@" ; species name
+dw 298, 200 ; height, weight
 
 db   "A #MON that"
 next "was discovered"
 next "very recently."
 
-page "It is said that"
-next "it'll curse whoever"
-next "touches its nail.@"
+page "The sea water"
+next "warms up when one"
+next "of these is near.@"

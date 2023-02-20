@@ -94,12 +94,12 @@ TrainerOfficerFurry:
   closetext
   end
 
-TrainerCloneMewtwo2:
-  trainer CLONE, MEWTWO_T, EVENT_10F, CloneMewtwo2SeenText, CloneMewtwo2BeatenText, 0, .Script
+TrainerZzz4:
+  trainer SCHOOLBOY, Zzz4, EVENT_10F, Zzz4SeenText, Zzz4BeatenText, 0, .Script
 .Script:
   endifjustbattled
   opentext
-  writetext CloneMewtwo2AfterText
+  writetext Zzz4AfterText
   waitbutton
   closetext
   end
@@ -161,20 +161,165 @@ MicoloHideoutBeatenText:
   done
 
 MicoloHideoutAfterText:
-  text "MAGIKARP: eres un"
-  line "noob."
-  para "FEEBAS: tu mas."
+  text "Todo acabo???"
+  line "Como has podido"
+  cont "derrotarme?"
+  cont "Como has podido"
+  cont "derrotar a mi"
+  para "PODER MIDELAR?"
+  
+  para "Has arruinado"
+  line "todo mi plan"
+  cont "Y ahora que?"
+  cont "Que va a pasar"
+  cont "ahora??"
+  cont "Te chivaras a"
+  cont "MELKOR el"
+  cont "JEFE POLICIA"
+  cont "de JOHTO y me"
+  cont "banearan a mi"
+  cont "y a todos mis"
+  cont "valiosos clones"
+  para "subditos?"
+  
+  para "Que te parece si"
+  line "olvidamos todo"
+  para "lo que ha pasado?"
+  
+  para "Si... eso es!"
+  line "Te doy permiso"
+  cont "para usar este"
+  cont "lugar en tu"
+  para "beneficio."
+  
+  para "A partir de ahora"
+  line "eres un miembro"
+  cont "honorifico de"
+  cont "la MAFIA."
   done
 
-CloneMewtwo2SeenText:
-  text "PRAISE THE MICO."
+Zzz4SeenText:
+  text "Asi que eres"
+  line "tu otra vez!"
+  cont "Este es mi..."
+  para "hogar."
+  
+  para "Si, Yo naci aqui,"
+  line "pero nunca nadie" 
+  cont "me ha hecho caso."
+  
+  para "Me ignoran..."
+  line "Es como si... me"
+  cont "tratasen como a"
+  cont "un objeto..."
+  cont "como a un loco"
+  cont "o como si fuese"
+  cont "basura..."
+  cont "MALDITA SEAAAA!"
+  cont "PALLASO!"
+  
+  para "Es todo por tu"
+  line "maldita CULPA!!"
+  
+  para "Me creia un pro"
+  line "venciendo a..."
+  cont "todos con mi"
+  cont "fantastico"
+  para "monotipo NORMAL."
+  
+  para "Pero entonces..."
+  line "apareciste tu..."
+  cont "en la RUTA 6"
+  cont "y me diste una"
+  cont "soberana paliza"
+  cont "de jamas olvidar."
+  
+  para "Pense... bueno,"
+  line "hasta los proasos"
+  cont "como yo podemos"
+  cont "perder a veces."
+  
+  para "Pero entonces..."
+  line "nos volvimos a"
+  cont "encontrar en" 
+  cont "FUCHSIA CITY."
+  
+  para "Y te rete a un"
+  line "combate, habia"
+  cont "llegado la hora de"
+  cont "mi VENGANZA!"
+  para "Pero... entonces"
+  line "..."
+  cont "MALDITA SEAAAAAA!"
+  cont "Me volviste a"
+  cont "dar otra soberana"
+  para "PALIZAAAAAA!"
+
+  para "Desde ese dia..."
+  line "Entrene duramente"
+  cont "cada dia a mis"
+  cont "#MON."
+  cont "Incluso venci a"
+  cont "todos los Lideres"
+  cont "de Gym de KANTO y"
+  cont "me dieron un"
+  cont "permiso para ir"
+  para "a SILVER CAVE."
+  
+  para "Tenia que ir alli"
+  line "ya que habia oido"
+  cont "rumores de que"
+  cont "Red Krow estaba"
+  cont "alli."
+  
+  para "Pero cuando estaba"
+  line "terminando mi"
+  cont "viaje alli..."
+  cont "Apareciste de"
+  cont "nuevo en SILVER"
+  para "CAVE."
+  
+  para "Fue una brutal"
+  line "batalla. Tanto"
+  cont "que me esforce al"
+  cont "maximo..."
+  cont "Pero de nada..."
+  cont "sirvio, una vez"
+  cont "mas, me volviste"
+  para "a derrotar."
+ 
+  para "Ademas Red Krow no"
+  line "estaba alli."
+  cont "Ese RED, no era"
+  para "mi sensei."
+  
+  para "Pero ya se acabo"
+  line "el que te rias de"
+  cont "mi..."
+  cont "He usado una"
+  cont "maquina para"
+  cont "maximimar al"
+  cont "maximo el"
+  cont "potencial de mis"
+  cont "#MON."
+  cont "Esta vez la"
+  cont "victoria es mia"
+  cont "y solo mia..."
+  cont "Te humillare de"
+  cont "tal forma que"
+  cont "jamas volveras a"
+  cont "jugar a un juego"
+  cont "de #MON."
   done
 
-CloneMewtwo2BeatenText:
-  text "VIVA MICOLO."
+Zzz4BeatenText:
+  text "Me has dejado"
+  line "roto2."
+  cont "..."
+  cont "..."
   done
 
-CloneMewtwo2AfterText:
+Zzz4AfterText:
   text "LOOOOOOOOL"
   done
 
@@ -241,7 +386,7 @@ MicoloHideoutBasement_MapEvents:
 
   db 5 ; object events
   object_event  5, 7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerOfficerFurry, -1
-  object_event  7, 7, SPRITE_MONSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCloneMewtwo2, -1
+  object_event  7, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerZzz4, -1
   object_event  6, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerMicolo, -1
   object_event  2, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MicoloHideoutBasementCatermano, EVENT_111
   object_event  3, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutBasementPPUp, EVENT_116

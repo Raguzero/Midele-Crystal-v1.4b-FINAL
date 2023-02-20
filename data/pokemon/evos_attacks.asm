@@ -1398,6 +1398,7 @@ VoltorbEvosAttacks:
 	db EVOLVE_LEVEL, 30, ELECTRODE
 	db 0 ; no more evolutions
 	db 1, TACKLE
+	db 4, THUNDERSHOCK
 	db 9, SCREECH
 	db 17, SONICBOOM
 	db 21, SPARK
@@ -1415,8 +1416,9 @@ ElectrodeEvosAttacks:
 	db 1, TACKLE
 	db 1, SCREECH
 	db 1, SONICBOOM
-	db 1, SELFDESTRUCT
+	db 1, THUNDERSHOCK
 	db 21, SPARK
+	db 23, SELFDESTRUCT
 	db 29, ROLLOUT
 	db 33, THUNDER_WAVE
 	db 34, LIGHT_SCREEN
@@ -2051,34 +2053,46 @@ ArticunoEvosAttacks:
 	db 49, ICE_BEAM
 	db 61, REFLECT
 	db 73, BLIZZARD
+    db 100, REST
+    db 100, ICE_BEAM
+    db 100, SLEEP_TALK
+    db 100, BUBBLEBEAM
 	db 0 ; no more level-up moves
 
 ZapdosEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, PECK
-	db 1, THUNDERSHOCK
-	db 13, THUNDER_WAVE
-	db 18, DETECT
-	db 25, AGILITY
-	db 30, ANCIENTPOWER
-	db 37, THUNDERBOLT
-	db 49, DRILL_PECK
-	db 61, LIGHT_SCREEN
-	db 73, THUNDER
+    db 0 ; no more evolutions
+    db 1, PECK
+    db 1, THUNDERSHOCK
+    db 13, THUNDER_WAVE
+    db 18, DETECT
+    db 25, AGILITY
+    db 30, ANCIENTPOWER
+    db 37, THUNDERBOLT
+    db 49, DRILL_PECK
+    db 61, LIGHT_SCREEN
+    db 73, THUNDER
+    db 100, REST
+    db 100, THUNDERBOLT
+    db 100, SLEEP_TALK
+    db 100, DRILL_PECK
 	db 0 ; no more level-up moves
 
 MoltresEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, WING_ATTACK
-	db 1, EMBER
-	db 13, FIRE_SPIN
-	db 18, ENDURE
-	db 25, AGILITY
-	db 30, ANCIENTPOWER
-	db 37, SOLARBEAM
-	db 49, FLAMETHROWER
-	db 61, SAFEGUARD
-	db 73, SKY_ATTACK
+    db 0 ; no more evolutions
+    db 1, WING_ATTACK
+    db 1, EMBER
+    db 13, FIRE_SPIN
+    db 18, ENDURE
+    db 25, AGILITY
+    db 30, ANCIENTPOWER
+    db 37, SOLARBEAM
+    db 49, FLAMETHROWER
+    db 61, SAFEGUARD
+    db 73, SKY_ATTACK
+    db 100, REST
+    db 100, FLAMETHROWER
+    db 100, SLEEP_TALK
+    db 100, TOXIC
 	db 0 ; no more level-up moves
 
 DratiniEvosAttacks:
@@ -2129,19 +2143,23 @@ DragoniteEvosAttacks:
 	db 0 ; no more level-up moves
 
 MewtwoEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, CONFUSION
-	db 1, DISABLE
-	db 11, MIST
-	db 22, SWIFT
-	db 33, BARRIER
-	db 44, FUTURE_SIGHT
-	db 55, RECOVER
-	db 66, PSYCHIC_M
-	db 77, AMNESIA
-	db 88, PSYCH_UP
-	db 99, SAFEGUARD
-	db 0 ; no more level-up moves
+    db 0 ; no more evolutions
+    db 1, CONFUSION
+    db 1, DISABLE
+    db 11, MIST
+    db 22, SWIFT
+    db 33, BARRIER
+    db 44, FUTURE_SIGHT
+    db 55, RECOVER
+    db 66, PSYCHIC_M
+    db 77, AMNESIA
+    db 88, PSYCH_UP
+    db 99, SAFEGUARD
+    db 100, RECOVER
+    db 100, PSYCHIC_M
+    db 100, SUBMISSION
+    db 100, ICE_BEAM
+    db 0 ; no more level-up moves
 
 MewEvosAttacks:
 	db 0 ; no more evolutions
@@ -3603,17 +3621,21 @@ TyranitarEvosAttacks:
 	db 0 ; no more level-up moves
 
 LugiaEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, AEROBLAST
-	db 11, SAFEGUARD
-	db 22, GUST
-	db 33, RECOVER
-	db 44, HYDRO_PUMP
-	db 55, RAIN_DANCE
-	db 66, SWIFT
-	db 77, WHIRLWIND
-	db 88, ANCIENTPOWER
-	db 99, FUTURE_SIGHT
+    db 0 ; no more evolutions
+    db 1, AEROBLAST
+    db 11, SAFEGUARD
+    db 22, GUST
+    db 33, RECOVER
+    db 44, HYDRO_PUMP
+    db 55, RAIN_DANCE
+    db 66, SWIFT
+    db 77, WHIRLWIND
+    db 88, ANCIENTPOWER
+    db 99, FUTURE_SIGHT
+    db 100, ICE_BEAM
+    db 100, AEROBLAST
+    db 100, RECOVER
+    db 100, PSYCHIC_M
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:
@@ -3628,6 +3650,10 @@ HoOhEvosAttacks:
 	db 77, WHIRLWIND
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
+    db 100, SACRED_FIRE
+    db 100, THUNDERBOLT
+    db 100, RECOVER
+    db 100, PSYCHIC_M
 	db 0 ; no more level-up moves
 
 CelebiEvosAttacks:

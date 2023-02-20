@@ -105,10 +105,10 @@ PlayersHousePosterScript:
 	describedecoration DECODESC_POSTER
 
 PlayersHouseRadioScript:
-	opentext
-	givepoke BOMBSEEKER, 100
-	closetext
-	end
+	;opentext
+	;givepoke BOMBSEEKER, 100
+	;closetext
+	;end
     ;setevent EVENT_BEAT_ELITE_FOUR ;quitar
     ;setevent EVENT_BEAT_RED  ;quitar
 	;setevent EVENT_BEAT_AVADER  ;quitar
@@ -236,7 +236,7 @@ PlayersHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event  7,  0, MICOLO_HIDEOUT, 1
+	warp_event  7,  0, PLAYERS_HOUSE_1F, 3
 
 	db 0 ; coord events
 

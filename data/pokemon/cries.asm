@@ -257,7 +257,7 @@ PokemonCries:: ; f2787
 	mon_cry CRY_AIPOM,       $000,  $180 ; HO_OH
 	mon_cry CRY_ENTEI,       $14a,  $111 ; CELEBI
     mon_cry CRY_METAPOD,    -$84,  $160 ; MICOMON
-	mon_cry CRY_RAIKOU,    -$84,  $160 ; BOMBSEEKER
+	mon_cry CRY_SEEL,    -$84,  $160 ; BOMBSEEKER
 	mon_cry CRY_NIDORAN_M,      0,     0 ; 254
 	mon_cry CRY_NIDORAN_M,      0,     0 ; 255
 ; f2d81

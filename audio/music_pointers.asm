@@ -125,5 +125,10 @@ Music: ; e906e
 	dba Music_SantaluneForest
 	dba Music_MaxieArchieBattle
 	dba Music_AlolaEliteFourBattle
+    dba Music_HeartMulholland
+	dba Music_EverGrandeCity
+	dba Music_XYLegendBattle
 	dba Music_SinnohGameCorner
+	dba Music_ZinniaBattle
+	dba Music_LookGladion
 	dba Music_CinnabarMansion

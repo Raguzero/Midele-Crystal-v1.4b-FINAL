@@ -162,6 +162,11 @@ SECTION "Custom Songs 2", ROMX
 
 INCLUDE "audio/music/gamecornersinnoh.asm"
 INCLUDE "audio/music/cinnabarmansion.asm"
+INCLUDE "audio/music/lookgladion.asm"
+INCLUDE "audio/music/zinniabattle.asm"
+INCLUDE "audio/music/evergrandecity.asm"
+INCLUDE "audio/music/xylegendbattle.asm"
+INCLUDE "audio/music/heartmulholland.asm"
 
 SECTION "Sound Effects", ROMX
 

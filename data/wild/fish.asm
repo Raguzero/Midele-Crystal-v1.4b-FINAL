@@ -78,7 +78,7 @@ FishGroups: ; 92488
 .Pond_Super: ; 9255b
 	db  40 percent,     POLIWAG,    60
 	db  70 percent,     time_group 7
-	db  90 percent + 1, MAGIKARP,   60
+	db  90 percent + 1, REMORAID,   60
 	db 100 percent,     POLIWAG,    60
 
 .Dratini_Old: ; 92567
@@ -91,7 +91,7 @@ FishGroups: ; 92488
 	db  90 percent + 1, MAGIKARP,   20
 	db 100 percent,     time_group 8
 .Dratini_Super: ; 9257c
-	db  40 percent,     MAGIKARP,   60
+	db  40 percent,     REMORAID,   60
 	db  70 percent,     time_group 9
 	db  90 percent + 1, MAGIKARP,   60
 	db 100 percent,     DRAGONAIR,  60
@@ -113,7 +113,7 @@ FishGroups: ; 92488
 
 .Remoraid_Swarm_Old: ; 925a9
 	db  70 percent + 1, MAGIKARP,   10
-	db  85 percent + 1, MAGIKARP,   10
+	db  85 percent + 1, REMORAID,   10
 	db 100 percent,     REMORAID,   10
 .Remoraid_Swarm_Good: ; 925b2
 	db  35 percent,     MAGIKARP,   20
@@ -153,7 +153,7 @@ FishGroups: ; 92488
 .Dratini_2_Super: ; 92600
 	db  40 percent,     MAGIKARP,   60
 	db  70 percent,     time_group 17
-	db  90 percent + 1, MAGIKARP,   60
+	db  90 percent + 1, REMORAID,   60
 	db 100 percent,     DRAGONAIR,  60
 
 .WhirlIslands_Old: ; 9260c
@@ -201,7 +201,7 @@ FishGroups: ; 92488
 .Remoraid_Super: ; 92663
 	db  40 percent,     POLIWAG,    60
 	db  70 percent,     time_group 7
-	db  90 percent + 1, MAGIKARP,   60
+	db  90 percent + 1, REMORAID,   60
 	db 100 percent,     REMORAID,   60
 ; 9266f
 
