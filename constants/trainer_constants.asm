@@ -275,13 +275,6 @@ KRIS EQU __enum__
 	const JACLYN
 	const BRENDA
 	const CASSIE
-	const CAROLINE
-	const CARLENE
-	const JESSICA
-	const RACHAEL
-	const ANGELICA
-	const KENDRA
-	const VERONICA
 	const JULIA
 	const THERESA
 	const VALERIE
@@ -599,6 +592,7 @@ KRIS EQU __enum__
 	const RODNEY
 	const SANTYAGO
 	const HYPEANTO
+	const SANTYAGO2
 
 	trainerclass PICNICKER ; 35
 	const LIZ1

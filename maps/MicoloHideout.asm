@@ -609,7 +609,7 @@ TrainerSwimmerPacochef:
   end
 
 TrainerPsychicSanty:
-  trainer PSYCHIC_T, SANTYAGO, EVENT_10B, PsychicSantySeenText, PsychicSantyBeatenText, 0, .Script
+  trainer PSYCHIC_T, SANTYAGO2, EVENT_10B, PsychicSantySeenText, PsychicSantyBeatenText, 0, .Script
 .Script:
   endifjustbattled
   opentext
