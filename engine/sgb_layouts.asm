@@ -45,6 +45,7 @@ LoadSGBLayout: ; 864c
 	dw .SGB13
 	dw .SGB_PackPals
 	dw .SGB_TrainerCard
+	dw .SGB_TrainerCardKanto
 	dw .SGB_PokedexUnownMode
 	dw .SGB_BillsPC
 	dw .SGB_UnownPuzzle
@@ -423,6 +424,7 @@ endr
 
 .SGB0d:
 .SGB_TrainerCard: ; 891a
+.SGB_TrainerCardKanto:
 	ld hl, PalPacket_Diploma
 	ld de, BlkPacket_9a86
 	ret
