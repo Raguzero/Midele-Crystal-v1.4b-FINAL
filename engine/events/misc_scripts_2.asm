@@ -9,6 +9,22 @@ RepelWoreOffScript:: ; 0x13619
 	; REPEL's effect wore off.
 	text_jump UnknownText_0x1bd308
 	db "@"
+	
+UseAnotherRepelScript::
+	opentext
+	copybytetovar wRepelType
+	itemtotext MEM_BUFFER_0, USE_SCRIPT_VAR ; o  	itemtotext USE_SCRIPT_VAR, MEM_BUFFER_0 ???
+	writetext .text
+	yesorno
+	iffalse .done
+	callasm DoItemEffect
+.done
+	closetext
+	end
+
+.text:
+	text_jump _UseAnotherRepelText
+	db "@"
 
 HiddenItemScript:: ; 0x13625
 	opentext
