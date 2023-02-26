@@ -348,16 +348,14 @@ CheckPokerus: ; c419
 ; c422
 
 ResetLuckyNumberShowFlag: ; c422
-	farcall RestartLuckyNumberCountdown
-	ld hl, wLuckyNumberShowFlag
-	res LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
 	farcall LoadOrRegenerateLuckyIDNumber
 	ret
 ; c434
 
 CheckLuckyNumberShowFlag: ; c434
-	farcall _CheckLuckyNumberShowFlag
-	jp ScriptReturnCarry
+	ld hl, wLuckyNumberShowFlag
+	bit LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
+	ret
 ; c43d
 
 SnorlaxAwake: ; 0xc43d

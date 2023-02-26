@@ -194,8 +194,8 @@ UnknownText_0x75d65:
 	text "Speaking of the"
 	line "RADIO STATION,"
 
-	para "what's this week's"
-	line "lucky number?"
+	para "what's today's lucky"
+	line "number?"
 	done
 
 FastShipBedText1:
