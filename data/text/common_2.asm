@@ -532,6 +532,40 @@ UnknownText_0x1c0a4e::
 	para "<PLAYER> whited"
 	line "out!"
 	done
+	
+_WhitedOutToWildMonText::
+	text "<PLAYER> is out of"
+	line "useable #MON!"
+
+	para "<PLAYER> panicked"
+	line "and dropped"
+	cont "¥@"
+	deciram hMoneyTemp, 3, 6
+	text "…"
+
+	para "<……><……><……>"
+	line "<……><……><……>"
+
+	para "<PLAYER> whited"
+	line "out!"
+	done
+
+_WhitedOutToTrainerText::
+	text "<PLAYER> is out of"
+	line "useable #MON!"
+
+	para "<PLAYER> paid"
+	line "¥@"
+	deciram hMoneyTemp, 3, 6
+	text " to the"
+	cont "winner…"
+
+	para "<……><……><……>"
+	line "<……><……><……>"
+
+	para "<PLAYER> whited"
+	line "out!"
+	done
 
 UnknownText_0x1c0a77::
 	text "Yes! ITEMFINDER"

@@ -1392,6 +1392,8 @@ Script_reloadmapafterbattle:
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	ld [hl], $0
+	ld hl, wWildBattlePanic
+	ld [hl], d
 	ld a, [wBattleResult]
 	and $3f
 	cp $1
