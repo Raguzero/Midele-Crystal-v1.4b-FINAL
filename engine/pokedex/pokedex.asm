@@ -466,12 +466,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	ret
 
 .Cry: ; 40340
-	call Pokedex_GetSelectedMon
-	ld a, [wd265]
-	call GetCryIndex
-	ld e, c
-	ld d, b
-	call PlayCry
+	ld a, [wCurPartySpecies] ; FIX BUG: Playing Entei's Pokédex cry can distort Raikou's and Suicune's
+	call PlayMonCry ; FIX BUG: Playing Entei's Pokédex cry can distort Raikou's and Suicune's
 	ret
 
 .Print: ; 4034f

@@ -1758,7 +1758,7 @@ AI_Smart_Thief: ; 38d93
 AI_Smart_Conversion2: ; 38d98
 	ld a, [wLastPlayerMove]
 	and a
-	jr nz, .asm_38dc9
+	jr z, .asm_38dc9 ; FIX BUG: "Smart" AI discourages Conversion2 after the first turn
 
 	push hl
 	dec a

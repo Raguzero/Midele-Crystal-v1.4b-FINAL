@@ -175,9 +175,9 @@ AI_Redundant: ; 2c41a
 	bit SUBSTATUS_CONFUSED, a
 	ret
 
-.FutureSight: ; 2c533
-	ld a, [wEnemyScreens]
-	bit 5, a
+.FutureSight: ; 2c533 
+	ld a, [wEnemyFutureSightCount] ; FIX BUG: AI does not discourage Future Sight when it's already been used
+	and a ; FIX BUG: AI does not discourage Future Sight when it's already been used
 	ret
 
 .Heal:

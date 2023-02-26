@@ -6628,6 +6628,7 @@ LoadEnemyMon: ; 3e8eb
 	ld bc, wEnemyMonStatsEnd - wEnemyMonStats
 	call CopyBytes
 
+	call ApplyStatusEffectOnEnemyStats ; FIX BUG: PRZ and BRN stat reductions don't apply to switched Pokémon
 	ret
 ; 3eb38
 

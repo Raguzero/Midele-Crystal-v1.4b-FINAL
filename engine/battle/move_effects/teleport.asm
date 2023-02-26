@@ -63,17 +63,14 @@ BattleCommand_Teleport: ; 36778
 	ld c, a
 	inc c
 .loop_enemy
+; If a random number >= player level / 4, Teleport will succeed
 	call BattleRandom
 	cp c
 	jr nc, .loop_enemy
 	srl b
 	srl b
 	cp b
-	; This does the wrong thing. What was
-	; probably intended was jr c, .failed
-	; The way this is made makes enemy use
-	; of Teleport always succeed if able
-	jr nc, .run_away
+	jr c, .failed ; FIX BUG: Wild Pokémon can always Teleport regardless of level difference
 .run_away
 	call UpdateBattleMonInParty
 	xor a
