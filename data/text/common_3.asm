@@ -1579,3 +1579,8 @@ MoveReminderCancelText::
 	para "move, return with"
 	line "a SILVER LEAF."
 	done
+	
+_KrissPCCantDepositTMHMText::
+	text "TMs and HMs can't"
+	line "be deposited."
+	prompt
