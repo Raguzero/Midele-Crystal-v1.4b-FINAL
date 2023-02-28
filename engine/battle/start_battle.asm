@@ -315,7 +315,7 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CHAMPIONBATTLEDPPT
 	; If the trainer id matches, done
 	cp SHELEA
-	jr z, .done_custom_music
+	jp z, .done_custom_music
 .not_shelea
 	;;;;;;;
 
@@ -412,6 +412,25 @@ PlayBattleMusic: ; 2ee6c
 	cp SANTYAGO
 	jr z, .done_custom_music
 .not_santyago
+	;;;;;;;
+	
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp PSYCHIC_T
+	jr nz, .not_santyago2
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_WALLYBATTLE
+	; If the trainer id matches, done
+	cp SANTYAGO2
+	jr z, .done_custom_music
+.not_santyago2
 	;;;;;;;
 
 	;;;;;;;;
