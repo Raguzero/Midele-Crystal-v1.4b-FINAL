@@ -13,12 +13,12 @@ GoldenrodDeptStore5F_MapScripts:
 	callback MAPCALLBACK_OBJECTS, .CheckIfSunday
 
 .CheckIfSunday:
-	checkcode VAR_WEEKDAY
-	ifequal SUNDAY, .yes
-	disappear GOLDENRODDEPTSTORE5F_RECEPTIONIST
-	return
+	;checkcode VAR_WEEKDAY
+	;ifequal SUNDAY, .yes
+	;disappear GOLDENRODDEPTSTORE5F_RECEPTIONIST
+	;return
 
-.yes
+;.yes
 	appear GOLDENRODDEPTSTORE5F_RECEPTIONIST
 	return
 
@@ -59,10 +59,10 @@ GoldenrodDeptStore5FClerkScript:
 GoldenrodDeptStore5FReceptionistScript:
 	faceplayer
 	opentext
-	checkcode VAR_WEEKDAY
-	ifnotequal SUNDAY, .EventIsOver
-	checkflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
-	iftrue .EventIsOver
+	;checkcode VAR_WEEKDAY
+	;ifnotequal SUNDAY, .EventIsOver
+	;checkflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
+	;iftrue .EventIsOver
 	special GetFirstPokemonHappiness
 	writetext UnknownText_0x56143
 	buttonsound
@@ -73,8 +73,10 @@ GoldenrodDeptStore5FReceptionistScript:
 .VeryHappy:
 	writetext UnknownText_0x5615a
 	buttonsound
+	checkitem TM_RETURN
+	iftrue .AlreadyGotTM
 	verbosegiveitem TM_RETURN
-	iffalse .Done
+	;iffalse .Done
 	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
 	closetext
 	end
@@ -88,15 +90,23 @@ GoldenrodDeptStore5FReceptionistScript:
 .NotVeryHappy:
 	writetext UnknownText_0x561d8
 	buttonsound
+	checkitem TM_FRUSTRATION
+	iftrue .AlreadyGotTM
 	verbosegiveitem TM_FRUSTRATION
-	iffalse .Done
+;	iffalse .Done
 	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
 	closetext
 	end
-
-.EventIsOver:
-	writetext UnknownText_0x56202
+	
+.AlreadyGotTM:
+	writetext GoldenrodDeptStore5FAlreadyGotTMText
 	waitbutton
+	closetext
+	end
+
+;.EventIsOver:
+	;writetext UnknownText_0x56202
+	;waitbutton
 .Done:
 	closetext
 	end
@@ -213,6 +223,11 @@ GoldenrodDeptStore5FDirectoryText:
 	line "#MON"
 
 	para "5F TM CORNER"
+	done
+	
+GoldenrodDeptStore5FAlreadyGotTMText:
+	text "Oh, you already"
+	line "have this TM…"
 	done
 
 GoldenrodDeptStore5F_MapEvents:
