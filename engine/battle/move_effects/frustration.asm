@@ -22,6 +22,10 @@ BattleCommand_FrustrationPower: ; 3790e
 	ld b, 4
 	call Divide
 	ld a, [hQuotient + 2]
+	and a
+	jr nz, .done
+	inc a
+.done
 	ld d, a
 	pop bc
 	ret
