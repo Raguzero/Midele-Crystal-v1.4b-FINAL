@@ -9405,9 +9405,8 @@ BattleStartMessage: ; 3fc8b
 
 	ld de, SFX_SHINE
 	call PlaySFX
-	call WaitSFX
 
-	ld c, 20
+	ld c, 10
 	call DelayFrames
 
 	farcall Battle_GetTrainerName

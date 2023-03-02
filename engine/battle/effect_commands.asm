@@ -1768,14 +1768,14 @@ BattleCommand_CheckHit: ; 34d32
 	bit SUBSTATUS_PROTECT, a
 	ret z
 
-	ld c, 40
+	ld c, 20
 	call DelayFrames
 
 ; 'protecting itself!'
 	ld hl, ProtectingItselfText
 	call StdBattleTextBox
 
-	ld c, 40
+	ld c, 20
 	call DelayFrames
 
 	ld a, 1
@@ -2460,7 +2460,7 @@ BattleCommand_CriticalText: ; 35175
 ; If there is no message to be printed, wait 20 frames.
 	ld a, [wCriticalHit]
 	and a
-	jr z, .wait
+	ret z
 
 	dec a
 	add a
@@ -2476,9 +2476,7 @@ BattleCommand_CriticalText: ; 35175
 	xor a
 	ld [wCriticalHit], a
 
-.wait
-	ld c, 20
-	jp DelayFrames
+	ret
 
 .texts
 	dw CriticalHitText
@@ -7331,8 +7329,8 @@ AnimateFailedMove: ; 37e77
 
 BattleCommand_MoveDelay: ; 37e80
 ; movedelay
-; Wait 40 frames.
-	ld c, 40
+; Wait 10 frames.
+	ld c, 10
 	jp DelayFrames
 
 ; 37e85
