@@ -44,7 +44,7 @@ OddEgg1:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 30, 20, 10, 0 ; PP
+	db 30, 20, 10, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -72,7 +72,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 30, 20, 10, 0 ; PP
+	db 30, 20, 10, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -99,7 +99,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 20, 10, 0 ; PP
+	db 35, 20, 10, 20 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -126,7 +126,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 20, 10, 0 ; PP
+	db 35, 20, 10, 20 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -153,7 +153,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 15, 20, 10, 0 ; PP
+	db 15, 20, 10, 20 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -180,7 +180,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 15, 20, 10, 0 ; PP
+	db 15, 20, 10, 20 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -207,7 +207,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 30, 10, 0 ; PP
+	db 35, 30, 10, 10 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -234,7 +234,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 30, 10, 0 ; PP
+	db 35, 30, 10, 10 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -261,7 +261,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 25, 10, 0, 0 ; PP
+	db 25, 10, 20, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -288,7 +288,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 25, 10, 0, 0 ; PP
+	db 25, 10, 20, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -315,7 +315,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 30, 30, 10, 0 ; PP
+	db 30, 30, 10, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -342,7 +342,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 30, 30, 10, 0 ; PP
+	db 30, 30, 10, 5 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -369,7 +369,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 10, 0, 0 ; PP
+	db 35, 10, 40, 30 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
@@ -396,7 +396,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $ec, $cc ; DVs
-	db 35, 10, 0, 0 ; PP
+	db 35, 10, 40, 30 ; PP
 	db 20 ; Happiness
     ; Pokérus strain type D (15), duration 4 (15 mod 4 + 1).
 	db $F4, 0, 0 ; Pokerus, Caught data
