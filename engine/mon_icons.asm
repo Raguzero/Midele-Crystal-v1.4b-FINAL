@@ -1,6 +1,7 @@
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
 	call ReadMonMenuIcon
+	ld [wCurIcon], a
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -9,9 +10,7 @@ LoadOverworldMonIcon: ; 8e82b
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld b, BANK(Icons)
-	ld c, 8
-	ret
+	jp GetIconBank
 ; 8e83f
 
 LoadMenuMonIcon: ; 8e83f
@@ -347,12 +346,20 @@ endr
 	ld d, [hl]
 	pop hl
 
-	lb bc, BANK(Icons), 8
+	call GetIconBank
 	call GetGFXUnlessMobile
 
 	pop hl
 	ret
 ; 8ea3f
+
+GetIconBank:
+	ld a, [wCurIcon]
+	cp ICON_MAGIKARP ; first icon in Icons2
+	lb bc, BANK("Mon Icons 1"), 8
+	ret c
+	ld b, BANK("Mon Icons 2")
+	ret
 
 GetGFXUnlessMobile: ; 8ea3f
 	ld a, [wLinkMode]
@@ -465,6 +472,8 @@ ReadMonMenuIcon: ; 8eab3
 
 
 INCLUDE "data/pokemon/menu_icons.asm"
+
+INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 INCLUDE "data/icon_pointers.asm"
 
