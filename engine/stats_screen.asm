@@ -754,12 +754,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 
 .PlaceOTInfo: ; 4e1cc (13:61cc)
 	ld de, IDNoString
-	hlcoord 0, 9
+	hlcoord 0, 8
 	call PlaceString
 	ld de, OTString
-	hlcoord 0, 12
+	hlcoord 0, 10
 	call PlaceString
-	hlcoord 2, 10
+	hlcoord 2, 9
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, wTempMonID
 	call PrintNum
@@ -767,7 +767,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call GetNicknamePointer
 	call CopyNickname
 	farcall CheckNickErrors
-	hlcoord 2, 13
+	hlcoord 2, 11
 	call PlaceString
 	ld a, [wTempMonCaughtGender]
 	and a
@@ -779,8 +779,44 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	jr z, .got_gender
 	ld a, "♀"
 .got_gender
-	hlcoord 9, 13
+	hlcoord 9, 11
 	ld [hl], a
+	
+.location
+	ld de, MetString
+	hlcoord 0, 13
+	call PlaceString
+	ld a, [wTempMonCaughtLocation]
+	ld e, a
+	farcall GetLandmarkNameS
+	ld de, wStringBuffer1
+	hlcoord 0, 14
+	call PlaceString
+
+.happiness
+	ld de, HappinessString
+	hlcoord 0, 16
+	call PlaceString
+	ld a, [wTempMonHappiness]
+    ld de, MaxString
+    cp 255
+    jr z, .got_happiness
+    ld de, PoorString
+    cp 30
+    jr c, .got_happiness
+    ld de, LowString
+    cp 70
+    jr c, .got_happiness
+	ld de, MidString
+    cp 150
+    jr c, .got_happiness
+    ld de, GoodString
+    cp 220
+    jr c, .got_happiness
+    ld de, HighString
+.got_happiness
+    hlcoord 0, 17
+    jp PlaceString
 .done
 	ret
 ; 4e216 (13:6216)
@@ -796,11 +832,35 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	dw wBufferMonOT
 ; 4e21e
 
+HappinessString:
+	db "HAPPINESS/@"
+	
+MaxString:
+	db "MAX HAPPY@"
+	
+HighString:
+	db "HAPPY@"
+	
+GoodString:
+	db "CONTENT@"
+	
+MidString:
+	db "AVERAGE@"
+	
+LowString:
+	db "UNHAPPY@"
+	
+PoorString:
+	db "MAX HATE@"
+
 IDNoString: ; 4e21e
 	db "<ID>№.@"
 OTString: ; 4e222
 	db "OT/@"
 ; 4e226
+
+MetString:
+	db "MET/@"
 
 StatsScreen_PlaceFrontPic: ; 4e226 (13:6226)
 	ld hl, wTempMonDVs
