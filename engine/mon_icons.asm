@@ -473,8 +473,6 @@ ReadMonMenuIcon: ; 8eab3
 
 INCLUDE "data/pokemon/menu_icons.asm"
 
-INCLUDE "data/pokemon/menu_icon_pals.asm"
-
 INCLUDE "data/icon_pointers.asm"
 
 INCLUDE "gfx/icons.asm"
