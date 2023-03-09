@@ -48,6 +48,43 @@ MicoloHideoutPC1Script:
   startbattle
   reloadmapafterbattle
   end
+  
+MicoloHideoutPCGiftScript:
+  opentext
+  playsound SFX_BOOT_PC
+  checkcode VAR_PARTYCOUNT
+  ifequal PARTY_LENGTH, .PartyFull
+  special GiveOddEgg
+  opentext
+  writetext MicoloHideoutPCText_GotOddEgg
+  playsound SFX_KEY_ITEM
+  waitsfx
+  playsound SFX_SHUT_DOWN_PC
+  closetext
+  end
+.PartyFull:
+	opentext
+	writetext MicoloHideoutPCText_PartyFull
+	waitbutton
+	closetext
+	end
+	
+MicoloHideoutPCText_GotOddEgg:
+	text "<PLAYER> received"
+	line "ODD EGG!"
+	done
+	
+MicoloHideoutPCText_PartyFull:
+	text "You've no room for"
+	line "this."
+	done
+	
+MicoloHideoutPCGift2Script:
+  opentext
+  giveitem RARE_CANDY, 99
+  waitbutton
+  closetext
+  end
 
 MicoloHideoutPC2Script:
   opentext
@@ -805,7 +842,7 @@ MicoloHideout_MapEvents:
 
   db 0 ; coord events
 
-  db 36 ; bg events
+  db 40 ; bg events
   ; PCs
   ; PC 1
   bg_event 2, 10, BGEVENT_UP, MicoloHideoutPC1Script
@@ -861,6 +898,12 @@ MicoloHideout_MapEvents:
   bg_event 31, 35, BGEVENT_READ, MicoloHideoutZzzNoteScript
   bg_event 32, 35, BGEVENT_READ, MicoloHideoutFelipexNoteScript
   bg_event 33, 35, BGEVENT_READ, MicoloHideoutDarkiNoteScript
+
+  ; PC Gift
+  bg_event 7, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
+  bg_event 6, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
+  bg_event 5, 0, BGEVENT_UP, MicoloHideoutPCGift2Script
+  bg_event 4, 0, BGEVENT_UP, MicoloHideoutPCGift2Script
 
   db 10 ; object events
   object_event  10,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN,   0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerOfficerTopo, -1
