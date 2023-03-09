@@ -184,7 +184,6 @@ INCLUDE "data/battle/effect_command_pointers.asm"
 SECTION "bank10", ROMX
 
 INCLUDE "engine/pokedex/pokedex.asm"
-INCLUDE "data/moves/moves.asm"
 INCLUDE "engine/evolve.asm"
 
 
@@ -622,6 +621,12 @@ SECTION "Crystal Events", ROMX
 INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
 INCLUDE "engine/events/move_relearner.asm"
+
+
+SECTION "Moves Moves", ROMX
+
+INCLUDE "data/moves/moves.asm"
+
 
 SECTION "Mobile Stadium 2", ROMX
 

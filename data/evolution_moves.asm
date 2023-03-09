@@ -59,13 +59,13 @@ EvolutionMoves::
 	db NO_MOVE      ; GROWLITHE
 	db REVERSAL ; ARCANINE 
 	db NO_MOVE      ; POLIWAG
-	db NO_MOVE      ; POLIWHIRL
+	db BUBBLEBEAM      ; POLIWHIRL
 	db ROCK_SLIDE      ; POLIWRATH
 	db NO_MOVE      ; ABRA
 	db KINESIS    ; KADABRA
 	db KINESIS   ; ALAKAZAM
 	db NO_MOVE      ; MACHOP
-	db NO_MOVE      ; MACHOKE
+	db MACH_PUNCH      ; MACHOKE
 	db NO_MOVE     ; MACHAMP 
 	db NO_MOVE      ; BELLSPROUT
 	db RAZOR_LEAF      ; WEEPINBELL
@@ -74,7 +74,7 @@ EvolutionMoves::
 	db SWORDS_DANCE      ; TENTACRUEL
 	db NO_MOVE      ; GEODUDE
 	db SUBMISSION      ; GRAVELER
-	db ROCK_SLIDE      ; GOLEM
+	db CURSE      ; GOLEM
 	db NO_MOVE      ; PONYTA
 	db SOLARBEAM      ; RAPIDASH
 	db NO_MOVE      ; SLOWPOKE
@@ -92,7 +92,7 @@ EvolutionMoves::
 	db TWINEEDLE      ; CLOYSTER 
 	db NO_MOVE      ; GASTLY
 	db MEGA_DRAIN      ; HAUNTER
-	db EXPLOSION      ; GENGAR
+	db SUBMISSION      ; GENGAR
 	db NO_MOVE      ; ONIX
 	db NO_MOVE      ; DROWZEE
 	db THUNDER_WAVE      ; HYPNO
@@ -164,7 +164,7 @@ EvolutionMoves::
 	db NO_MOVE      ; HOOTHOOT
 	db NIGHT_SHADE      ; NOCTOWL
 	db NO_MOVE      ; LEDYBA
-	db SWORDS_DANCE      ; LEDIAN
+	db MACH_PUNCH      ; LEDIAN
 	db NO_MOVE      ; SPINARAK
 	db SWORDS_DANCE      ; ARIADOS
 	db GIGA_DRAIN      ; CROBAT
@@ -250,5 +250,5 @@ EvolutionMoves::
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
-	db NO_MOVE      ; NOROWARA/MICOMON
+	db NO_MOVE      ; NOROWARA
 	db NO_MOVE      ; BOMBSEEKER
