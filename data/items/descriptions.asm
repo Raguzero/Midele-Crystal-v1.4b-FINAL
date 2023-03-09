@@ -392,8 +392,8 @@ LeafStoneDesc:
 	next "kinds of #MON.@"
 
 MetalPowderDesc:
-	db   "Raises DEFENSE of"
-	next "DITTO. (HOLD)@"
+	db   "Raises DEFENSE &"
+	next "SP.DEF of DITTO.@"
 
 NuggetDesc:
 	db   "Made of pure gold."
@@ -663,8 +663,8 @@ PinkBowDesc:
 	next "type moves. (HOLD)@"
 
 StickDesc:
-	db   "An ordinary stick."
-	next "Sell low.@"
+	db   "Doubles CRITICAL"
+	next "HIT of FARFETCH'D.@"
 
 SmokeBallDesc:
 	db   "Escape from wild"
@@ -715,8 +715,8 @@ MiracleSeedDesc:
 	next "type moves. (HOLD)@"
 
 ThickClubDesc:
-	db   "A bone of some"
-	next "sort. Sell low.@"
+	db   "Doubles ATTACK of"
+	next "CUBONE & MAROWAK.@"
 
 FocusBandDesc:
 	db   "May prevent faint-"
@@ -880,8 +880,8 @@ TeruSama21Desc:
 	db   "?@"
 
 LightBallDesc:
-	db   "An odd, electrical"
-	next "orb. (HOLD)@"
+	db   "Doubles ATTACK &"
+	next "SP.ATK of PIKACHU.@"
 
 FriendBallDesc:
 	db   "A BALL that makes"
