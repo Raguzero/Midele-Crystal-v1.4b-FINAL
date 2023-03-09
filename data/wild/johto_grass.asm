@@ -1358,7 +1358,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 16, SNUBBULL
 	db 16, PIDGEY
 	db 16, GROWLITHE
-	db 16, HOUNDOUR
+	db 16, YANMA
 	db 18, JIGGLYPUFF
 	db 10, DITTO
 	db 20, YANMA
@@ -1366,7 +1366,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 16, SNUBBULL
 	db 16, PIDGEY
 	db 16, GROWLITHE
-	db 16, HOUNDOUR
+	db 16, YANMA
 	db 18, JIGGLYPUFF
 	db 10, DITTO
 	db 20, YANMA
