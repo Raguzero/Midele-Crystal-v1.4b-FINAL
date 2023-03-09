@@ -30,7 +30,7 @@ Moves: ; 41afb
 	move GUST,         EFFECT_GUST,               40, FLYING,   100, 35,   0
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,   100, 35,   0
 	move WHIRLWIND,    EFFECT_FORCE_SWITCH,        0, NORMAL,   100, 20,   0
-	move FLY,          EFFECT_FLY,                70, FLYING,    95, 15,   0
+	move FLY,          EFFECT_FLY,                90, FLYING,    95, 15,   0
 	move BIND,         EFFECT_TRAP_TARGET,        15, NORMAL,    85, 20,   0
 	move SLAM,         EFFECT_NORMAL_HIT,         80, NORMAL,    75, 20,   0
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,    100, 25,   0
@@ -92,7 +92,7 @@ Moves: ; 41afb
 	move STUN_SPORE,   EFFECT_PARALYZE,            0, GRASS,     75, 30,   0
 	move SLEEP_POWDER, EFFECT_SLEEP,               0, GRASS,     75, 15,   0
 	move PETAL_DANCE,  EFFECT_RAMPAGE,            120, GRASS,    100, 10,   0
-	move STRING_SHOT,  EFFECT_SPEED_DOWN,          0, BUG,       95, 40,   0
+	move STRING_SHOT,  EFFECT_SPEED_DOWN_2,          0, BUG,       95, 40,   0
 	move DRAGON_RAGE,  EFFECT_STATIC_DAMAGE,      40, DRAGON,   100, 10,   0
 	move FIRE_SPIN,    EFFECT_TRAP_TARGET,        35, FIRE,      85, 15,   0
 	move THUNDERSHOCK, EFFECT_PARALYZE_HIT,       40, ELECTRIC, 100, 30,  10
