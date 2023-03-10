@@ -308,12 +308,17 @@ ChooseWildEncounter: ; 2a14f
 	ld b, a
 	ld h, d
 	ld l, e
+	call CheckOnWater
+	ld de, MaxLevelWater
+	jr z, .prob_bracket_loop
+	ld de, MaxLevelGrass
 ; This next loop chooses which mon to load up.
 .prob_bracket_loop
 	ld a, [hli]
 	cp b
 	jr nc, .got_it
 	inc hl
+	inc de
 	jr .prob_bracket_loop
 
 .got_it
@@ -321,25 +326,30 @@ ChooseWildEncounter: ; 2a14f
 	ld b, 0
 	pop hl
 	add hl, bc ; this selects our mon
+; Min Level
 	ld a, [hli]
 	ld b, a
-; If the Pokemon is encountered by surfing, we need to give the levels some variety.
-	call CheckOnWater
-	jr nz, .ok
-; Check if we buff the wild mon, and by how much.
+; Max Level
+	ld a, [de]
+; Min Level
+	ld d, b
+	ld b, a
+	and a
+	jr nz, .RandomLevel
+; If min and max are the same.
+	ld b, d
+	jr .ok
+
+.RandomLevel:
+; Get a random level between the min and max.
+	ld c, a
+	inc c
 	call Random
-	cp 35 percent
-	jr c, .ok
-	inc b
-	cp 65 percent
-	jr c, .ok
-	inc b
-	cp 85 percent
-	jr c, .ok
-	inc b
-	cp 95 percent
-	jr c, .ok
-	inc b
+	ldh a, [hRandomAdd]
+	call SimpleDivide
+	add d
+	ld b, a
+
 ; Store the level
 .ok
 	ld a, b

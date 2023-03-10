@@ -18,3 +18,17 @@ WaterMonProbTable: ; 2a1d9
 	mon_prob 90,  1 ; 30% chance
 	mon_prob 100, 2 ; 10% chance
 ; 2a1df
+
+MaxLevelGrass:
+	db 2
+	db 3
+	db 0
+	db 2
+	db 1
+	db 2
+	db 3
+
+MaxLevelWater:
+	db 2
+	db 3
+	db 4
