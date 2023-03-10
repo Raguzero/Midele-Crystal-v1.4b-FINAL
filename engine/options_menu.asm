@@ -109,6 +109,7 @@ GetOptionPointer: ; e42d6
 	const OPT_TEXT_SPEED_FAST ; 0
 	const OPT_TEXT_SPEED_MED  ; 1
 	const OPT_TEXT_SPEED_SLOW ; 2
+	const OPT_TEXT_SPEED_NONE ; 3
 
 Options_TextSpeed: ; e42f5
 	call GetTextSpeed
@@ -118,7 +119,7 @@ Options_TextSpeed: ; e42f5
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
 	ld a, c ; right pressed
-	cp OPT_TEXT_SPEED_SLOW
+	cp OPT_TEXT_SPEED_NONE
 	jr c, .Increase
 	ld c, OPT_TEXT_SPEED_FAST + -1
 
@@ -131,7 +132,7 @@ Options_TextSpeed: ; e42f5
 	ld a, c
 	and a
 	jr nz, .Decrease
-	ld c, OPT_TEXT_SPEED_SLOW + 1
+	ld c, OPT_TEXT_SPEED_NONE + 1
 
 .Decrease:
 	dec c
@@ -163,10 +164,12 @@ Options_TextSpeed: ; e42f5
 	dw .Fast
 	dw .Mid
 	dw .Slow
+	dw .None
 
 .Fast: db "FAST@"
 .Mid:  db "MID @"
 .Slow: db "SLOW@"
+.None: db "NONE@"
 ; e4346
 
 
@@ -179,6 +182,8 @@ GetTextSpeed: ; e4346
 	jr z, .slow
 	cp TEXT_DELAY_FAST
 	jr z, .fast
+	cp TEXT_DELAY_NONE
+	jr z, .none
 	; none of the above
 	ld c, OPT_TEXT_SPEED_MED
 	lb de, TEXT_DELAY_FAST, TEXT_DELAY_SLOW
@@ -186,12 +191,17 @@ GetTextSpeed: ; e4346
 
 .slow
 	ld c, OPT_TEXT_SPEED_SLOW
-	lb de, TEXT_DELAY_MED, TEXT_DELAY_FAST
+	lb de, TEXT_DELAY_MED, TEXT_DELAY_NONE
 	ret
 
 .fast
 	ld c, OPT_TEXT_SPEED_FAST
-	lb de, TEXT_DELAY_SLOW, TEXT_DELAY_MED
+	lb de, TEXT_DELAY_NONE, TEXT_DELAY_MED
+	ret
+
+.none
+	ld c, OPT_TEXT_SPEED_NONE
+	lb de, TEXT_DELAY_SLOW, TEXT_DELAY_FAST
 	ret
 ; e4365
 
