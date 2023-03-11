@@ -2716,21 +2716,24 @@ DittoMetalPowder: ; 352b1
 	cp METAL_POWDER
 	pop bc
 	ret nz
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
 
-    ld a, c
-	srl a
-	add c
-	ld c, a
+	ld a, HIGH(MAX_STAT_VALUE)
+	cp b
+	jr c, .cap
+	ret nz
+	ld a, LOW(MAX_STAT_VALUE)
+	cp c
 	ret nc
 
-	srl b
-	ld a, b
-	and a
-	jr nz, .done
-	inc b
-.done
-	scf
-	rr c
+.cap
+	ld bc, MAX_STAT_VALUE
 	ret
 ; 352dc
 
@@ -2818,11 +2821,14 @@ PlayerAttackDamage: ; 352e2
 	call ThickClubOrLightBallBoost
 
 .done
+	push hl
+	call DittoMetalPowder
+	pop hl
+
 	call TruncateHL_BC
 
 	ld a, [wBattleMonLevel]
 	ld e, a
-	call DittoMetalPowder
 
 	ld a, 1
 	and a
@@ -3115,11 +3121,14 @@ EnemyAttackDamage: ; 353f6
 	call ThickClubOrLightBallBoost
 
 .done
+	push hl
+	call DittoMetalPowder
+	pop hl
+
 	call TruncateHL_BC
 
 	ld a, [wEnemyMonLevel]
 	ld e, a
-	call DittoMetalPowder
 
 	ld a, 1
 	and a
