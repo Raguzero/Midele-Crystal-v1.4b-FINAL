@@ -299,7 +299,20 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jp HandleEncore
 ; 3c23c
 
+HasAnyoneFainted:
+	call HasPlayerFainted
+	jp nz, HasEnemyFainted
+	ret
+
 CheckFaint_PlayerThenEnemy: ; 3c23c
+.faint_loop
+	call .Function
+	ret c
+	call HasAnyoneFainted
+	ret nz
+	jr .faint_loop
+
+.Function:
 	call HasPlayerFainted
 	jr nz, .PlayerNotFainted
 	call HandlePlayerMonFaint
@@ -325,6 +338,14 @@ CheckFaint_PlayerThenEnemy: ; 3c23c
 ; 3c25c
 
 CheckFaint_EnemyThenPlayer: ; 3c25c
+.faint_loop
+	call .Function
+	ret c
+	call HasAnyoneFainted
+	ret nz
+	jr .faint_loop
+
+.Function:
 	call HasEnemyFainted
 	jr nz, .EnemyNotFainted
 	call HandleEnemyMonFaint
