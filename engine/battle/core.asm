@@ -6230,19 +6230,19 @@ LoadEnemyMon: ; 3e8eb
     jr nc, .UpdateItem ; MODIFICADO PARA FORZAR ITEM A TODOS
 ; Failing that, it's all up to chance
 ;  Effective chances:
-;    75% None
-;    23% Item1
-;     2% Item2
+;    45% None
+;    50% Item1
+;     5% Item2
 
-; 25% chance of getting an item
+; 55% chance of getting an item
 	call BattleRandom
-	cp 75 percent + 1
+	cp 45 percent + 1
 	ld a, NO_ITEM
 	jr c, .UpdateItem
 
-; From there, an 8% chance for Item2
+; From there, an 9% chance for Item2
 	call BattleRandom
-	cp 8 percent ; 8% of 25% = 2% Item2
+	cp 9 percent + 1; 9% of 55% = ~5% Item2
 	ld a, [wBaseItems]
 	jr nc, .UpdateItem
 	ld a, [wBaseItems+1]
