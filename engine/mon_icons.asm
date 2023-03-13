@@ -13,6 +13,96 @@ LoadOverworldMonIcon: ; 8e82b
 	jp GetIconBank
 ; 8e83f
 
+SetMenuMonIconColor:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	call GetMenuMonIconPalette
+	ld hl, wVirtualOAMSprite00Attributes
+	jr _ApplyMenuMonIconColor
+
+SetMenuMonIconColor_NoShiny:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	and a
+	call GetMenuMonIconPalette_PredeterminedShininess
+	ld hl, wVirtualOAMSprite00Attributes
+	jr _ApplyMenuMonIconColor
+
+LoadPartyMenuMonIconColors:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wPartyCount]
+	sub c
+	ld [wCurPartyMon], a
+	ld e, a
+	ld d, 0
+	ld hl, wPartySpecies
+	add hl, de
+	ld a, [hl]
+	ld [wCurPartySpecies], a
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	call GetMenuMonIconPalette
+	ld hl, wVirtualOAMSprite00Attributes
+	push af
+	ld a, [wCurPartyMon]
+	swap a
+	ld d, 0
+	ld e, a
+	add hl, de
+	pop af
+	; fallthrough
+
+_ApplyMenuMonIconColor:
+	ld c, 4
+	ld de, 4
+.loop
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+
+	pop af
+	pop bc
+	pop de
+	pop hl
+	ret
+
+GetMenuMonIconPalette:
+	ld c, l
+	ld b, h
+	farcall CheckShininess
+GetMenuMonIconPalette_PredeterminedShininess:
+	push af
+	ld a, [wCurPartySpecies]
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, MonMenuIconPals
+	add hl, bc
+	ld e, [hl]
+	pop af
+	ld a, e
+	jr c, .shiny
+	swap a
+.shiny
+	and $f
+	ld l, a
+	ret
+
 LoadMenuMonIcon: ; 8e83f
 	push hl
 	push de
@@ -154,6 +244,7 @@ PartyMenu_InitAnimatedMonIcon: ; 8e8d5 (23:68d5)
 	ret
 
 InitPartyMenuIcon: ; 8e908 (23:6908)
+	call LoadPartyMenuMonIconColors
 	ld a, [wCurIconTile]
 	push af
 	ld a, [hObjectStructIndexBuffer]
@@ -233,6 +324,9 @@ NamingScreen_InitAnimatedMonIcon: ; 8e961 (23:6961)
 	ret
 
 MoveList_InitAnimatedMonIcon: ; 8e97d (23:697d)
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	call SetMenuMonIconColor
 	ld a, [wd265]
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
@@ -259,6 +353,9 @@ Trade_LoadMonIconGFX: ; 8e99a (23:699a)
 GetSpeciesIcon: ; 8e9ac
 ; Load species icon into VRAM at tile a
 	push de
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	call SetMenuMonIconColor
 	ld a, [wd265]
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
@@ -277,6 +374,18 @@ FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
 	pop de
 	ld a, e
 	call GetIcon_a
+
+	; Edit the OBJ 0 palette so that the flying Pokémon has the right colors.
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	call GetMenuMonIconPalette
+	add a
+	add a
+	add a
+	ld e, a
+	farcall SetFirstOBJPalette
 	ret
 ; 8e9cc (23:69cc)
 
@@ -472,6 +581,8 @@ ReadMonMenuIcon: ; 8eab3
 
 
 INCLUDE "data/pokemon/menu_icons.asm"
+
+INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 INCLUDE "data/icon_pointers.asm"
 
