@@ -1149,22 +1149,6 @@ GiveEgg:: ; df8c
 
 	call TryAddMonToParty
 
-; If we haven't caught this Pokemon before receiving
-; the Egg, reset the flag that was just set by
-; TryAddMonToParty.
-	pop bc
-	ld a, c
-	and a
-	jr nz, .skip_caught_flag
-	ld a, [wCurPartySpecies]
-	dec a
-	ld c, a
-	ld d, $0
-	ld hl, wPokedexCaught
-	ld b, RESET_FLAG
-	predef SmallFarFlagAction
-
-.skip_caught_flag
 ; If we haven't seen this Pokemon before receiving
 ; the Egg, reset the flag that was just set by
 ; TryAddMonToParty.
@@ -1181,6 +1165,22 @@ GiveEgg:: ; df8c
 	predef SmallFarFlagAction
 
 .skip_seen_flag
+; If we haven't caught this Pokemon before receiving
+; the Egg, reset the flag that was just set by
+; TryAddMonToParty.
+	pop bc
+	ld a, c
+	and a
+	jr nz, .skip_caught_flag
+	ld a, [wCurPartySpecies]
+	dec a
+	ld c, a
+	ld d, $0
+	ld hl, wPokedexCaught
+	ld b, RESET_FLAG
+	predef SmallFarFlagAction
+
+.skip_caught_flag
 	pop af
 	ld [wCurPartySpecies], a
 	ld a, [wPartyCount]
