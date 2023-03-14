@@ -787,6 +787,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 0, 13
 	call PlaceString
 	ld a, [wTempMonCaughtLocation]
+    res 7, a
 	ld e, a
     ; If location is greater tha  96, mark as unknown.
     cp 96
