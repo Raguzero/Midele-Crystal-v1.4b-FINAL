@@ -45,3 +45,4 @@ gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 !gfx/pokemon/*/shiny.pal
 *.ss1
+tools/sort_symfile.sh
