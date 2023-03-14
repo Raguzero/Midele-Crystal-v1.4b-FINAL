@@ -1288,6 +1288,12 @@ PKHexEffect:
 	ld [hli], a
 	ld [hl], a
 
+    ; Happiness
+    ld a, MON_HAPPINESS
+    call GetPartyParamLocation
+    ld a, $ff
+    ld [hl], a
+
 	; Stat experience
 	ld a, MON_STAT_EXP
 	call GetPartyParamLocation
