@@ -788,8 +788,16 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call PlaceString
 	ld a, [wTempMonCaughtLocation]
 	ld e, a
+    ; If location is greater tha  96, mark as unknown.
+    cp 96
+    jr c, .landmark_location
+    ld de, UnknownLocationString
+    jp .place_location_string
+.landmark_location
 	farcall GetLandmarkNameS
 	ld de, wStringBuffer1
+
+.place_location_string
 	hlcoord 0, 14
 	call PlaceString
 
@@ -834,6 +842,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 
 HappinessString:
 	db "HAPPINESS/@"
+
+UnknownLocationString:
+	db "UNKNOWN@"
 	
 MaxString:
 	db "MAX HAPPY@"
