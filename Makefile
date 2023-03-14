@@ -150,6 +150,12 @@ gfx/trainers/%.pal: gfx/trainers/%.gbcpal
 gfx/trainers/%.gbcpal: gfx/trainers/%.png
 	$(RGBGFX) -p $@ $<
 
+gfx/trainer_card/%.2bpp: rgbgfx += -h
+gfx/trainer_card/%.pal: gfx/trainer_card/%.gbcpal
+	tools/palette -p $< > $@
+gfx/trainer_card/%.gbcpal: gfx/trainer_card/%.png
+	$(RGBGFX) -p $@ $<
+
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
