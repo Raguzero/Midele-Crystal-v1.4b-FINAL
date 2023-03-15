@@ -10,7 +10,7 @@ SoulHouse_MapScripts:
 	db 0 ; callbacks
 
 TrainerManiacLavender:
-	trainer POKEMANIAC, LAVNDER, EVENT_BEAT_LAVENDER, ManiacLavenderSeenText, ManiacLavenderBeatenText, 0, .Script
+	trainer POKEMANIAC, LAVNDER2, EVENT_BEAT_LAVENDER, ManiacLavenderSeenText, ManiacLavenderBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -140,4 +140,4 @@ SoulHouse_MapEvents:
 	object_event  7,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseTeacherScript, -1
 	object_event  2,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseLassScript, -1
 	object_event  1,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SoulHouseGrannyScript, -1
-	object_event  2, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerManiacLavender, -1
+	object_event  2, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerManiacLavender, EVENT_BEAT_RED

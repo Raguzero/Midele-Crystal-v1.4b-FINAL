@@ -290,6 +290,7 @@ KRIS EQU __enum__
 	const JZOMBIE
 	const LAVNDER
 	const MICOLO2
+	const LAVNDER2
 
 	trainerclass GRUNTM ; 1f
 	const GRUNTM_1
