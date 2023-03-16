@@ -173,6 +173,12 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	rrca
 	ld b, a
 	ld a, [wCurPartyLevel]
+    ; Caught level is stored in 6 bits, so level greater than 63 will result in an overflow.
+    ; To fix this, we will store the caught level as 0 to indicate that the caught level is >63
+    cp 64
+    jr c, .set_caught_level
+    xor a
+.set_caught_level
 	or b
 	ld [hli], a
 	ld a, [wMapGroup]
