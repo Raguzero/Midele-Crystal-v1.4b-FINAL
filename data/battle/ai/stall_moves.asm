@@ -33,6 +33,5 @@ StallMoves: ; 39348
 	db SHARPEN
 	db CONVERSION
 	db SUBSTITUTE
-	db FLAME_WHEEL
 	db -1 ; end
 ; 39369
