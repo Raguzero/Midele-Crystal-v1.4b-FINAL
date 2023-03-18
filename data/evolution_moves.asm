@@ -13,7 +13,7 @@ EvolutionMoves::
 	db MEGA_DRAIN         ; BUTTERFREE
 	db NO_MOVE      ; WEEDLE
 	db HARDEN ; KAKUNA
-	db SWORDS_DANCE      ; BEEDRILL
+	db FURY_ATTACK      ; BEEDRILL
 	db NO_MOVE      ; PIDGEY
 	db REFLECT      ; PIDGEOTTO
 	db SKY_ATTACK      ; PIDGEOT
@@ -40,9 +40,9 @@ EvolutionMoves::
 	db SUBMISSION     ; JIGGLYPUFF
 	db THUNDER_WAVE      ; WIGGLYTUFF
 	db NO_MOVE      ; ZUBAT
-	db HYPNOSIS      ; GOLBAT
+	db CRUNCH      ; GOLBAT
 	db NO_MOVE      ; ODDISH
-	db MEGA_DRAIN     ; GLOOM
+	db CHARM     ; GLOOM
 	db SYNTHESIS      ; VILEPLUME
 	db NO_MOVE      ; PARAS
 	db SWORDS_DANCE      ; PARASECT
@@ -105,7 +105,7 @@ EvolutionMoves::
 	db NO_MOVE      ; CUBONE
 	db SWORDS_DANCE      ; MAROWAK
 	db DOUBLE_KICK  ; HITMONLEE
-	db MACH_PUNCH  ; HITMONCHAN
+	db COMET_PUNCH  ; HITMONCHAN
 	db NO_MOVE      ; LICKITUNG
 	db NO_MOVE      ; KOFFING
 	db PAIN_SPLIT      ; WEEZING
