@@ -1170,7 +1170,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 33, ZUBAT
 	db 35, GRAVELER
 	db 35, URSARING
-	db 28, MICOMON
+	db 28, MICOMON ; NOROWARA
 	db 33, MISDREAVUS
 	db 33, MISDREAVUS
 	; day
@@ -1178,7 +1178,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 33, ZUBAT
 	db 35, GRAVELER
 	db 35, URSARING
-	db 28, MICOMON
+	db 28, MICOMON ; NOROWARA
 	db 33, MISDREAVUS
 	db 33, MISDREAVUS
 	; nite
@@ -1186,7 +1186,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 33, ZUBAT
 	db 35, GRAVELER
 	db 30, WOBBUFFET
-	db 28, MICOMON
+	db 28, MICOMON ; NOROWARA
 	db 33, MISDREAVUS
 	db 33, MISDREAVUS
 
@@ -1279,16 +1279,16 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 7, BELLSPROUT
 	db 8, HOPPIP
 	db 7, MAREEP
-	db 8, HOPPIP
-	db 8, HOPPIP
+	db 8, MARILL
+	db 8, MARILL
 	; day
 	db 7, EKANS
 	db 7, RATTATA
 	db 7, BELLSPROUT
 	db 8, HOPPIP
 	db 7, MAREEP
-	db 7, HOPPIP
-	db 7, HOPPIP
+	db 7, MARILL
+	db 7, MARILL
 	; nite
 	db 8, WOOPER
 	db 7, RATTATA
@@ -1306,16 +1306,16 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 9, GEODUDE
 	db 11, HOPPIP
 	db 9, EKANS
-	db 11, HOPPIP
-	db 11, HOPPIP
+	db 11, MARILL
+	db 11, MARILL
 	; day
 	db 10, RATTATA
 	db 10, SPEAROW
 	db 9, GEODUDE
 	db 11, HOPPIP
 	db 9, EKANS
-	db 11, HOPPIP
-	db 11, HOPPIP
+	db 11, MARILL
+	db 11, MARILL
 	; nite
 	db 10, RATTATA
 	db 9, ZUBAT

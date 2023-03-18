@@ -6,31 +6,31 @@ JohtoWaterWildMons: ; 0x2b11d
 	db 2 percent ; encounter rate
 	db 25, WOOPER
 	db 30, QUAGSIRE
-	db 15, QUAGSIRE
+	db 25, QUAGSIRE
 
 	map_id UNION_CAVE_1F
 	db 2 percent ; encounter rate
 	db 25, WOOPER
 	db 30, QUAGSIRE
-	db 15, QUAGSIRE
+	db 25, QUAGSIRE
 
 	map_id UNION_CAVE_B1F
 	db 2 percent ; encounter rate
 	db 25, WOOPER
 	db 30, QUAGSIRE
-	db 15, QUAGSIRE
+	db 25, QUAGSIRE
 
 	map_id UNION_CAVE_B2F
 	db 4 percent ; encounter rate
 	db 25, TENTACOOL
 	db 30, QUAGSIRE
-	db 20, TENTACRUEL
+	db 25, TENTACRUEL
 
 	map_id SLOWPOKE_WELL_B1F
 	db 2 percent ; encounter rate
 	db 25, SLOWPOKE
 	db 30, SLOWPOKE
-	db 10, SLOWPOKE
+	db 25, SLOWPOKE
 
 	map_id SLOWPOKE_WELL_B2F
 	db 2 percent ; encounter rate
@@ -42,7 +42,7 @@ JohtoWaterWildMons: ; 0x2b11d
 	db 2 percent ; encounter rate
 	db 25, PSYDUCK
 	db 30, PSYDUCK
-	db 15, GOLDUCK
+	db 25, GOLDUCK
 
 	map_id MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent ; encounter rate
@@ -53,8 +53,8 @@ JohtoWaterWildMons: ; 0x2b11d
 	map_id MOUNT_MORTAR_2F_INSIDE
 	db 2 percent ; encounter rate
 	db 30, GOLDEEN
-	db 35, MARILL
-	db 35, SEAKING
+	db 30, MARILL
+	db 30, SEAKING
 
 	map_id MOUNT_MORTAR_B1F
 	db 2 percent ; encounter rate
@@ -82,9 +82,9 @@ JohtoWaterWildMons: ; 0x2b11d
 
 	map_id SILVER_CAVE_ROOM_2
 	db 2 percent ; encounter rate
-	db 75, CORSOLA
-	db 75, QWILFISH
-	db 75, CLOYSTER
+	db 85, CORSOLA
+	db 85, QWILFISH
+	db 80, CLOYSTER
 
 	map_id DARK_CAVE_VIOLET_ENTRANCE
 	db 2 percent ; encounter rate
@@ -226,8 +226,8 @@ JohtoWaterWildMons: ; 0x2b11d
 
 	map_id SILVER_CAVE_OUTSIDE
 	db 2 percent ; encounter rate
-	db 65, POLIWHIRL
-	db 70, POLIWHIRL
-	db 65, POLIWAG
+	db 85, POLIWHIRL
+	db 80, POLIWHIRL
+	db 85, POLIWAG
 
 	db -1 ; end
