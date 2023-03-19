@@ -25,7 +25,7 @@ SpriteMons: ; 14495
 	db EKANS
 	db PARAS
 	db TENTACOOL
-	db TAUROS
+	db MILTANK
 	db MACHOP
 	db VOLTORB
 	db LAPRAS
@@ -35,4 +35,28 @@ SpriteMons: ; 14495
 	db GYARADOS
 	db LUGIA
 	db HO_OH
+	db ARTICUNO
+	db ZAPDOS
+	db MEWTWO
+	db MEW
+	db RATTATA
+	db KANGASKHAN
+	db SPEAROW
+	db DODRIO
+	db POLIWRATH
+	db BAYLEEF
+	db MEOWTH
+	db NIDORAN_F
+	db ABRA
+	db DRATINI
+	db ELECTRODE
+	db NIDORINO
+	db PIDGEY
+	db PSYDUCK
+	db FEAROW
+	db MURKROW
+	db FARFETCH_D
+	db AMPHAROS
+	db NIDORAN_M
+	db PERSIAN
 ; 144b8
