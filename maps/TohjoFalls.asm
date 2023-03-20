@@ -36,25 +36,26 @@ TrainerSageUltramagic:
 	end	
 
 SageUltraMagicSeenText:
-    text "DOOD!"
-    line "Do you know a man"
-    para "called LAVNDER?"
+    text "Ey, DOOD! Conoces"
+    line "a un hombre que"
+    para "se llama LAVNDER?"
 
-    para "JOHTO police is"
-    line "after him and"
-    cont "he is hiding"
-    para "somewhere."
+    para "La policia de"
+	line "de JOHTO va tras"
+	cont "el y se esta"
+	cont "escondiendo en"
+	para "alguna parte."
 
-    para "The police is also"
-    line "after me, but I"
-    cont "don't care, DOOD!"
-    cont "The mafia is "
-    para "watching over me."
+    para "La policia tambien"
+	line "me busca, pero no"
+	cont "me importa, DOOD!"
+    cont "La MAFIA cuida"
+    para "bien de mi."
 
-    para "Anyway, now you"
-    line "know my secret, so"
-    cont "I'll have to"
-    cont "kill you, DOOD."
+    para "De todos modos"
+    line "ahora que sabes"
+	cont "mi secreto, tendre"
+	cont "que matarte, DOOD."
     done
 
 SageUltraMagicBeatenText:
@@ -63,14 +64,17 @@ SageUltraMagicBeatenText:
     done
 
 SageUltraMagicAfterBattleText:
-    text "DOOD, I was just"
-    line "kidding."
-    cont "I'm a normal"
-    para "person."
+    text "DOOD, solo estaba"
+    line "bromeando. Jaja!"
+    cont "Soy una persona"
+    para "normal."
 
-    para "LAVENDR? What is"
-    line "that?"
-    cont "I don't know NACHO."
+    para "LAVENDR? Quien"
+    line "es ese?"
+    cont "Yo no co...co..."
+	cont "Yo no... conozco"
+	cont "a NACHO."
+	cont "DOOD.........."
     done	
 
 TohjoFalls_MapEvents:

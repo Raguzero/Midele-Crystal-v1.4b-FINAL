@@ -25,16 +25,16 @@ TrainerSupernerdGoldy:
 	
 SupernerdGoldySeenText:
     text "*snif* *snif*"
-    line "That smell..."
+    line "Ese olor..."
  
-    para "You're not from"
-    line "the KANTO region,"
-    cont "am I right?"
+    para "No eres de la"
+    line "region KANTO,"
+    cont "cierto?"
  
-    para "Well, a battle is"
-    line "a battle, so"
-    cont "prepare for your"
-    cont "defeat!"
+    para "Bueno, un combate"
+    line "es un combate,"
+    cont "asi que preparate"
+    cont "para perder!"
     done
 
 SupernerdGoldyBeatenText:
@@ -42,23 +42,20 @@ SupernerdGoldyBeatenText:
     done
 
 SupernerdGoldyAfterBattleText
-    text "How did I lose"
-    line "so easily?"
-    para "..."
+    text "Como he perdido"
+    line "asi de facil?"
 
-    para "Oh... So you are"
-    line "a CHAMPION..."
-    cont "Should I have"
-    para "known it..."
+    para "Oh... Asi que eres"
+    line "un CHAMPION..."
+    cont "Si lo hubiese"
+    para "sabido..."
 
-    para "No, I'm not"
-    line "thinking about"
-    cont "if I did run away"
-    cont "or anything"
-    cont "like that."
+    para "No, no estoy"
+    line "pensando en huir"
+	cont "ni nada parecido."
 
-    para "Why are you"
-    line "staring at me!?"
+    para "Por que me sigues"
+    line "mirando!?"
     done
 
 TrainerCooltrainermRagu:
@@ -98,10 +95,9 @@ CooltrainermRaguBeatenText:
 
 CooltrainermRaguAfterBattleText
     text "Tienes algun"
-	line "Pikachu para"
-	cont "poder aplastarlo"
-	cont "con mis preciosas"
-	cont "manos?"
+	line "PIKACHU para poder"
+	cont "aplastarlo con mis"
+	cont "preciosas manos?"
     done
 
 TrainerSwimmermPacoBeer:
@@ -152,9 +148,9 @@ SwimmermPacoBeerAfterBattleText
     cont "Pero el alcohol en"
 	cont "alta mar es la p.."   
 	cont "Mejor me callo que"
-	para "Ragu observa."     
+	para "RAGU observa."     
     
-	para "Espera un momentoo"      
+	para "Espera un momento."      
 	line "Saluda a"
 	cont "la papelera"
 	cont "de mi parte..."
@@ -173,34 +169,32 @@ TrainerCamperSpolker:
 	end
 	
 CamperSpolkerSeenText:
-    text "I'm Spolker, but"
-    line "if you distill"
-    cont "some Sitrus"
-	para "Berries."
+    text "Soy SPOLKER, pero"
+    line "si me destilas"
+    cont "algunas SITRUS"
+	cont "BERRIES, puedo"
+	cont "convertirme en"
+    cont "en SOPEN!!!"
     
-	para "I can become in"
-    line "SOPEN!!!"
-    para "You!"
-    
-	para "Give me alcohol!"
+	para "Tu! DAME ALCOHOL!"
     line "Hip!"
     done
 
 CamperSpolkerBeatenText:
-    text "Ouch! My alcohol.."
+    text "Ouch! Mi alcohol.."
     done
 
 CamperSpolkerAfterBattleText
-    text "Now I don't"
-    line "have any money"
-    cont "for buy some gin"
-	para "or vodka."
+    text "Ahora no tengo"
+    line "dinero para algo"
+    cont "de ginebra o"
+	para "vodka."
     
-	para "I'll have to"
-	line "stay sober. Well"
-    cont "I'm going to look"
-    cont "for the Four Girl."
-    cont "Wish me luck!"
+	para "Tendre que..."
+	line "mantenerme sobrio."
+	cont "Well, voy a buscar"
+    cont "a la Cuarta Chica."
+    cont "Deseame suerte!"
     done
 
 TrainerCooltrainermShelea:
@@ -215,20 +209,19 @@ TrainerCooltrainermShelea:
 	end
 
 CooltrainermSheleaSeenText:
-    text "I'm Shelea,"
+    text "Soy Shelea,"
     line "Alpha Shelea"
-    para "Do you know how a"
+    para "Tu sabes como"
+	line "empieza una"
+	cont "buena batalla?"
 
-	para "good battle start?"
-    line "Both trainers look" 
+    para "Ambos trainers" 
+	line "se miran a los"
+    cont "ojos y dan lo"
+	cont "mejor que pueden."
 
-	para "each other eyes."
-    line "And they give"
-	
-	para "their best."
-
-    para "But a but battle"
-	line "starts with..."
+    para "Pero una batalla"
+	line "empieza con..."
     
 	para "RAH RAH AH-AH-AH!"
     line "RO MAH RO MAH-MAH!"
@@ -241,11 +234,12 @@ CooltrainermSheleaBeatenText:
 
 CooltrainermSheleaAfterBattleText
     text "Okay guuuurl"
-    line "I want your"
-	para "revenge."
+    line "Quiero la"
+	para "revancha."
     
-	para "You're a criminal"
-    line "like so many boys."
+	para "Eres criminal"
+    line "como tantos"
+	cont "otros chicos."
     
 	para "Alejandro,"
 	line "Fernando,"
@@ -269,70 +263,66 @@ TrainerCamperExi:
 	end
 	
 CamperExiSeenText:
-    text "Is it me you say"
-	line "you are looking"
-	para "for?"
+    text "Es a mi a quien"
+	line "estas mirando?"
 
-    para "I'm forming a"
-	line "Pokémon rescue"
+    para "Formo parte de"
+	line "un escuadron de"
+	cont "rescate Pokémon."
 	
-	para "squad"
-    line "i hope to see"
-	
-	para "you around here,"
-	line "when you"
-	
-	para "feel like."
-    line "Both trainers are"
-	
-	para "face to face."
-    line "Sowing their great"
-	
-	para "determination to"
-	line "each other."
+    para "Espero que te"
+	line "unas si te"
+	cont "apetece."
 
-    para "The battle starts!"
-    line "Show me what"
+    para "Cuando ambos"
+	line "trainers se miran"
+	cont "cara a cara"
+    cont "mostrando su gran"
+	cont "determinacion, la"
+    cont "batalla empieza!"
+    
+	para "Muestrame que"
+	line "tienes!"
 	
-	para "you got."
-    line "Dont make me laugh"
+    para "No hagas el"
+	line "ridiculo."
     done
 
 CamperExiBeatenText:
-    text "Both we made our" 
-	line "best."
-    line "I hope to see you"
-	para "again."
+    text "Lo hicimos lo" 
+	line "mejor posible."
+    cont "Espero verte"
+	para "de nuevo."
     done
 
 CamperExiAfterBattleText
-    text "Okay. Do you want"
-	line "to fight me again?"
-    para "Are you..."
+    text "Ok. Quieres"
+	line "otro combate?"
+    para "Tu eres..."
 	
-    para "Uhm, forget what"
-	line "i was about to say"
+    para "Uhm, olvida lo"
+	line "que dije, solo"
+	cont "ignoralo."
+    
+	para "Pruebame si me"
+	line "equivoco."
+    cont "Si te reto,"
 	
-	para ", just ignore it."
-    line "Prove me"
+	para "te reto el"
+	line "doble."
 	
-	para "i am wrong"
-    line "I dare you,"
+    para "Preparate cuando"
+    line "estes mas" 
+	cont "preparado que"
+	cont "yo."
 	
-	para "i double"
-	line "dare you."
-	
-    para "Get ready"
-    line "you were readier" 
-	
-	para "that me, ugh."
-    line "Hope you join the"
-	
+	para "Ugh. Espero que"
+    line "te unas a los"
 	para "rangers,"
-	line "i could lead"
+	line "podria guiarte"
 
-	para "you down the path"
-	line "that rocks"
+	para "por el mejor"
+	line "camino."
     done
 
 TrainerJugglerMerum:
@@ -376,23 +366,22 @@ CooltrainerFSapph:
 	
 CooltrainerFSapphSeenText:
     text "Ah... ah..."
-    line "I want..."
-    cont "...your milk..."
+    line "Yo quiero..."
+    cont "...tu leche..."
     done
 
 CooltrainerFSapphBeatenText:
-    text "'your milk' i"
-    line "told Miltank!"
+    text "'Tu leche' le"
+    line "decia a MILTANK!"
     done
 
 CooltrainerFSapphAfterBattleText
     text "Ah... ah..."
-    line "(I'm tired)"
-    cont "I forgive you"
-    cont "for defeating"
-    cont "me but not for"
-    cont "thinking badly,"
-    cont "baby."
+    line "(Estoy cansada)"
+    cont "Te perdono por"
+    cont "vencerme pero"
+    cont "no por pensar"
+    cont "mal, baby."
     done	
 
 Route28Sign:

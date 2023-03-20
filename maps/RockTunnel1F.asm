@@ -32,33 +32,31 @@ TrainerPokemaniacJzombie:
 	end
 	
 PokemaniacJzombieSeenText:
-    text "[Theory] The next"
-	line "POKEMON games"
-    cont "will have"
-	cont "SOUTHERN KALOS as"
-	para "a region!"
+    text "[Teoria]"
+	line "El proximo juego"
+    cont "de Pokemon tendra"
+	cont "KALOS SUR como"
+	para "region!"
 	
-	para "As you would laugh"
-	line "at my theory," 
-	cont "I swear that your" 
-	cont "family will go to" 
-	cont "your funeral," 
-	cont "I know where you"
-	cont "live, you live"
-	cont "in Johto."
+	para "No te rias de mi"
+	line "teoria, o te juro" 
+	cont "que tu familia te" 
+	cont "vera en tu..." 
+	cont "funeral." 
+	cont "Se donde vives,"
+	cont "vives en JOHTO."
     done
 
 PokemaniacJzombieBeatenText:
-    text "My theory still"
-	line "proves right."
+    text "Mi teoria aun"
+	line "es valida."
     done
 
 PokemaniacJzombieAfterBattleText
-    text "Yeah, it will be"
-	line "SOUTHERN KALOS"
-    cont "because my"
+    text "Si, habra KALOS"
+	line "SUR porque mi"
 	cont ":censured:"
-    cont "claims it."
+    cont "lo pide."
     done
 
 TrainerScientistProgamer:
@@ -145,17 +143,17 @@ TrainerSageVladiland:
 	end
 	
 SageVladilandSeenText:
-    text "Hello!"
-	line "How old are you?" 
-	cont "Could you pass me"
-	cont "your picture"
-    para "or your feisbu?"	
+    text "Hola monada!"
+	line "Cual es tu edad?" 
+	cont "Puedes pasarme"
+	cont "tu foto o tu"
+    para "feisbu?"	
 	
 	para "No...? Ok..."
-	line "Hey, you are gay?"
-	cont "If you do not"
-	cont "answer, prepare"
-	cont "to suffer"
+	line "Hey, eres gay?"
+	cont "Si no respondes,"
+	cont "preparate para"
+	cont "sufrir."
 	done
 
 SageVladilandBeatenText:
@@ -167,9 +165,9 @@ SageVladilandBeatenText:
     done
 
 SageVladilandAfterBattleText
-    text "Won't somebody"
-	line "please think"
-	cont "of the children?"
+    text "Es que aqui nadie"
+	line "piensa en los"
+	cont "ninos?"
     done
 
 RockTunnel1F_MapEvents:

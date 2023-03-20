@@ -43,31 +43,31 @@ TrainerSupernerdFelipex88:
 	end
 
 SupernerdFelipex88SeenText:
-    text "Are not you too"
-	line "old to play"
-	para "Pokemon? :video:"
+    text "No eres demasiado"
+	line "mayor para jugar"
+	para "a Pokemon? :video:"
 	
-	para "Mature adults"
-    line "should play blood,"
-	cont "shots and fighting"
-	cont "videogames."
+	para "Adultos maduros"
+    line "deberian jugar a"
+	cont "juegos sangrientos"
+	cont "de tiros y lucha."
 	cont ":video:"
-	cont "Pokemon is for"
-	cont "kids, do not keep"
-	cont "playing. :video:"
-	cont "I'll demonstrate."
+	cont "Pokemon es para"
+	cont "crios, no sigas"
+	cont "jugando. :video:"
+	cont "Te lo demostraré."
     done
 
 SupernerdFelipex88BeatenText:
-    text "I like to cut"
-	line "my tongue."
+    text "Me gusta cortar"
+	line "mi lengua."
     done
 
 SupernerdFelipex88AfterBattleText
-    text "Damn child."
-	line "Right now I'm going"
-	cont "to cut the tongue"
-	cont "of my LICKITUNG."
+    text "Maldita sea."
+	line "Ahora mismo voy"
+	cont "a cortar la lengua"
+	cont "de mi LICKITUNG."
     done		
 
 Route5CleanseTagHouseGrannyText1:

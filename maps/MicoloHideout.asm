@@ -785,7 +785,11 @@ ScientistAvaderBeatenText:
   cont "poder de ZANZA!"
   done
 ScientistAvaderAfterText:
-  text "Que te pasa? te"
+  text "Your blade..." 
+  line "it did not cut" 
+  cont "deep enough!"
+ 
+  para "Que te pasa? te"
   line "asombra que te"
   cont "hable ahora en"
   cont "otro idioma?"
@@ -801,12 +805,12 @@ ScientistAvaderAfterText:
   
   para "Ah, y no te creas"
   line "que te has salido"
-  cont "con la tuya,"
+  cont "con la tuya."
   cont "Mi derrota es"
   cont "insignificante."
   
-  para "Con el nuevo poder"
-  line "midelar reinaremos"
+  para "Con el nuevo PODER"
+  line "MIDELAR reinaremos"
   cont "sobre la region."
   done
 

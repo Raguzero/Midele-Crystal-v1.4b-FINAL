@@ -22,45 +22,46 @@ TrainerManiacLavender:
 
 ManiacLavenderSeenText:
 
-    text "That A.VADER guy."
-    line "His MIDELE power"
-    cont "is too strong."
+    text "Ese tipo de"
+	line "nombre A.VADER."
+    cont "Su PODER MIDELAR"
+    cont "es muy poderoso."
 
-    para "What do yo say?"
-    line "ULTRAMAGIC? Me?"
-    cont "Ah! I remember."
+    para "Que dices?"
+    line "ULTRAMAGIC? Yo?"
+    cont "Ah! Ya recuerdo."
 
-    para "You beat me in"
+    para "Me venciste en"
     line "TOHJO FALLS."
 
-    para "This time it will"
-    line "be different."
+    para "Esta vez sera"
+    line "muy diferente."
 
-    para "I will defeat"
-    line "you and the"
-    cont "JOHTO police."
+    para "Te derrotare a"
+    line "ti y a la policia"
+    cont "de JOHTO."
 
-    para "The MAFIA will be"
-    line "revived!"
+    para "La MAFIA sera"
+    line "revivida!"
 
-    para "You cannot win,"
-    line "prepare yourself."
-    cont "DOOD!"
+    para "No puedes ganar,"
+    line "preparate DOOD!."
     done
 
 ManiacLavenderBeatenText:
-    text "Not again, DOOD!"
+    text "Otra vez no,"
+	line "DOOD!"
     done
 
 ManiacLavenderAfterBattleText:
-    text "Please, don't tell"
-    line "this to JOHTO"
-    cont "POLICE chief,"
-    cont "MELKOR."
+    text "Por favor, no me"
+    line "delates a MELKOR,"
+	cont "el JEFE de POLICIA"
+	cont "de JOHTO!"
 
-    para "I was just"
-    line "kidding, I'm"
-    cont "not ULTRAMAGIC."
+    para "Solo estaba de"
+    line "broma, yo no soy"
+    cont "ULTRAMAGIC."
     done
 
 MrFuji:

@@ -25,24 +25,19 @@ TrainerPsychicTSantyago:
 	end
 	
 PsychicTSantiagoSeenText:
-    text "Hey!"
-    line "You look handsome"
-    para "We should battle"
+    text "Eh! Hermosura!"
+    para "Debemos luchar!"
 
-    para "If I win"
-    line "You will become "
+    para "Si yo gano, seras"
+    line "mi esclavo!"
 
-    para "my slave!"
-    line "But if You win,"
+    para "Pero si ganas tu,"
+	line "te dare mi numero"
+	cont "para que podamos"
+	cont "conocernos y hacer"
+	cont "cositas atrevidas."
 
-    para "I'll give you"
-    line "my number"
-
-    para "so we can meet"
-	line "up and do naughty"
-	cont "stuff"
-
-    para "Deal?"
+    para "Trato?"
     done
 
 
@@ -52,24 +47,24 @@ PsychicTSantiagoBeatenText:
     done
 
 PsychicTSantiagoAfterBattleText
-   text "Congratulations!"
-   line "You beated me!"
-   para "Even the power of"
-
-   para "my CELEBI wasn't" 
-   line "enough."
+   text "Felicidades!"
+   line "Me has vencido!"
    
-   para "I mean, i can" 
-   line "still use CELEBI"
-   cont "to go back"
-   cont "in time and" 
-   cont "defeat you."
+   para "Incluso con el"
+   line "poder de mi CELEBI" 
+   cont "no fue suficiente."
+   
+   para "Me refiero a que" 
+   line "puedo usar a"
+   cont "CELEBI para volver"
+   cont "atras en el tiempo" 
+   cont "y poder vencerte."
 
-   para "But the way our"
-   line "eyes crossed,"
-   cont "tells me you"
-   cont "already fell"
-   cont "in love with me" 
+   para "Pero la forma en"
+   line "que nuestros ojos"
+   cont "se cruzaron me"
+   cont "dice que caiste"
+   cont "enamorado de mi" 
    cont ":heart: ."
    done
 
@@ -86,14 +81,15 @@ GruntMGhaddar:
 	
 GruntMGhaddarSeenText:
     text "..."
-    line "You don't"
-    cont "understand."
+    line "Tu no lo"
+    cont "entiendes."
     
-    para "I've been dead"
-    line "for 35 years."
+    para "He estado muerto"
+    line "durante 35"
+	cont "anualidades."
  
-    para "Today is the"
-    line "day I live."
+    para "Hoy es el dia"
+    line "en que vivo."
     done
 
 
@@ -103,12 +99,12 @@ GruntMGhaddarBeatenText:
     done
 
 GruntMGhaddarAfterBattleText
-    text "I… I'm crushed…"
-    line "It's over..."
+    text "Yo… estoy acabado…"
+    line "Se acabo..."
     cont "..."
  
-    para "Did I do"
-    line "the right thing?"
+    para "He hecho lo..."
+    line "correcto?"
     done
 
 JugglerUtalawea:
@@ -159,25 +155,26 @@ TrainerSupernerdDarki:
 	end
 	
 SuperNerdDarkiSeenText:
-	text "Hey Dude!"
+	text "Hey dude!"
 	
-	para "Do you know how"
-	line "to reverse"
-	cont "entropy?"
+	para "Sabes como"
+	line "revertir la"
+	cont "entropia?"
 	done
 
 SuperNerdDarkiBeatenText:
 	text "Waaaarggh!"
-	line "We are all"
-	cont "condemned!"
+	line "Todos estamos"
+	cont "condenados!"
 	done
 
 SuperNerdDarkiAfterBattleText
-	text "I think i have to"
-    line "mature more to"
-	cont "find the answer…"
+	text "Creo que tengo que"
+    line "madurar mas para"
+	cont "encontrar la"
+	cont "respuesta…"
 	
-	para "leave me alone!"
+	para "Dejame solo!"
 	done
 
 TrainerBeautyEntropia:
@@ -194,27 +191,28 @@ TrainerBeautyEntropia:
 BeautyEntropiaSeenText:
     text "Hello yellow!"
 
-    para "No matter what"
-    line "PKMN you have,"
-    cont "you better"
-    cont "work it gurl"
+    para "No importa que"
+    line "PKMN tengas,"
+    cont "hazlo lo mejor"
+    cont "que puedas, gurl."
     done
 
 BeautyEntropiaBeatenText:
-    text "And now…"
+    text "Y ahora…"
     line "Sashay away!"
     done
 
 BeautyEntropiaAfterBattleText
-    text "Category was:"
-    line "How to lose"
-    cont "eleganza"
-    cont "extravanganza."
+    text "La categoria es:"
+    line "Como perder la"
+    cont "elegancia"
+    cont "extravagancia."
     
-    para "I promise my"
-    line "strength will"
-    cont "increase over"
-    cont "time."
+    para "Te prometo que"
+    line "mi fuerza de"
+    cont "voluntad va a"
+    cont "incrementar con"
+	cont "el tiempo."
     done
 
 CooltrainermDenis:

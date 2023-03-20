@@ -34,69 +34,69 @@ TrainerAvader2:
 	end
 
 AvaderSeenText2:
-    text "Ha ha ha!"
-	line "I am"
-	para "omnipresent."
+    text "Ja ja ja!"
+	line "Yo soy"
+	para "omnipresente."
     
-	para "Hello again"
+	para "Hola de nuevo"
 	line "<PLAYER>!"
 	
-	para "As you will"
-	line "surely remember"
+	para "Como deberias"
+	line "recordar..."
 
-    para "I am the"
-	line "mastermind"
-    cont "behind the"
-	cont "TEAM ROCKET"
-	para "crimes."
+    para "Yo soy el"
+	line "MASTERMIND"
+    cont "detras de los"
+	cont "crimenes del"
+	para "TEAM ROCKET."
 
-    para "How so?"
-    line "Well, defeat me"
-    cont "and I'll tell you"
-	cont "again."
+    line "Bueno, derrotame"
+    cont "y te lo contare"
+	cont "de nuevo."
     done
 
 AvaderBeatenText2:
-    text "You're good, boy."
-    line "Truly a descendant"
-	cont "of King Micolo."
+    text "Eres un verdadero"
+	line "descendiente del"
+	cont "REY MICOLO."
     done
 
 AvaderAfterBattleText2:
-    text "I manipulated"
-	line "Giovanni into"
-	cont "creating"
-	para "Team Rocket."
+    text "Yo manipule a"
+	line "GIOVANNI para"
+	cont "crear el"
+	para "TEAM ROCKET."
 
-    para "With the money"
-	line "from their crimes,"
-    cont "I could conduct my" 
-	para "experiments."
+    para "Con el dinero de"
+	line "sus crimenes, pude"
+    cont "llevar a cabo mis" 
+	para "experimentos."
 
-    para "I wanted to create"
-	line "the ultimate"
-	cont "lifeform"
-    para "THE MICOLOL"
+    para "Yo queria crear"
+	line "la forma de vida"
+	cont "definitiva:"
+    para "EL MICOLOL"
 
-    para "But most"
-	line "experiments"
-	cont "ended in failure"
-    cont "These Mews are"
-	cont "lacking"
-	para "in Midele power."
+    para "Pero la mayoria de"
+	line "los experimentos"
+	cont "fueron un fracaso."
+    cont "A estos MEWs les"
+	cont "falta mucho PODER"
+	cont "MIDELAR."
 
-    para "One of our"
-	line "creations"
-	cont "was more powerful"
-	para "than the rest."
+    para "Una de nuestras"
+	line "creaciones era mas"
+	cont "poderosa que el"
+	para "resto."
 
-    para "We called him"
-	line "Micolo."
-    cont "He's now in the"
-	cont "DAY-CARE." 
-	cont "Maybe you'll be"
-	cont "able to"
-	cont "capture him."
+    para "Lo llamamos..."
+	line "MICOLO."
+    cont "El ahora esta en"
+	cont "la DAY-CARE de"
+	para "GOLDENROD CITY." 
+
+	para "Quiza puedas ir"
+	line "a atraparle."
     done
 
 SilverCaveRoom1MaxElixer:
