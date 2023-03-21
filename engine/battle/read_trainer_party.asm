@@ -93,7 +93,7 @@ TrainerType1: ; 397eb
 ; normal (level, species)
 	ld h, d
 	ld l, e
-.loop
+.loopTrainer1
 	ld a, [hli]
 	cp $ff
 	ret z
@@ -106,14 +106,14 @@ TrainerType1: ; 397eb
 	push hl
 	predef TryAddMonToParty
 	pop hl
-	jr .loop
+	jr .loopTrainer1
 ; 39806
 
 TrainerType2: ; 39806
 ; moves
 	ld h, d
 	ld l, e
-.loop
+.loopTrainer2
 	ld a, [hli]
 	cp $ff
 	ret z
@@ -183,14 +183,14 @@ TrainerType2: ; 39806
 .copied_pp
 
 	pop hl
-	jr .loop
+	jr .loopTrainer2
 ; 39871
 
 TrainerType3: ; 39871
 ; item
 	ld h, d
 	ld l, e
-.loop
+.loopTrainer3
 	ld a, [hli]
 	cp $ff
 	ret z
@@ -212,18 +212,34 @@ TrainerType3: ; 39871
 	pop hl
 	ld a, [hli]
 	ld [de], a
-	jr .loop
+	jr .loopTrainer3
 ; 3989d (e:589d)
 
 TrainerType4: ; 3989d
 ; item + moves
 	ld h, d
 	ld l, e
-.loop
+.loopTrainer4
 	ld a, [hli]
 	cp $ff
 	ret z
 
+	push af
+	ld a, [wMapGroup]
+    cp GROUP_TRAINER_HOUSE_B1F
+    jr nz, .setLevel
+    ld a, [wMapNumber]
+    cp MAP_TRAINER_HOUSE_B1F
+    jr nz, .setLevel
+    ld a, [wOtherTrainerClass]
+    cp CAL
+    jr z, .setLevel
+    pop af
+    ld a, 100
+    jr .setChosenLevel
+.setLevel
+    pop af
+.setChosenLevel
 	ld [wCurPartyLevel], a
 	ld a, [hli]
 	ld [wCurPartySpecies], a
@@ -304,7 +320,7 @@ TrainerType4: ; 3989d
 .copied_pp
 
 	pop hl
-	jr .loop
+	jp .loopTrainer4
 ; 3991b
 
 ComputeTrainerReward: ; 3991b (e:591b)
