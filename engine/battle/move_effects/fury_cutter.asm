@@ -17,9 +17,9 @@ BattleCommand_FuryCutter: ; 37792
 ; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
 	ld a, [hl]
 	ld b, a
-	cp 3
+	cp 4
 	jr c, .checkdouble
-	ld b, 2
+	ld b, 3
 
 .checkdouble
 	dec b
