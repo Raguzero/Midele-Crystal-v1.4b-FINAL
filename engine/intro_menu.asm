@@ -403,7 +403,7 @@ Continue: ; 5d65
 ; 5de2
 
 SpawnAfterRed: ; 5de2
-	ld a, SPAWN_MT_SILVER
+	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
 ; 5de7
 
