@@ -29,12 +29,12 @@ BadgeLevelTable: ; 3fef
 	db $28 ; 6 badges, level 40
 	db $2d ; 7 badges, level 45
 	db $41 ; 8 badges, level 65
-	; añadir level cap activado desde campeon liga, pero como??? level 70
-	db $46 ; 9 badges, level 75
-	db $50 ; 10 badges, level 80
+	; $46 añadir level cap activado desde campeon liga, pero como??? level 70
+	db $4b ; 9 badges, level 75
+	db $4b ; 10 badges, level 75
 	db $50 ; 11 badges, level 80
-	db $55 ; 12 badges, level 85
-	db $55 ; 13 badges, level 85
-	db $5a ; 14 badges, level 90
-	db $5a ; 15 badges, level 90
+	db $50 ; 12 badges, level 80
+	db $50 ; 13 badges, level 80
+	db $55 ; 14 badges, level 85
+	db $55 ; 15 badges, level 85
 	db $64 ; 16 badges, level 100
