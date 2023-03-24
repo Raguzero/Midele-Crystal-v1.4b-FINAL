@@ -2,6 +2,62 @@
 
 JohtoGrassWildMons: ; 0x2a5e9
 
+	map_id MICOLO_HIDEOUT
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; day
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; nite
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+
+	map_id MICOLO_HIDEOUT_BASEMENT
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; day
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+	; nite
+	db 100, ARTICUNO
+	db 100, ZAPDOS
+	db 100, MOLTRES
+	db 100, LUGIA
+	db 100, HO_OH
+	db 100, MEWTWO
+	db 100, MEWTWO
+
+JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
+
 	map_id SPROUT_TOWER_2F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
@@ -1648,59 +1704,5 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 85, NOCTOWL
 	db 90, MURKROW
 	db 90, MURKROW
-
-	map_id MICOLO_HIDEOUT
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
-	; morn
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
-	; day
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
-	; nite
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
-
-	map_id MICOLO_HIDEOUT_BASEMENT
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
-	; morn
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
-	; day
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
-	; nite
-	db 100, ARTICUNO
-	db 100, ZAPDOS
-	db 100, MOLTRES
-	db 100, LUGIA
-	db 100, HO_OH
-	db 100, MEWTWO
-	db 100, MEWTWO
 
 	db -1 ; end
