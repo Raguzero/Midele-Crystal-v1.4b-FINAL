@@ -37,7 +37,7 @@ FindNest: ; 2a01f
 	and a
 	jr nz, .kanto
 	decoord 0, 0
-	ld hl, JohtoGrassWildMons
+	ld hl, JohtoGrassWildMonsForDex ; this excludes the Hideout
 	call .FindGrass
 	ld hl, JohtoWaterWildMons
 	call .FindWater
@@ -829,7 +829,7 @@ RandomUnseenWildMon: ; 2a4ab
 	farcall GetCallerLocation
 	ld d, b
 	ld e, c
-	ld hl, JohtoGrassWildMons
+	ld hl, JohtoGrassWildMonsForDex ; this excludes the Hideout to save a few microseconds, as there are no callers there
 	ld bc, GRASS_WILDDATA_LENGTH
 	call LookUpWildmonsForMapDE
 	jr c, .GetGrassmon
@@ -902,7 +902,7 @@ RandomPhoneWildMon: ; 2a51f
 	farcall GetCallerLocation
 	ld d, b
 	ld e, c
-	ld hl, JohtoGrassWildMons
+	ld hl, JohtoGrassWildMonsForDex ; this excludes the Hideout to save a few microseconds, as there are no callers there
 	ld bc, GRASS_WILDDATA_LENGTH
 	call LookUpWildmonsForMapDE
 	jr c, .ok
