@@ -19,6 +19,17 @@ PlayersHouse2F_MapScripts:
 	end
 
 .InitializeRoom:
+	checkitem LEVEL_CAP
+	iftrue .InitializeRoom2
+	giveitem LEVEL_CAP
+	special ToggleDecorationsVisibility
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
+	checkevent EVENT_INITIALIZED_EVENTS
+	iftrue .SkipInitialization
+	jumpstd initializeevents
+	return
+	
+.InitializeRoom2:
 	special ToggleDecorationsVisibility
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	checkevent EVENT_INITIALIZED_EVENTS
