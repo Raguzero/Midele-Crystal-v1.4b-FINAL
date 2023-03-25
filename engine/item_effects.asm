@@ -149,7 +149,7 @@ ItemEffects: ; e73c
 	dw NoEffect            ; STAR_PIECE
 	dw BasementKeyEffect   ; BASEMENT_KEY
 	dw NoEffect            ; PASS
-	dw NoEffect            ; ITEM_87
+	dw LevelCapCheckerEffect ; ITEM_87
 	dw NoEffect            ; ITEM_88
 	dw NoEffect            ; ITEM_89
 	dw NoEffect            ; CHARCOAL
@@ -2824,6 +2824,26 @@ RestorePP: ; f6e8
 	xor a
 	ret
 ; f725
+
+LevelCapCheckerEffect: ; f59a
+    call GetBadgeLevel
+    ld hl, wBuffer1
+    ld [hl], b
+    ld de, wBuffer1
+    ld hl, wStringBuffer2
+    ; 3 digits
+    ld c, 3
+    ; 1 byte, leading zeros
+    ld b, $81
+    call PrintNum
+    ld a, "@"
+    ld [wStringBuffer2 + 3], a
+    ld hl, .level_cap_checker_text
+    jp MenuTextBoxWaitButton
+
+.level_cap_checker_text
+    text_jump Text_LevelCapChecker
+    db "@"
 
 TextJump_RaiseThePPOfWhichMove: ; 0xf725
 	; Raise the PP of which move?

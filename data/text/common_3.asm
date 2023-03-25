@@ -1313,6 +1313,13 @@ Text_PPsIncreased::
 	line "increased."
 	prompt
 
+Text_LevelCapChecker::
+    text "The current level"
+    line "cap is @"
+    text_from_ram wStringBuffer2
+    text "."
+    done
+
 UnknownText_0x1c5cf1::
 	text "PP was restored."
 	prompt
