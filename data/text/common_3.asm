@@ -1316,7 +1316,7 @@ Text_PPsIncreased::
 Text_LevelCapChecker::
     text "The current level"
     line "cap is @"
-    text_from_ram wStringBuffer2
+    deciram wBuffer1, 1, 3
     text "."
     done
 

@@ -2829,15 +2829,6 @@ LevelCapCheckerEffect: ; f59a
     call GetBadgeLevel
     ld hl, wBuffer1
     ld [hl], b
-    ld de, wBuffer1
-    ld hl, wStringBuffer2
-    ; 3 digits
-    ld c, 3
-    ; 1 byte, leading zeros
-    ld b, $81
-    call PrintNum
-    ld a, "@"
-    ld [wStringBuffer2 + 3], a
     ld hl, .level_cap_checker_text
     jp MenuTextBoxWaitButton
 
