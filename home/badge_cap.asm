@@ -11,7 +11,18 @@ GetBadgeLevel::
 	ld d, 0
 	ld hl, BadgeLevelTable ; badgeLevelTable
 	add hl, de
-	ld a, [hl]
+    ; check the EVENT_BEAT_ELITE_FOUR flag. If set, add one to the BadgeLevelTable pointer.
+    push hl
+    ld de, EVENT_BEAT_ELITE_FOUR
+    ld b, CHECK_FLAG
+    call EventFlagAction
+    pop hl
+    ld a, c
+    and a
+    jr z, .elite_four_not_defeated
+    inc hl
+.elite_four_not_defeated
+    ld a, [hl]
 	pop hl
 	pop de
 	pop bc
@@ -29,7 +40,7 @@ BadgeLevelTable: ; 3fef
 	db $28 ; 6 badges, level 40
 	db $2d ; 7 badges, level 45
 	db $41 ; 8 badges, level 65
-	; $46 añadir level cap activado desde campeon liga, pero como??? level 70
+	db $46 ; EVENT_BEAT_ELITE_FOUR, level 70
 	db $4b ; 9 badges, level 75
 	db $4b ; 10 badges, level 75
 	db $50 ; 11 badges, level 80

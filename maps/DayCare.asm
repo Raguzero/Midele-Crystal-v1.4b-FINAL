@@ -34,7 +34,6 @@ DayCare_MapScripts:
 DayCareManScript_Inside:
 	faceplayer
 	opentext
-    verbosegiveitem LEVEL_CAP
 	checkevent EVENT_GOT_ODD_EGG
 	iftrue .AlreadyHaveOddEgg
 	writetext DayCareManText_GiveOddEgg

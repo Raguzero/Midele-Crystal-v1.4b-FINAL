@@ -47,9 +47,6 @@ InexplicablyEmptyFunction:: ; 2d43
 ; unused
 ; Inexplicably empty.
 ; Seen in PredefPointers.
-rept 16
-	nop
-endr
 	ret
 ; 2d54
 
