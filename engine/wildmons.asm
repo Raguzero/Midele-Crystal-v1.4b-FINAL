@@ -331,6 +331,15 @@ ChooseWildEncounter: ; 2a14f
 	ld b, a
 ; Max Level
 	ld a, [de]
+	add b
+	cp 101 ; check that the max level does not exceed 100
+	jr c, .valid_max
+	ld a, 100 ; the range will be [min, 100] unless min > 100
+	cp b
+	jr nc, .valid_max
+	ld a, b ; if min > 100, then max = min
+.valid_max
+	sub b
 ; Min Level
 	ld d, b
 	ld b, a
