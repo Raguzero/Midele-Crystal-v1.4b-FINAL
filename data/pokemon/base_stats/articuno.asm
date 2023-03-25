@@ -9,7 +9,7 @@
 	db BRIGHTPOWDER, BRIGHTPOWDER ; items
 	db GENDERLESS ; gender ratio
 	db 100 ; unknown 1
-	db 26 ; step cycles to hatch
+	db 8 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/articuno/front.dimensions"
 	db 0, 0, 0, 0 ; padding

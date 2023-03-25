@@ -9,7 +9,7 @@
 	db SILVER_LEAF, SILVER_LEAF ; items
 	db GENDERLESS ; gender ratio
 	db 100 ; unknown 1
-	db 40 ; step cycles to hatch
+	db 13 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/lugia/front.dimensions"
 	db 0, 0, 0, 0 ; padding

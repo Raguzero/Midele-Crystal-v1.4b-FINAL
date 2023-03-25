@@ -9,7 +9,7 @@
 	db SACRED_ASH, SACRED_ASH ; items
 	db GENDERLESS ; gender ratio
 	db 100 ; unknown 1
-	db 40 ; step cycles to hatch
+	db 13 ; step cycles to hatch
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/ho_oh/front.dimensions"
 	db 0, 0, 0, 0 ; padding
