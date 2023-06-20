@@ -15,7 +15,7 @@ reserved = {
     'const_def': 'CONST_DEF',
     'const': 'CONST',
     'const_value': 'CONST_VALUE',
-    'EcQU': 'EQU'
+    'EQU': 'EQU'
 }
 
 # Tokens
