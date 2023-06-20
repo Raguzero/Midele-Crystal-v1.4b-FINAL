@@ -10,6 +10,8 @@ import sys
 
 
 class TableModel(QAbstractTableModel):
+    header_labels = ['Flag name', 'Flag ID', 'Enabled']
+
     def __init__(self, data):
         super().__init__()
         self._data = data
@@ -29,6 +31,12 @@ class TableModel(QAbstractTableModel):
         # The following takes the first sub-list, and returns
         # the length (only works if all rows are an equal length)
         return len(self._data[0])
+
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            return self.header_labels[section]
+        return QAbstractTableModel.headerData(self, section, orientation, role)
 
 
 class MainWindow(QMainWindow):
