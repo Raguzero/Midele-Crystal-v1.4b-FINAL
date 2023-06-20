@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
 
         self.table = QTableView()
 
-        data = [list(flag) for flag in flags]
+        data = [list((flag[0], flag[1], bool(flag[2]))) for flag in flags]
 
         self.model = TableModel(data)
         self.proxy_model = QSortFilterProxyModel()
