@@ -664,5 +664,5 @@ REPT 99
 db __level__ * __level__ / 500 * 3
 __level__ = __level__ + 1
 ENDR
-db 64
+db 63
 ; NUEVO LEVEL CAP BADGE
