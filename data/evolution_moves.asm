@@ -36,7 +36,7 @@ EvolutionMoves::
 	db THUNDER_WAVE      ; CLEFAIRY
 	db SEISMIC_TOSS      ; CLEFABLE
 	db NO_MOVE      ; VULPIX
-	db PAIN_SPLIT      ; NINETALES
+	db HEAL_BELL      ; NINETALES
 	db SUBMISSION     ; JIGGLYPUFF
 	db THUNDER_WAVE      ; WIGGLYTUFF
 	db NO_MOVE      ; ZUBAT
