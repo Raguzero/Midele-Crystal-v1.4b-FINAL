@@ -23,8 +23,6 @@ IconPointers:
 	dw RaticateIcon
 	dw SpearowIcon
 	dw FearowIcon
-	dw MarillIcon
-	dw AzumarillIcon
 	dw EkansIcon
 	dw ArbokIcon
 	dw PikachuIcon
@@ -122,8 +120,6 @@ IconPointers:
 	dw SeadraIcon
 	dw GoldeenIcon
 	dw SeakingIcon
-	dw TogepiIcon
-	dw TogeticIcon
 	dw StaryuIcon
 	dw StarmieIcon
 	dw MrMimeIcon
@@ -179,12 +175,16 @@ IconPointers:
 	dw PichuIcon
 	dw CleffaIcon
 	dw IgglybuffIcon
+	dw TogepiIcon
+	dw TogeticIcon
 	dw NatuIcon
 	dw XatuIcon
 	dw MareepIcon
 	dw FlaaffyIcon
 	dw AmpharosIcon
 	dw BellossomIcon
+	dw MarillIcon
+	dw AzumarillIcon
 	dw SudowoodoIcon
 	dw PolitoedIcon
 	dw HoppipIcon
