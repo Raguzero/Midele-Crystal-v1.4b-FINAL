@@ -5,6 +5,7 @@
 # pokecrystal_flag_display.py muestre las flags de una ROM.
 # Para usarlo, pasar comop argumento del programa la ruta del archivo event_flags.asm
 
+from pprint import pformat
 import ply.lex as lex
 import ply.yacc as yacc
 import sys
@@ -92,4 +93,4 @@ parser = yacc.yacc()
 parser.parse(data)
 
 # Salida procesada
-print("FLAG_DATA = {0}".format(flags))
+print("FLAG_DATA = {0}".format(pformat(flags)))
