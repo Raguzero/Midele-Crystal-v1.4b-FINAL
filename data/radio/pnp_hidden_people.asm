@@ -23,4 +23,5 @@ PnP_HiddenPeople_BeatKanto:
 	db CAL
 	db RIVAL2
 	db RED
+	db CLONE
 	db -1
