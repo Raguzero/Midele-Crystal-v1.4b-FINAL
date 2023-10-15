@@ -251,17 +251,21 @@ MoveDescriptions:: ; 2cb52
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
-	;dw MoveFCDescription
 	dw MidelePowerDescription
-	dw MoveFDDescription
-	dw MoveFEDescription
+	dw FairyWindDescription
+	dw DazzlingGleamDescription
 	dw MoveFFDescription
 	dw Move00Description
 ; 2cd52
 
-;MoveFCDescription:
-MoveFDDescription:
-MoveFEDescription:
+FairyWindDescription:
+	db   "Stirs up a fairy"
+	next "wind and strikes.@"
+
+DazzlingGleamDescription:
+	db   "Dazzles with a"
+	next "powerful flash.@"
+
 MoveFFDescription:
 Move00Description:
 	db "?@"

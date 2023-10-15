@@ -252,10 +252,9 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	;dw BattleAnim_252
 	dw BattleAnim_MidelePower
-	dw BattleAnim_253
-	dw BattleAnim_254
+	dw BattleAnim_FairyWind
+	dw BattleAnim_Dazzling_Gleam
 	dw BattleAnim_SweetScent2
 ; $100
 	dw BattleAnim_ThrowPokeBall
@@ -283,14 +282,12 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-;BattleAnim_252: ; c929b
-BattleAnim_253: ; c929b
-BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
 
 BattleAnim_SweetScent2: ; c929c
+BattleAnim_Dazzling_Gleam:
 	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC
 	anim_obj ANIM_OBJ_FLOWER, 64, 96, $2
 	anim_wait 2
@@ -1417,6 +1414,7 @@ BattleAnim_Sonicboom_JP: ; c9c00
 
 BattleAnim_Gust: ; c9c36
 BattleAnim_Sonicboom: ; c9c36
+BattleAnim_FairyWind: ; c929b
 	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
 .loop
 	anim_sound 0, 1, SFX_RAZOR_WIND

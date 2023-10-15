@@ -23,5 +23,6 @@ UsefulMoves: ; 39301
 	db SOFTBOILED
 	db SUPER_FANG
 	db MIDELE_POWER
+	db DAZZLING_GLEAM
 	db -1 ; end
 ; 39315

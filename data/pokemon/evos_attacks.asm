@@ -544,7 +544,7 @@ NidokingEvosAttacks:
 ClefairyEvosAttacks:
 	db EVOLVE_ITEM, MOON_STONE, CLEFABLE
 	db 0 ; no more evolutions
-	db 1, POUND
+	db 1, FAIRY_WIND
 	db 1, GROWL
 	db 4, ENCORE
 	db 8, SING
@@ -553,7 +553,8 @@ ClefairyEvosAttacks:
 	db 26, DEFENSE_CURL
 	db 31, MEGA_PUNCH
 	db 34, METRONOME
-	db 38, HEAL_BELL
+	db 37, HEAL_BELL
+	db 40, DAZZLING_GLEAM
 	db 43, MOONLIGHT
 	db 48, LIGHT_SCREEN
 	db 0 ; no more level-up moves
@@ -561,7 +562,7 @@ ClefairyEvosAttacks:
 ClefableEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SING
-	db 1, DOUBLESLAP
+	db 1, DAZZLING_GLEAM
 	db 1, METRONOME
 	db 1, PETAL_DANCE
 	db 0 ; no more level-up moves
@@ -606,8 +607,9 @@ JigglypuffEvosAttacks:
 	db 23, SAFEGUARD
 	db 26, SHADOW_BALL
 	db 29, REST
-	db 31, HEAL_BELL
-	db 33, BODY_SLAM
+	db 31, BODY_SLAM
+	db 33, DAZZLING_GLEAM
+	db 35, HEAL_BELL
 	db 37, PAIN_SPLIT
 	db 40, DOUBLE_EDGE
 	db 45, SEISMIC_TOSS
@@ -624,10 +626,11 @@ WigglytuffEvosAttacks:
 	db 22, BUBBLEBEAM
 	db 27, SHADOW_BALL
 	db 31, REST
-	db 33, HEAL_BELL
-	db 36, BODY_SLAM
-	db 39, PAIN_SPLIT
-	db 42, DOUBLE_EDGE
+	db 33, BODY_SLAM
+	db 36, DAZZLING_GLEAM
+	db 38, HEAL_BELL
+	db 41, PAIN_SPLIT
+	db 44, DOUBLE_EDGE
 	db 48, SEISMIC_TOSS
 	db 54, SELFDESTRUCT
 	db 58, SOFTBOILED ; New Exclusive Midele Move
@@ -678,7 +681,8 @@ OddishEvosAttacks:
 	db 18, STUN_SPORE
 	db 20, SLEEP_POWDER
 	db 23, RAZOR_LEAF
-	db 27, SLUDGE_BOMB
+	db 26, SLUDGE_BOMB
+	db 29, DAZZLING_GLEAM
 	db 32, MOONLIGHT
 	db 35, REFLECT
 	db 39, PETAL_DANCE
@@ -697,7 +701,8 @@ GloomEvosAttacks:
 	db 18, STUN_SPORE
 	db 20, SLEEP_POWDER
 	db 24, RAZOR_LEAF
-	db 29, SLUDGE_BOMB
+	db 27, SLUDGE_BOMB
+	db 30, DAZZLING_GLEAM
 	db 35, MOONLIGHT
 	db 38, REFLECT
 	db 44, PETAL_DANCE
@@ -711,6 +716,7 @@ VileplumeEvosAttacks:
 	db 1, PETAL_DANCE
 	db 25, SWORDS_DANCE
 	db 32, SLUDGE_BOMB
+	db 37, DAZZLING_GLEAM
 	db 40, LEECH_SEED
 	db 45, GIGA_DRAIN
 	db 0 ; no more level-up moves
@@ -1176,6 +1182,7 @@ TentacoolEvosAttacks:
 	db 25, BUBBLEBEAM
 	db 30, WRAP
 	db 36, BARRIER
+	db 39, DAZZLING_GLEAM
 	db 43, SCREECH
 	db 49, HYDRO_PUMP
 	db 0 ; no more level-up moves
@@ -1190,9 +1197,10 @@ TentacruelEvosAttacks:
 	db 30, WRAP
 	db 34, SLUDGE_BOMB
 	db 38, BARRIER
-	db 42, CONFUSE_RAY
-	db 45, SWORDS_DANCE
-	db 47, SCREECH
+	db 42, DAZZLING_GLEAM
+	db 44, CONFUSE_RAY
+	db 47, SWORDS_DANCE
+	db 49, SCREECH
 	db 55, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
@@ -1596,6 +1604,7 @@ DrowzeeEvosAttacks:
 	db 20, HEADBUTT
 	db 24, PSYBEAM
 	db 30, POISON_GAS
+	db 33, DAZZLING_GLEAM
 	db 36, DISABLE
 	db 40, PSYCHIC_M
 	db 43, PSYCH_UP
@@ -1612,6 +1621,7 @@ HypnoEvosAttacks:
 	db 20, HEADBUTT
 	db 24, PSYBEAM
 	db 33, POISON_GAS
+	db 36, DAZZLING_GLEAM
 	db 40, DISABLE
 	db 49, PSYCHIC_M
 	db 55, PSYCH_UP
@@ -1878,7 +1888,7 @@ RhydonEvosAttacks:
 ChanseyEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, BLISSEY
 	db 0 ; no more evolutions
-	db 1, POUND
+	db 1, FAIRY_WIND
 	db 5, GROWL
 	db 9, TAIL_WHIP
 	db 13, SOFTBOILED
@@ -1892,6 +1902,7 @@ ChanseyEvosAttacks:
 	db 41, DEFENSE_CURL
 	db 49, LIGHT_SCREEN
 	db 57, DOUBLE_EDGE
+	db 63, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 TangelaEvosAttacks:
@@ -2016,6 +2027,7 @@ StaryuEvosAttacks:
 	db 43, LIGHT_SCREEN
 	db 47, PSYCHIC_M
 	db 50, HYDRO_PUMP
+	db 53, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 StarmieEvosAttacks:
@@ -2028,6 +2040,7 @@ StarmieEvosAttacks:
 	db 43, LIGHT_SCREEN
 	db 47, PSYCHIC_M
 	db 50, HYDRO_PUMP
+	db 53, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 MrMimeEvosAttacks:
@@ -2045,7 +2058,8 @@ MrMimeEvosAttacks:
 	db 31, ENCORE
 	db 34, PSYBEAM
 	db 38, BATON_PASS
-	db 42, PSYCHIC_M
+	db 42, DAZZLING_GLEAM
+	db 44, PSYCHIC_M
 	db 46, SAFEGUARD
 	db 49, MIMIC
 	db 54, THUNDER_WAVE
@@ -2883,7 +2897,7 @@ ChinchouEvosAttacks:
 	db 29, CONFUSE_RAY
 	db 33, RAIN_DANCE
 	db 36, THUNDERBOLT
-	db 38, TAKE_DOWN
+	db 38, DAZZLING_GLEAM
 	db 41, HEAL_BELL
 	db 44, HYDRO_PUMP
 	db 48, LIGHT_SCREEN
@@ -2902,7 +2916,7 @@ LanturnEvosAttacks:
 	db 33, CONFUSE_RAY
 	db 37, RAIN_DANCE
 	db 40, THUNDERBOLT
-	db 43, TAKE_DOWN
+	db 43, DAZZLING_GLEAM
 	db 45, HEAL_BELL
 	db 53, HYDRO_PUMP
 	db 57, LIGHT_SCREEN
@@ -2923,12 +2937,13 @@ PichuEvosAttacks:
 CleffaEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, CLEFAIRY
 	db 0 ; no more evolutions
-	db 1, POUND
+	db 1, FAIRY_WIND
 	db 1, CHARM
 	db 7, ENCORE
 	db 9, SWIFT
 	db 11, SING
 	db 14, SWEET_KISS
+	db 25, DAZZLING_GLEAM
 	db 30, PETAL_DANCE
 	db 0 ; no more level-up moves
 
@@ -2941,20 +2956,22 @@ IgglybuffEvosAttacks:
 	db 9, POUND
 	db 11, MIMIC
 	db 14, SWEET_KISS
+	db 25, DAZZLING_GLEAM
 	db 30, PETAL_DANCE
 	db 0 ; no more level-up moves
 
 TogepiEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, TOGETIC
 	db 0 ; no more evolutions
-	db 1, PRESENT
+	db 1, FAIRY_WIND
 	db 1, CHARM
 	db 5, METRONOME
 	db 7, HEAL_BELL
 	db 10, SWEET_KISS
 	db 13, ANCIENTPOWER
-	db 20, ENCORE
-	db 24, SAFEGUARD
+	db 17, ENCORE
+	db 21, SAFEGUARD
+	db 24, DAZZLING_GLEAM
 	db 27, DOUBLE_EDGE
 	db 32, HEAL_BELL
 	db 37, BATON_PASS
@@ -2962,18 +2979,19 @@ TogepiEvosAttacks:
 
 TogeticEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, PRESENT
+	db 1, FAIRY_WIND
 	db 1, CHARM
 	db 1, HEAL_BELL
 	db 8, METRONOME
 	db 12, SWEET_KISS
 	db 15, ANCIENTPOWER
-	db 25, ENCORE
-	db 31, PSYCHIC_M
+	db 19, ENCORE
+	db 27, DAZZLING_GLEAM
+	db 31, BODY_SLAM
 	db 34, SAFEGUARD
-	db 38, BODY_SLAM
+	db 38, SEISMIC_TOSS
 	db 41, BATON_PASS
-	db 44, SEISMIC_TOSS
+	db 44, PSYCHIC_M
 	db 49, COUNTER
 	db 52, THUNDER_WAVE
 	db 55, SUBSTITUTE
@@ -2996,7 +3014,8 @@ NatuEvosAttacks:
 	db 29, CONFUSE_RAY
 	db 32, FAINT_ATTACK
 	db 36, PSYCHIC_M
-	db 39, THUNDER_WAVE
+	db 39, DAZZLING_GLEAM
+	db 41, THUNDER_WAVE
 	db 0 ; no more level-up moves
 
 XatuEvosAttacks:
@@ -3012,9 +3031,10 @@ XatuEvosAttacks:
 	db 31, CONFUSE_RAY
 	db 34, FAINT_ATTACK
 	db 37, DRILL_PECK
-	db 40, GIGA_DRAIN
-	db 43, PSYCHIC_M
-	db 46, PAIN_SPLIT
+	db 39, GIGA_DRAIN
+	db 41, PSYCHIC_M
+	db 44, DAZZLING_GLEAM
+	db 48, PAIN_SPLIT
 	db 53, THUNDER_WAVE
 	db 0 ; no more level-up moves
 
@@ -3030,8 +3050,9 @@ MareepEvosAttacks:
 	db 17, SPARK ; New Exclusive Midele Move
 	db 20, CONFUSE_RAY
 	db 24, BODY_SLAM
-	db 30, LIGHT_SCREEN
-	db 33, REFLECT
+	db 27, LIGHT_SCREEN
+	db 29, REFLECT
+	db 33, DAZZLING_GLEAM
 	db 37, THUNDER
 	db 0 ; no more level-up moves
 
@@ -3047,8 +3068,9 @@ FlaaffyEvosAttacks:
 	db 17, SPARK ; New Exclusive Midele Move
 	db 22, CONFUSE_RAY
 	db 27, BODY_SLAM
-	db 32, LIGHT_SCREEN
-	db 36, REFLECT
+	db 31, LIGHT_SCREEN
+	db 34, REFLECT
+	db 38, DAZZLING_GLEAM
 	db 45, THUNDER
 	db 0 ; no more level-up moves
 
@@ -3064,8 +3086,9 @@ AmpharosEvosAttacks:
 	db 22, CONFUSE_RAY
 	db 27, BODY_SLAM
 	db 30, THUNDERPUNCH
-	db 35, LIGHT_SCREEN
-	db 40, REFLECT
+	db 33, LIGHT_SCREEN
+	db 36, REFLECT
+	db 41, DAZZLING_GLEAM
 	db 46, OUTRAGE
 	db 54, THUNDER
 	db 0 ; no more level-up moves
@@ -3079,6 +3102,7 @@ BellossomEvosAttacks:
 	db 25, CHARM
 	db 30, SWORDS_DANCE
 	db 35, BATON_PASS
+	db 38, DAZZLING_GLEAM
 	db 40, LEECH_SEED
 	db 45, GIGA_DRAIN
 	db 50, SOLARBEAM
@@ -3087,17 +3111,18 @@ BellossomEvosAttacks:
 MarillEvosAttacks:
 	db EVOLVE_LEVEL, 18, AZUMARILL
 	db 0 ; no more evolutions
+	db 1, CHARM
 	db 1, WATER_GUN
-	db 1, PRESENT
-	db 4, CHARM
-	db 7, SING
+	db 4, SING
+	db 7, FAIRY_WIND
 	db 9, ICY_WIND
 	db 11, BUBBLEBEAM
 	db 14, ROLLOUT
 	db 14, DEFENSE_CURL
 	db 17, BODY_SLAM
 	db 19, RAIN_DANCE
-	db 24, ENCORE
+	db 22, DAZZLING_GLEAM
+	db 25, ENCORE
 	db 28, DOUBLE_EDGE
 	db 34, HYDRO_PUMP
 	db 38, SUBSTITUTE
@@ -3105,10 +3130,10 @@ MarillEvosAttacks:
 
 AzumarillEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, WATER_GUN
-	db 1, PRESENT
 	db 1, CHARM
+	db 1, WATER_GUN
 	db 1, SING
+	db 1, FAIRY_WIND
 	db 9, ICY_WIND
 	db 11, BUBBLEBEAM
 	db 14, ROLLOUT
@@ -3116,7 +3141,7 @@ AzumarillEvosAttacks:
 	db 17, BODY_SLAM
 	db 18, DYNAMICPUNCH
 	db 22, RAIN_DANCE
-	db 25, ICE_BEAM
+	db 25, DAZZLING_GLEAM
 	db 29, ENCORE
 	db 32, BELLY_DRUM
 	db 35, PERISH_SONG
@@ -3161,7 +3186,7 @@ HoppipEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 1, TAIL_WHIP
-	db 1, TACKLE
+	db 1, FAIRY_WIND
 	db 5, SYNTHESIS
 	db 8, CONFUSION
 	db 11, POISONPOWDER
@@ -3170,10 +3195,11 @@ HoppipEvosAttacks:
 	db 15, LEECH_SEED
 	db 17, MEGA_DRAIN
 	db 21, COTTON_SPORE
-	db 25, SUBSTITUTE
-	db 30, TOXIC
-	db 34, GIGA_DRAIN
-	db 38, ENCORE
+	db 23, SUBSTITUTE
+	db 26, TOXIC
+	db 28, GIGA_DRAIN
+	db 31, DAZZLING_GLEAM
+	db 33, ENCORE
 	db 0 ; no more level-up moves
 
 SkiploomEvosAttacks:
@@ -3181,7 +3207,7 @@ SkiploomEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 1, TAIL_WHIP
-	db 1, TACKLE
+	db 1, FAIRY_WIND
 	db 5, SYNTHESIS
 	db 8, CONFUSION
 	db 11, POISONPOWDER
@@ -3190,17 +3216,18 @@ SkiploomEvosAttacks:
 	db 15, LEECH_SEED
 	db 17, MEGA_DRAIN
 	db 23, COTTON_SPORE
-	db 26, SUBSTITUTE
-	db 32, TOXIC
-	db 36, GIGA_DRAIN
-	db 41, ENCORE
+	db 25, SUBSTITUTE
+	db 28, TOXIC
+	db 31, GIGA_DRAIN
+	db 33, DAZZLING_GLEAM
+	db 36, ENCORE
 	db 0 ; no more level-up moves
 
 JumpluffEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 1, TAIL_WHIP
-	db 1, TACKLE
+	db 1, FAIRY_WIND
 	db 5, SYNTHESIS
 	db 8, CONFUSION
 	db 11, POISONPOWDER
@@ -3208,10 +3235,11 @@ JumpluffEvosAttacks:
 	db 13, SLEEP_POWDER
 	db 15, LEECH_SEED
 	db 23, COTTON_SPORE
-	db 26, SUBSTITUTE
-	db 34, TOXIC
-	db 37, GIGA_DRAIN
-	db 43, ENCORE
+	db 25, SUBSTITUTE
+	db 30, TOXIC
+	db 33, GIGA_DRAIN
+	db 37, DAZZLING_GLEAM
+	db 42, ENCORE
 	db 0 ; no more level-up moves
 
 AipomEvosAttacks:
@@ -3259,6 +3287,7 @@ SunfloraEvosAttacks:
 	db 23, ENCORE
 	db 25, GIGA_DRAIN
 	db 28, SUNNY_DAY
+	db 31, DAZZLING_GLEAM
 	db 34, SYNTHESIS
 	db 37, SOLARBEAM
 	db 39, MIMIC
@@ -3339,7 +3368,8 @@ EspeonEvosAttacks:
 	db 39, FUTURE_SIGHT
 	db 42, PSYCH_UP
 	db 45, LIGHT_SCREEN
-	db 47, PSYCHIC_M
+	db 47, DAZZLING_GLEAM
+	db 49, PSYCHIC_M
 	db 52, MORNING_SUN
 	db 0 ; no more level-up moves
 
@@ -3410,6 +3440,7 @@ MisdreavusEvosAttacks:
 	db 28, HEAL_BELL
 	db 31, ICY_WIND
 	db 34, NIGHT_SHADE
+	db 37, DAZZLING_GLEAM
 	db 40, PSYCHIC_M
 	db 44, PAIN_SPLIT
 	db 48, THUNDER_WAVE
@@ -3439,7 +3470,8 @@ GirafarigEvosAttacks:
 	db 16, STOMP
 	db 23, AGILITY
 	db 27, BATON_PASS
-	db 32, PSYBEAM
+	db 29, PSYBEAM
+	db 32, DAZZLING_GLEAM
 	db 35, BODY_SLAM
 	db 39, CRUNCH
 	db 42, CONFUSE_RAY
@@ -3552,6 +3584,7 @@ SnubbullEvosAttacks:
 	db 22, LOW_KICK
 	db 25, TAKE_DOWN
 	db 28, ROAR
+	db 31, DAZZLING_GLEAM
 	db 34, RAGE
 	db 38, BODY_SLAM
 	db 44, PERISH_SONG ; New Gold Spaceworld Beta Move
@@ -3568,7 +3601,8 @@ GranbullEvosAttacks:
 	db 22, LOW_KICK
 	db 28, TAKE_DOWN
 	db 30, ROAR
-	db 34, ROCK_SLIDE
+	db 33, DAZZLING_GLEAM
+	db 36, ROCK_SLIDE
 	db 38, RAGE
 	db 41, CROSS_CHOP ; New Exclusive Midele Move
 	db 43, BODY_SLAM
@@ -4117,7 +4151,7 @@ MiltankEvosAttacks:
 
 BlisseyEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, POUND
+	db 1, FAIRY_WIND
 	db 4, GROWL
 	db 7, TAIL_WHIP
 	db 10, SOFTBOILED
@@ -4131,6 +4165,7 @@ BlisseyEvosAttacks:
 	db 33, DEFENSE_CURL
 	db 40, LIGHT_SCREEN
 	db 47, DOUBLE_EDGE
+	db 55, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 RaikouEvosAttacks:
@@ -4290,10 +4325,12 @@ CelebiEvosAttacks:
 	db 10, SAFEGUARD
 	db 20, ANCIENTPOWER
 	db 30, FUTURE_SIGHT
-	db 40, BATON_PASS
-	db 50, GIGA_DRAIN
-	db 60, METRONOME
-	db 70, PERISH_SONG
+	db 35, BATON_PASS
+	db 40, GIGA_DRAIN
+	db 45, PSYCHIC_M
+	db 50, METRONOME
+	db 55, PERISH_SONG
+	db 60, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 MicomonEvosAttacks: ; NOROWARA

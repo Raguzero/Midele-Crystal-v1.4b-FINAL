@@ -27,6 +27,7 @@ AbbreviatedTypes:
 	db "ICE@"
 	db "DRG@"
 	db "DRK@"
+	db "FAI@"
 
 AbbreviatedClasses:
 	db "PHY@"
