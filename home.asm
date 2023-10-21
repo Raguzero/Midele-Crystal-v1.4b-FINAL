@@ -246,6 +246,8 @@ CopyName2:: ; 30d9
 	ret
 ; 30e1
 
+IsInByteArray::
+	ld de, 1
 IsInArray:: ; 30e1
 ; Find value a for every de bytes in array hl.
 ; Return index in b and carry if found.

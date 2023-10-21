@@ -901,6 +901,16 @@ GetMoveEffect: ; 3c5ec
 	ret
 ; 3c5fe
 
+GetMoveAnim:
+	ld a, b
+	ld hl, Moves - MOVE_LENGTH
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld b, a
+	ret
+
 Battle_EnemyFirst: ; 3c5fe
 	call LoadTileMapToTempTileMap
 	call TryEnemyFlee

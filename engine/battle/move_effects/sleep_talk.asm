@@ -44,7 +44,7 @@ BattleCommand_SleepTalk: ; 35b33
 	ld a, e
 	cp d
 	jr z, .sample_move
-	call .check_two_turn_move
+	call .check_unselectable_move
 	jr z, .sample_move
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
@@ -100,8 +100,8 @@ BattleCommand_SleepTalk: ; 35b33
 	cp b
 	jr z, .nope
 
-	call .check_two_turn_move
-	jr nz, .no_carry
+	call .check_unselectable_move
+	jr nc, .no_carry
 
 .nope
 	inc hl
@@ -116,30 +116,22 @@ BattleCommand_SleepTalk: ; 35b33
 	and a
 	ret
 
-.check_two_turn_move
+.check_unselectable_move  
+; If move can´t be selected, set Carry flag.
 	push hl
 	push de
 	push bc
 
 	ld b, a
-	callfar GetMoveEffect
+	callfar GetMoveAnim
 	ld a, b
+	ld hl, SleepTalk_unallowed_moves
+	call IsInByteArray
 
 	pop bc
 	pop de
 	pop hl
-
-	cp EFFECT_SKULL_BASH
-	ret z
-	cp EFFECT_RAZOR_WIND
-	ret z
-	cp EFFECT_SKY_ATTACK
-	ret z
-	cp EFFECT_SOLARBEAM
-	ret z
-	cp EFFECT_FLY
-	ret z
-	cp EFFECT_BIDE
 	ret
 
+INCLUDE "engine/battle/SleepTalk_unallowed_moves.asm"
 ; 35bff
