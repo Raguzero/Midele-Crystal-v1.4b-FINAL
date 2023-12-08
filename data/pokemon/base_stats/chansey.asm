@@ -8,11 +8,11 @@
 	db 255 ; base exp
 	db LUCKY_EGG, LUCKY_PUNCH ; items
 	db GENDER_F100 ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 13 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/chansey/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_FAST ; growth rate
 	dn EGG_FAIRY, EGG_FAIRY ; egg groups
 

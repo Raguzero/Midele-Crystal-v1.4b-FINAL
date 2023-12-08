@@ -8,11 +8,11 @@
 	db 213 ; base exp
 	db BURNT_BERRY, BURNT_BERRY ; items
 	db GENDER_F25 ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 6 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/arcanine/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_SLOW ; growth rate
 	dn EGG_FIELD, EGG_FIELD ; egg groups
 

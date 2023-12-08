@@ -8,11 +8,11 @@
 	db 218 ; base exp
 	db MIRACLEBERRY, MIRACLEBERRY ; items
 	db GENDERLESS ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 13 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/celebi/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups
 

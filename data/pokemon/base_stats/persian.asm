@@ -8,11 +8,11 @@
 	db 148 ; base exp
 	db SILVER_LEAF, SILVER_LEAF ; items
 	db GENDER_F50 ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 6 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/persian/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FIELD, EGG_FIELD ; egg groups
 

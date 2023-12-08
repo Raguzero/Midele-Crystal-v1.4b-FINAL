@@ -8,11 +8,11 @@
 	db 63 ; base exp
 	db POLKADOT_BOW, POLKADOT_BOW ; items
 	db GENDER_F75 ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 6 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/snubbull/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_FAST ; growth rate
 	dn EGG_FIELD, EGG_FAIRY ; egg groups
 

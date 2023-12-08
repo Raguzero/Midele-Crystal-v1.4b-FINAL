@@ -2145,15 +2145,17 @@ wBaseItems:: ; d241
 wBaseItem1:: db ; d241
 wBaseItem2:: db ; d242
 wBaseGender:: db ; d243
-wBaseUnknown1:: db ; d244
+;wBaseUnknown1:: db ; d244 ; Delete to save space
 wBaseEggSteps:: db ; d245
-wBaseUnknown2:: db ; d246
+;wBaseUnknown2:: db ; d246 ; Delete to save space
 wBasePicSize:: db ; d247
-wBasePadding:: ds 4 ; d248
+;wBasePadding:: ds 4 ; d248 ; Delete to save space
 wBaseGrowthRate:: db ; d24c
 wBaseEggGroups:: db ; d24d
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR ; d24e
 wCurBaseDataEnd::
+
+    ds 6
 
 wCurDamage:: dw ; d256
 

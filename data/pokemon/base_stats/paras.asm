@@ -8,11 +8,11 @@
 	db 70 ; base exp
 	db TINYMUSHROOM, BIG_MUSHROOM ; items
 	db GENDER_F50 ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 6 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/paras/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_GRASS ; egg groups
 

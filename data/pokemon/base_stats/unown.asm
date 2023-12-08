@@ -8,11 +8,11 @@
 	db 61 ; base exp
 	db NO_ITEM, NO_ITEM ; items
 	db GENDERLESS ; gender ratio
-	db 100 ; unknown 1
+; Delete to save space
 	db 13 ; step cycles to hatch
-	db 5 ; unknown 2
+; Delete to save space
 	INCBIN "gfx/pokemon/unown_a/front.dimensions"
-	db 0, 0, 0, 0 ; padding
+; Delete to save space
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
