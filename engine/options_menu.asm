@@ -166,10 +166,10 @@ Options_TextSpeed: ; e42f5
 	dw .Slow
 	dw .None
 
-.Fast: db "FAST@"
-.Mid:  db "MID @"
-.Slow: db "SLOW@"
-.None: db "NONE@"
+.Fast: db "FAST   @"
+.Mid:  db "MID    @"
+.Slow: db "SLOW   @"
+.None: db "INSTANT@"
 ; e4346
 
 
